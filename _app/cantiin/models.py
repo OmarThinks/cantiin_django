@@ -9,7 +9,7 @@ from _app.models_mixins import (TimeStampMixin, getHasUserForeignKeyMixin)
 
 
 #id,name,price,in_stock,author
-class Product(models.Model, getHasUserForeignKeyMixin("products")):
+class Product(getHasUserForeignKeyMixin("products")):
 	name = models.CharField(max_length=150)
 	price = models.FloatField(
 		validators=[MinValueValidator(.1),MaxValueValidator(1000*1000)])
@@ -17,22 +17,24 @@ class Product(models.Model, getHasUserForeignKeyMixin("products")):
 
 
 def getHasProductForeignKeyMixin(related_name):
-	class HasProductForeignKeyMixin(relatedname):
-		product = models.ForeignKey(Product, related_name=related_name)
+	class HasProductForeignKeyMixin(models.Model):
+		product = models.ForeignKey(Product, related_name=related_name,
+		on_delete=models.CASCADE)
+		class Meta:
+			abstract = True
+
 	return HasProductForeignKeyMixin
 
 
 #id, author, product_id, amount
-class Order(models.Model, getHasUserForeignKeyMixin("orders"), 
+class Order(getHasUserForeignKeyMixin("orders"), 
 	getHasProductForeignKeyMixin("orders")):
-	product = models.ForeignKey(Product, related_name="orders")
 	amount = models.IntegerField(
 		 validators=[MinValueValidator(1),MaxValueValidator(1000)])
 
 #id, author, product_id, content
-class Comment(models.Model, getHasUserForeignKeyMixin("comments"), 
+class Comment(getHasUserForeignKeyMixin("comments"), 
 	getHasProductForeignKeyMixin("comments")):
-	product = models.ForeignKey(Product, related_name="comments")
 	name = models.CharField(max_length=1000)
 
 
