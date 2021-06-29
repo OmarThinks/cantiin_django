@@ -2,21 +2,16 @@ from django.db import models
 
 # Create your models here.
 
-
-
-#id,name,price,in_stock,seller_id
+#id,name,price,in_stock,author
 class Product(models.Model):
-    name = models.CharField(max_length=100)
+	name = models.CharField(max_length=100)
 	price = models.FloatField()
-    in_stock =  models.BooleanField()
+	in_stock =  models.BooleanField()
 
-"""
-id, user_id, product_id, amount
-class Order(db.Model):
+#id, author, product_id, amount
+class Order(models.Model):
+	amount = models.FloatField()
 
-
-id, user_id, product_id, content
-class Comments(db.Model):
-"""
-
-
+#id, author, product_id, content
+class Comment(models.Model):
+	name = models.CharField(max_length=100)
