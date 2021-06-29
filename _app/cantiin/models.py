@@ -9,7 +9,8 @@ from _app.models_mixins import (TimeStampMixin, getHasUserForeignKeyMixin)
 
 
 #id,name,price,in_stock,author
-class Product(models.Model,getHasUserForeignKeyMixin("products")):
+class Product(models.Model,getHasUserForeignKeyMixin("products"),
+	TimeStampMixin):
 	name = models.CharField(max_length=150)
 	price = models.FloatField(
 		validators=[MinValueValidator(.1),MaxValueValidator(1000*1000)])
@@ -26,13 +27,13 @@ def getHasProductForeignKeyMixin(related_name):
 
 #id, author, product_id, amount
 class Order(models.Model,getHasUserForeignKeyMixin("orders"), 
-	getHasProductForeignKeyMixin("orders")):
+	getHasProductForeignKeyMixin("orders"), TimeStampMixin):
 	amount = models.IntegerField(
 		 validators=[MinValueValidator(1),MaxValueValidator(1000)])
 
 #id, author, product_id, content
 class Comment(models.Model,getHasUserForeignKeyMixin("comments"), 
-	getHasProductForeignKeyMixin("comments")):
+	getHasProductForeignKeyMixin("comments"), TimeStampMixin):
 	name = models.CharField(max_length=1000)
 
 
