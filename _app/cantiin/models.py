@@ -6,37 +6,42 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 from _app.models_mixins import (getTimeStampMixin, getHasUserForeignKeyMixin)
 
 
-nullable = True
 
 #id,name,price,in_stock,author
-class Product(getHasUserForeignKeyMixin("products",True),
-	getTimeStampMixin(True)):
+class Product(getHasUserForeignKeyMixin("products"),
+	getTimeStampMixin()):
 	name = models.CharField(max_length=150)
 	price = models.FloatField(
 		validators=[MinValueValidator(.1),MaxValueValidator(1000*1000)])
 	in_stock =  models.BooleanField()
 
 
-def getHasProductForeignKeyMixin(related_name, nullab):
+def getHasProductForeignKeyMixin(related_name, default=None):
+	if default == None:
+		class HasProductForeignKeyMixin(models.Model):
+			product = models.ForeignKey(Product, related_name=related_name,
+			on_delete=models.CASCADE)
+			class Meta:
+				abstract = True
+		return HasProductForeignKeyMixin
 	class HasProductForeignKeyMixin(models.Model):
 		product = models.ForeignKey(Product, related_name=related_name,
-		on_delete=models.CASCADE, null=nullab)
+		on_delete=models.CASCADE, default =Product.objects.order_by('id').first())
 		class Meta:
 			abstract = True
-
 	return HasProductForeignKeyMixin
 
 
 #id, author, product_id, amount
-class Order(getHasUserForeignKeyMixin("orders",nullable), 
-	getHasProductForeignKeyMixin("orders",True), getTimeStampMixin(nullable)):
+class Order(getHasUserForeignKeyMixin("orders"), 
+	getHasProductForeignKeyMixin("orders"), getTimeStampMixin()):
 	amount = models.IntegerField(
 		 validators=[MinValueValidator(1),MaxValueValidator(1000)])
 
 
 #id, author, product_id, content
-class Comment(getHasUserForeignKeyMixin("comments",nullable), 
-	getHasProductForeignKeyMixin("comments", nullable), getTimeStampMixin(nullable)):
+class Comment(getHasUserForeignKeyMixin("comments"), 
+	getHasProductForeignKeyMixin("comments"), getTimeStampMixin()):
 	name = models.CharField(max_length=1000)
 
 
