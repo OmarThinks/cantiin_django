@@ -4,7 +4,8 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 from django.conf import settings
 
 
-from _app.models_mixins import TimeStampMixin
+from _app.models_mixins import (TimeStampMixin, 
+	HasProductForeignKeyMixin, HasUserForeignKeyMixin)
 
 
 
