@@ -4,17 +4,22 @@ from django.conf import settings
 
 
 
+def getTimeStampMixin(nullable):
+	class TimeStampMixin(models.Model):
+		created_at = models.DateTimeField(auto_now_add=True, null=nullable)
+		updated_at = models.DateTimeField(auto_now=True, null=nullable)
+		class Meta:
+			abstract = True
+	return TimeStampMixin
+	
 
-class TimeStampMixin():
-	created_at = models.DateTimeField(auto_now_add=True)
-	updated_at = models.DateTimeField(auto_now=True)
 
 
 
-
-
-def getHasUserForeignKeyMixin(related_name):
-	class HasUserForeignKeyMixin():
+def getHasUserForeignKeyMixin(related_name,nullable):
+	class HasUserForeignKeyMixin(models.Model):
 		author = models.ForeignKey(settings.AUTH_USER_MODEL,
-			on_delete=models.CASCADE, related_name=related_name)
+			on_delete=models.CASCADE, related_name=related_name, null=nullable)
+		class Meta:
+			abstract = True
 	return HasUserForeignKeyMixin
