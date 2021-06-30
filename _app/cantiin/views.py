@@ -2,7 +2,9 @@ from django.shortcuts import render
 
 from rest_framework import viewsets
 # Serializers define the API representation.
-
+from rest_framework.mixins import (ListModelMixin, RetrieveModelMixin)
+from rest_framework.generics import (ListAPIView, RetrieveAPIView)
+from rest_framework import viewsets
 
 from accounts.models import (User)
 from cantiin.models import (Product, Order, Comment)
@@ -11,19 +13,20 @@ from cantiin.serializers import (
 	UserSerializer, ProductSerializer, OrderSerializer, CommentSerializer)
 
 # ViewSets define the view behavior.
-class UserViewSet(viewsets.ModelViewSet):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
+class UserViewSet(ListModelMixin, RetrieveModelMixin, viewsets.GenericViewSet):
+	queryset = User.objects.all()
+	serializer_class = UserSerializer
+
 class ProductViewSet(viewsets.ModelViewSet):
-    queryset = Product.objects.all()
-    serializer_class = ProductSerializer
+	queryset = Product.objects.all()
+	serializer_class = ProductSerializer
 class OrderViewSet(viewsets.ModelViewSet):
-    queryset = Order.objects.all()
-    serializer_class = OrderSerializer
+	queryset = Order.objects.all()
+	serializer_class = OrderSerializer
 
 class CommentViewSet(viewsets.ModelViewSet):
-    queryset = Comment.objects.all()
-    serializer_class = CommentSerializer
+	queryset = Comment.objects.all()
+	serializer_class = CommentSerializer
 
 
 
