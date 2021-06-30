@@ -2,6 +2,21 @@
 An ecommerce website using django and Django REST Framework
 
 
+
+
+
+
+
+
+<img src="images/drf_auth.gif">
+<img src="images/api_root.gif">
+<img src="images/users_list.gif">
+
+
+
+
+
+
 # Models:
 
 ## 1) Authentication Models:
