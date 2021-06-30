@@ -42,7 +42,7 @@ class Order(getHasUserForeignKeyMixin("orders"),
 #id, author, product_id, content
 class Comment(getHasUserForeignKeyMixin("comments"), 
 	getHasProductForeignKeyMixin("comments"), getTimeStampMixin()):
-	name = models.CharField(max_length=1000)
+	content = models.CharField(max_length=1000)
 
 
 

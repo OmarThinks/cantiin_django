@@ -7,29 +7,26 @@ from rest_framework import serializers
 class UserSerializer(serializers.HyperlinkedModelSerializer):
 	class Meta:
 		model = User
-		exclude = ['password',"last_login","is_superuser",
-			"first_name","last_name","email","is_staff",
-			"is_active","date_joined"]
-		depth = 1
+		fields = ["url", "id", "username", "products","orders"]
 
 class ProductSerializer(serializers.HyperlinkedModelSerializer):
 	author = UserSerializer
 	class Meta:
 		model = Product
-		fields = "__all__"
-		depth = 1
+		fields = ["url","id","name","price","in_stock","author",
+		"comments","created_at","updated_at"]
 
 class OrderSerializer(serializers.HyperlinkedModelSerializer):
 	class Meta:
 		model = Order
-		fields = "__all__"
-		depth = 1
+		fields = ["url","id","product","amount","in_stock",
+		"author","created_at","updated_at"]
 
 class CommentSerializer(serializers.HyperlinkedModelSerializer):
 	class Meta:
 		model = Comment
-		fields = "__all__"
-		depth = 1
+		fields = ["url","id","product","content","author",
+		"created_at","updated_at"]
 
 
 
