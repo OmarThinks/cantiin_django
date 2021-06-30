@@ -23,7 +23,7 @@ from rest_framework import routers
 from .rest_views import (
     UserViewSet, ProductViewSet, OrderViewSet, CommentViewSet)
 
-from .views import (about, homepage)
+from .views import (about, homepage, products_list)
 
 
 # Routers provide an easy way of automatically determining the URL conf.
@@ -40,5 +40,7 @@ urlpatterns = [
     path('api/', include(router.urls)),
     path('', homepage),
     path('about/', about),
+    path('products/', products_list),
+
 ]
 
