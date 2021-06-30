@@ -178,3 +178,9 @@ REST_FRAMEWORK = {
 SIMPLE_JWT = {
    'AUTH_HEADER_TYPES': ('JWT',),
 }
+
+import os
+
+STATICFILES_DIRS = (
+os.path.join(BASE_DIR, "assets"),
+)
