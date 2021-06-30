@@ -34,7 +34,7 @@ class CommentSerializer(serializers.HyperlinkedModelSerializer):
 python manage.py shell
 from cantiin.serializers import (UserSerializer, ProductSerializer, OrderSerializer, CommentSerializer)
 serializers= [UserSerializer(), ProductSerializer(), OrderSerializer(), CommentSerializer()]
-print(repr(serializers[1]))
+print(repr(serializers))
 exit()
 
 from cantiin.serializers import UserSerializerss
