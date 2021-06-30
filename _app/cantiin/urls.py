@@ -18,11 +18,27 @@ from django.urls import path, include
 
 
 
+from rest_framework import routers
+
+from .rest_views import (
+    UserViewSet, ProductViewSet, OrderViewSet, CommentViewSet)
+
+from .views import (about, homepage)
+
+
+# Routers provide an easy way of automatically determining the URL conf.
+router = routers.DefaultRouter()
+router.register('users', UserViewSet)
+router.register('products', ProductViewSet)
+router.register('orders', OrderViewSet)
+router.register('comments', CommentViewSet)
+
+
+
 
 urlpatterns = [
-    path('',include("cantiin.urls")),
-    path('admin/', admin.site.urls),
-    path('auth/', include('djoser.urls')),
-    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    path('api/', include(router.urls)),
+    path('', homepage),
+    path('about/', about),
 ]
 
