@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'accounts',
     'cantiin',
     'rest_framework',
+    'djoser',
 ]
 
 
@@ -143,3 +144,21 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL='accounts.User'
 
+
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',        
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+}
+
+
+
+
+
+SIMPLE_JWT = {
+   'AUTH_HEADER_TYPES': ('JWT',),
+}
