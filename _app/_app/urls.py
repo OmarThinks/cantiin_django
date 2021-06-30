@@ -23,6 +23,7 @@ from rest_framework import routers
 from cantiin.rest_views import (
     UserViewSet, ProductViewSet, OrderViewSet, CommentViewSet)
 
+from cantiin.views import (about, homepage)
 
 
 # Routers provide an easy way of automatically determining the URL conf.
@@ -39,6 +40,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('auth/', include('djoser.urls')),
     path('api/', include(router.urls)),
-    path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    path('', homepage),
+    path('about/', about),
 ]
 
