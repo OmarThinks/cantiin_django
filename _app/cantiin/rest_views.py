@@ -14,29 +14,23 @@ from cantiin.serializers import (
 class UserViewSet(ListModelMixin, RetrieveModelMixin, viewsets.GenericViewSet):
 	queryset = User.objects.all()
 	serializer_class = UserSerializer
-	renderer_classes = [TemplateHTMLRenderer]
+	#renderer_classes = [TemplateHTMLRenderer]
+	#template_name = 'profile_list.html'
 
 class ProductViewSet(viewsets.ModelViewSet):
 	queryset = Product.objects.all()
 	serializer_class = ProductSerializer
-	renderer_classes = [TemplateHTMLRenderer]
+	#renderer_classes = [TemplateHTMLRenderer]
+	#template_name = 'profile_list.html'
 
 class OrderViewSet(viewsets.ModelViewSet):
 	queryset = Order.objects.all()
 	serializer_class = OrderSerializer
-	renderer_classes = [TemplateHTMLRenderer]
+	#renderer_classes = [TemplateHTMLRenderer]
+	#template_name = 'profile_list.html'
 
 class CommentViewSet(viewsets.ModelViewSet):
 	queryset = Comment.objects.all()
 	serializer_class = CommentSerializer
-	renderer_classes = [TemplateHTMLRenderer]
-
-
-
-
-# Routers provide an easy way of automatically determining the URL conf.
-
-
-
-
-
+	#renderer_classes = [TemplateHTMLRenderer]
+	#template_name = 'profile_list.html'
