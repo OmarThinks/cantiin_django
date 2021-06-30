@@ -13,6 +13,7 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
 		depth = 1
 
 class ProductSerializer(serializers.HyperlinkedModelSerializer):
+	author = UserSerializer
 	class Meta:
 		model = Product
 		fields = "__all__"
