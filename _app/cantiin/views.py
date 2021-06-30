@@ -1,12 +1,14 @@
 from rest_framework import viewsets
 from rest_framework.mixins import (ListModelMixin, RetrieveModelMixin)
-
+from rest_framework.renderers import TemplateHTMLRenderer
 
 
 from accounts.models import (User)
 from cantiin.models import (Product, Order, Comment)
 from cantiin.serializers import (
 	UserSerializer, ProductSerializer, OrderSerializer, CommentSerializer)
+
+
 
 # ViewSets define the view behavior.
 class UserViewSet(ListModelMixin, RetrieveModelMixin, viewsets.GenericViewSet):
