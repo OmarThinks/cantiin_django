@@ -1,14 +1,10 @@
-from django.shortcuts import render
-
 from rest_framework import viewsets
-# Serializers define the API representation.
 from rest_framework.mixins import (ListModelMixin, RetrieveModelMixin)
-from rest_framework.generics import (ListAPIView, RetrieveAPIView)
-from rest_framework import viewsets
+
+
 
 from accounts.models import (User)
 from cantiin.models import (Product, Order, Comment)
-
 from cantiin.serializers import (
 	UserSerializer, ProductSerializer, OrderSerializer, CommentSerializer)
 
