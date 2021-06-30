@@ -19,7 +19,7 @@ class ProductSerializer(serializers.HyperlinkedModelSerializer):
 class OrderSerializer(serializers.HyperlinkedModelSerializer):
 	class Meta:
 		model = Order
-		fields = ["url","id","product","amount","in_stock",
+		fields = ["url","id","product","amount",
 		"author","created_at","updated_at"]
 
 class CommentSerializer(serializers.HyperlinkedModelSerializer):
