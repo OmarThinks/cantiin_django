@@ -7,7 +7,7 @@ from accounts.models import (User)
 from cantiin.models import (Product, Order, Comment)
 from cantiin.serializers import (
 	UserSerializer, ProductSerializer, OrderSerializer, CommentSerializer)
-
+from .filters import ProductFilter
 
 
 # ViewSets define the view behavior.
@@ -18,6 +18,7 @@ class UserViewSet(viewsets.ReadOnlyModelViewSet):
 class ProductViewSet(viewsets.ModelViewSet):
 	queryset = Product.objects.all()
 	serializer_class = ProductSerializer
+	filterset_class = ProductFilter	
 
 class OrderViewSet(viewsets.ModelViewSet):
 	queryset = Order.objects.all()
