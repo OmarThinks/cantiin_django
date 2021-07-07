@@ -13,8 +13,7 @@ class ProductFilter(DateTimeFilter):
 	in_stock = filters.BooleanFilter(field_name="in_stock")
 	class Meta:
 		model = Product
-		fields = ['in_stock', "author_id"]
-
+		fields = "__all__"
 
 
 
