@@ -10,10 +10,10 @@ class ProductFilter(DateTimeFilter):
 		lookup_expr='gte')
 	max_price = filters.NumberFilter(field_name="price", 
 		lookup_expr='lte')
+	in_stock = filters.BooleanFilter(field_name="in_stock")
 	class Meta:
 		model = Product
-		fields = ['in_stock', 'min_price', 'max_price',"author_id",
-		"min_created_at"]
+		fields = ['in_stock', "author_id"]
 
 
 
