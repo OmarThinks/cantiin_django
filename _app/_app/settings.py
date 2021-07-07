@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'accounts',
     'cantiin',
     'rest_framework',
+    'django_filters',
     'djoser',
 ]
 
@@ -167,7 +168,10 @@ REST_FRAMEWORK = {
     'DEFAULT_THROTTLE_RATES': {
         'anon': '100/min',
         'user': '1000/min'
-    }
+    },
+    'DEFAULT_FILTER_BACKENDS': (
+        'django_filters.rest_framework.DjangoFilterBackend',
+    ),
 
 }
 
