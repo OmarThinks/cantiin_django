@@ -6,13 +6,21 @@ from cantiin.models import (Product, Order, Comment)
 
 
 class DateTimeFilter(filters.FilterSet):
-	min_created_at = filters.DateTimeFilter(field_name="created_at", 
+	min_created_at = filters.DateFilter(field_name="created_at", 
 		lookup_expr='gte')
-	max_created_at = filters.DateTimeFilter(field_name="created_at", 
+	max_created_at = filters.DateFilter(field_name="created_at", 
 		lookup_expr='lte')
-	min_updated_at = filters.DateTimeFilter(field_name="updated_at", 
+	min_updated_at = filters.DateFilter(field_name="updated_at", 
 		lookup_expr='gte')
-	max_updated_at = filters.DateTimeFilter(field_name="updated_at", 
+	max_updated_at = filters.DateFilter(field_name="updated_at", 
 		lookup_expr='lte')
 
+
+
+
+class IdFilter(filters.FilterSet):
+	min_id = filters.DateFilter(field_name="id", 
+		lookup_expr='gte')
+	max_id = filters.DateFilter(field_name="id", 
+		lookup_expr='lte')
 

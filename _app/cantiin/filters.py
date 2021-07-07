@@ -1,11 +1,11 @@
 from django_filters import rest_framework as filters
 from accounts.models import (User)
 from cantiin.models import (Product, Order, Comment)
-from _app.filters_mixins import DateTimeFilter
+from _app.filters_mixins import (DateTimeFilter, IdFilter)
 
 
 
-class ProductFilter(DateTimeFilter):
+class ProductFilter(IdFilter, DateTimeFilter):
 	min_price = filters.NumberFilter(field_name="price", 
 		lookup_expr='gte')
 	max_price = filters.NumberFilter(field_name="price", 
@@ -16,7 +16,7 @@ class ProductFilter(DateTimeFilter):
 		fields = "__all__"
 
 
-class OrderFilter(DateTimeFilter):
+class OrderFilter(IdFilter, DateTimeFilter):
 	min_amount = filters.NumberFilter(field_name="amount", 
 		lookup_expr='gte')
 	max_amount = filters.NumberFilter(field_name="amount", 
@@ -26,7 +26,7 @@ class OrderFilter(DateTimeFilter):
 		fields = "__all__"
 
 
-class CommentFilter(DateTimeFilter):
+class CommentFilter(IdFilter, DateTimeFilter):
 	class Meta:
 		model = Comment
 		fields = "__all__"
