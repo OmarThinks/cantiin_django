@@ -32,3 +32,5 @@ class CommentViewSet(viewsets.ModelViewSet):
 	queryset = Comment.objects.all()
 	serializer_class = CommentSerializer
 	filterset_class = CommentFilter	
+	filter_backends = [DjangoFilterBackend, filters.SearchFilter]
+	search_fields = ["content"]
