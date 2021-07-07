@@ -11,7 +11,7 @@ class ProductFilter(filters.FilterSet):
 
 	class Meta:
 		model = Product
-		fields = ['in_stock', 'min_price', 'max_price']
+		fields = ['in_stock', 'min_price', 'max_price',"author_id"]
 
 
 
