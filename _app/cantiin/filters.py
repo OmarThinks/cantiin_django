@@ -16,4 +16,20 @@ class ProductFilter(DateTimeFilter):
 		fields = "__all__"
 
 
+class OrderFilter(DateTimeFilter):
+	min_amount = filters.NumberFilter(field_name="amount", 
+		lookup_expr='gte')
+	max_amount = filters.NumberFilter(field_name="amount", 
+		lookup_expr='lte')
+	class Meta:
+		model = Order
+		fields = "__all__"
+
+
+class CommentFilter(DateTimeFilter):
+	class Meta:
+		model = Comment
+		fields = "__all__"
+
+
 
