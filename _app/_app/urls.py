@@ -21,10 +21,10 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 
 urlpatterns = [
-    path('',include("cantiin.urls")),
     path('admin/', admin.site.urls),
     path('auth/', include('djoser.urls')),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    path('',include("cantiin.urls")),
 
 ]
 urlpatterns += staticfiles_urlpatterns()

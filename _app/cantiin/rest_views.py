@@ -11,7 +11,7 @@ from cantiin.serializers import (
 
 
 # ViewSets define the view behavior.
-class UserViewSet(ListModelMixin, RetrieveModelMixin, viewsets.GenericViewSet):
+class UserViewSet(viewsets.ReadOnlyModelViewSet):
 	queryset = User.objects.all()
 	serializer_class = UserSerializer
 
