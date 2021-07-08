@@ -6,20 +6,33 @@ from my_functions.urls import reverse
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
+	products = serializers.SerializerMethodField(read_only=True)
+	def get_products(self,obj):
+		return str(reverse(self, 'product-list', query_params = {"author":obj.id}))
+	orders = serializers.SerializerMethodField(read_only=True)
+	def get_orders(self,obj):
+		return str(reverse(self, 'order-list', query_params = {"author":obj.id}))
+	comments = serializers.SerializerMethodField(read_only=True)
+	def get_comments(self,obj):
+		return str(reverse(self, 'comment-list', query_params = {"author":obj.id}))
 	class Meta:
 		model = User
-		fields = ["url", "id", "username", "products","orders"]
+		fields = ["url", "id", "username", "products","orders","comments"]
 
 class ProductSerializer(serializers.HyperlinkedModelSerializer):
 	author = UserSerializer
 	comments = serializers.SerializerMethodField(read_only=True)
 	def get_comments(self,obj):
-		query_params = {"product":obj.id}
-		return str(reverse(self, 'comment-list', query_params))
+		return str(reverse(self, 'comment-list', 
+			query_params = {"product":obj.id}))
+	orders = serializers.SerializerMethodField(read_only=True)
+	def get_orders(self,obj):
+		return str(reverse(self, 'order-list', 
+			query_params = {"product":obj.id}))
 	class Meta:
 		model = Product
 		fields = ["url","id","name","price","in_stock","author",
-		"comments","created_at","updated_at"]
+		"author_id", "comments","created_at","updated_at", "orders"]
 
 class OrderSerializer(serializers.HyperlinkedModelSerializer):
 	class Meta:
