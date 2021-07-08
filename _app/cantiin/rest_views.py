@@ -20,8 +20,7 @@ class ProductViewSet(viewsets.ModelViewSet):
 	queryset = Product.objects.all()
 	serializer_class = ProductSerializer
 	filterset_class = ProductFilter	
-	filter_backends = [DjangoFilterBackend, filters.SearchFilter]
-	search_fields = ["name"]
+	filter_backends = [DjangoFilterBackend]
 
 class OrderViewSet(viewsets.ModelViewSet):
 	queryset = Order.objects.all()
@@ -32,5 +31,4 @@ class CommentViewSet(viewsets.ModelViewSet):
 	queryset = Comment.objects.all()
 	serializer_class = CommentSerializer
 	filterset_class = CommentFilter	
-	filter_backends = [DjangoFilterBackend, filters.SearchFilter]
-	search_fields = ["content"]
+	filter_backends = [DjangoFilterBackend]
