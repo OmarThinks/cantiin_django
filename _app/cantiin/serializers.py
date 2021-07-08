@@ -20,7 +20,6 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
 		fields = ["url", "id", "username", "products","orders","comments"]
 
 class ProductSerializer(serializers.HyperlinkedModelSerializer):
-	author = UserSerializer
 	comments = serializers.SerializerMethodField(read_only=True)
 	def get_comments(self,obj):
 		return str(reverse(self, 'comment-list', 
@@ -31,20 +30,20 @@ class ProductSerializer(serializers.HyperlinkedModelSerializer):
 			query_params = {"product":obj.id}))
 	class Meta:
 		model = Product
-		fields = ["url","id","name","price","in_stock","author",
-		"author_id", "comments","created_at","updated_at", "orders"]
+		fields = ["id","url","name","price","in_stock","author_id","author", 
+		"created_at","updated_at","comments", "orders"]
 
 class OrderSerializer(serializers.HyperlinkedModelSerializer):
 	class Meta:
 		model = Order
-		fields = ["url","id","product","amount",
-		"author","created_at","updated_at"]
+		fields = ["url","id","product_id", "product", "amount",
+		"author_id", "author","created_at","updated_at"]
 
 class CommentSerializer(serializers.HyperlinkedModelSerializer):
 	class Meta:
 		model = Comment
-		fields = ["url","id","product","content","author",
-		"created_at","updated_at"]
+		fields = ["url","id","product_id","product","author_id","author",
+		"content","created_at","updated_at"]
 
 
 
