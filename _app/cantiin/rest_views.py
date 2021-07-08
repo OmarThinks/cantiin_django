@@ -7,7 +7,8 @@ from accounts.models import (User)
 from cantiin.models import (Product, Order, Comment)
 from cantiin.serializers import (
 	UserSerializer, ProductSerializer, OrderSerializer, CommentSerializer)
-from .filters import (ProductFilter,OrderFilter,CommentFilter)
+from .filters import (UserFilter,ProductFilter,
+	OrderFilter,CommentFilter)
 from rest_framework import filters
 
 
@@ -15,6 +16,9 @@ from rest_framework import filters
 class UserViewSet(viewsets.ReadOnlyModelViewSet):
 	queryset = User.objects.all()
 	serializer_class = UserSerializer
+	filterset_class = UserFilter	
+	filter_backends = [DjangoFilterBackend, filters.SearchFilter]
+	search_fields = ["username"]
 
 class ProductViewSet(viewsets.ModelViewSet):
 	queryset = Product.objects.all()

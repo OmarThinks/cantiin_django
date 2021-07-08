@@ -15,11 +15,6 @@ class Product(getHasUserForeignKeyMixin("products"),
 	price = models.FloatField(
 		validators=[MinValueValidator(.1),MaxValueValidator(1000*1000)])
 	in_stock =  models.BooleanField()
-	"""@property
-	def comment_listing(cls):
-		return str(reverse('comment-list', request = request))+str(self.data.id)
-		#return reverse('comment-list')
-		#return cls.id"""
 
 
 def getHasProductForeignKeyMixin(related_name, default=None):

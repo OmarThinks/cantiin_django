@@ -15,12 +15,7 @@ class ProductSerializer(serializers.HyperlinkedModelSerializer):
 	comment_listing = serializers.SerializerMethodField(read_only=True)
 	def get_comment_listing(self,obj):
 		request = self.context.get("request")
-		#print(self.data,flush=True)
 		return str(reverse('comment-list', request = request))+"?product="+str(obj.id)
-	"""@property
-	def comment_listing(cls):
-		return serializers.HyperlinkedIdentityField(view_name='comment-list')"""
-
 	class Meta:
 		model = Product
 		fields = ["url","id","name","price","in_stock","author",

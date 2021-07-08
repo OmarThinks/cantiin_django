@@ -3,6 +3,19 @@ from accounts.models import (User)
 from cantiin.models import (Product, Order, Comment)
 from _app.filters_mixins import (DateTimeFilter, IdFilter)
 
+from accounts.models import (User)
+
+
+
+
+class UserFilter(IdFilter):
+	username = filters.CharFilter(lookup_expr='icontains')	
+	class Meta:
+		model = User
+		fields = ["id", "username"]
+
+
+
 
 
 class ProductFilter(IdFilter, DateTimeFilter):
