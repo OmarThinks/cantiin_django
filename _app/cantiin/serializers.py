@@ -2,7 +2,7 @@ from accounts.models import (User)
 from cantiin.models import (Product, Order, Comment)
 
 from rest_framework import serializers
-from rest_framework.reverse import reverse
+from my_functions.urls import reverse
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
@@ -12,14 +12,14 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
 
 class ProductSerializer(serializers.HyperlinkedModelSerializer):
 	author = UserSerializer
-	comment_listing = serializers.SerializerMethodField(read_only=True)
-	def get_comment_listing(self,obj):
-		request = self.context.get("request")
-		return str(reverse('comment-list', request = request))+"?product="+str(obj.id)
+	comments = serializers.SerializerMethodField(read_only=True)
+	def get_comments(self,obj):
+		query_params = {"product":obj.id}
+		return str(reverse(self, 'comment-list', query_params))
 	class Meta:
 		model = Product
 		fields = ["url","id","name","price","in_stock","author",
-		"comments","created_at","updated_at","comment_listing"]
+		"comments","created_at","updated_at"]
 
 class OrderSerializer(serializers.HyperlinkedModelSerializer):
 	class Meta:

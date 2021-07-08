@@ -1,7 +1,7 @@
 from django_filters import rest_framework as filters
 from accounts.models import (User)
 from cantiin.models import (Product, Order, Comment)
-from _app.filters_mixins import (DateTimeFilter, IdFilter)
+from my_functions.filters_mixins import (DateTimeFilter, IdFilter)
 
 from accounts.models import (User)
 

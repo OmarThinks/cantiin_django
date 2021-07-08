@@ -3,7 +3,7 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 # Create your models here.
 
 
-from _app.models_mixins import (getTimeStampMixin, getHasUserForeignKeyMixin)
+from my_functions.models_mixins import (getTimeStampMixin, getHasUserForeignKeyMixin)
 from rest_framework.reverse import reverse
 
 
