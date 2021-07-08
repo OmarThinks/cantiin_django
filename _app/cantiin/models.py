@@ -16,6 +16,8 @@ class Product(getHasUserForeignKeyMixin("products"),
 		validators=[MinValueValidator(.1),MaxValueValidator(1000*1000)])
 	in_stock =  models.BooleanField()
 
+	def __str__(self):
+		return (str(self.id) +") "+ self.name + ", "+ str(self.author))
 
 def getHasProductForeignKeyMixin(related_name, default=None):
 	if default == None:
@@ -38,13 +40,20 @@ class Order(getHasUserForeignKeyMixin("orders"),
 	getHasProductForeignKeyMixin("orders"), getTimeStampMixin()):
 	amount = models.IntegerField(
 		 validators=[MinValueValidator(1),MaxValueValidator(1000)])
-
+	
+	def __str__(self):
+		return (str(self.product.name) + ", " + str(self.amount) + 
+			", " + str(self.author.username))
 
 #id, author, product_id, content
 class Comment(getHasUserForeignKeyMixin("comments"), 
 	getHasProductForeignKeyMixin("comments"), getTimeStampMixin()):
 	content = models.CharField(max_length=1000)
 
+	def __str__(self):
+		return (str(self.product.name) + ", " + 
+			str(self.author.username) + 
+			", " + str(self.content) )
 
 
 

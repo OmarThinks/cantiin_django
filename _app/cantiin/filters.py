@@ -25,7 +25,7 @@ class UserFilter(IdFilter):
 
 
 class ProductFilter(IdFilter, DateTimeFilter):
-	name = filters.CharFilter(lookup_expr='icontains')
+	search = filters.CharFilter(method='my_custom_filter',label="Search")	
 	min_price = filters.NumberFilter(field_name="price", 
 		lookup_expr='gte')
 	max_price = filters.NumberFilter(field_name="price", 
@@ -34,6 +34,8 @@ class ProductFilter(IdFilter, DateTimeFilter):
 	class Meta:
 		model = Product
 		fields = "__all__"
+	def my_custom_filter(self, queryset, name, value):
+		return Product.objects.filter(Q(name__icontains=value))
 
 
 class OrderFilter(IdFilter, DateTimeFilter):
@@ -47,10 +49,12 @@ class OrderFilter(IdFilter, DateTimeFilter):
 
 
 class CommentFilter(IdFilter, DateTimeFilter):
-	content = filters.CharFilter(lookup_expr='icontains')
+	search = filters.CharFilter(method='my_custom_filter',label="Search")	
 	class Meta:
 		model = Comment
 		fields = "__all__"
+	def my_custom_filter(self, queryset, name, value):
+		return Comment.objects.filter(Q(content__icontains=value))
 
 
 
