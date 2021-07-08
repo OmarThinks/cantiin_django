@@ -5,14 +5,20 @@ from _app.filters_mixins import (DateTimeFilter, IdFilter)
 
 from accounts.models import (User)
 
-
+from django.db.models import Q
 
 
 class UserFilter(IdFilter):
-	username = filters.CharFilter(lookup_expr='icontains')	
+	search = filters.CharFilter(method='my_custom_filter',label="Search")	
 	class Meta:
 		model = User
-		fields = ["id", "username"]
+		fields = ["id", "username","search"]
+
+	def my_custom_filter(self, queryset, name, value):
+		return User.objects.filter(Q(username__icontains=value))
+
+# https://stackoverflow.com/a/57270647/14819065
+
 
 
 
