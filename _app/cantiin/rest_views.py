@@ -11,6 +11,8 @@ from .filters import (UserFilter,ProductFilter,
 	OrderFilter,CommentFilter)
 from rest_framework import filters
 
+from my_functions.viewset_mixins import HasAuthorViewsetMixin
+
 
 # ViewSets define the view behavior.
 class UserViewSet(viewsets.ReadOnlyModelViewSet):
@@ -20,7 +22,7 @@ class UserViewSet(viewsets.ReadOnlyModelViewSet):
 	filter_backends = [DjangoFilterBackend, filters.SearchFilter]
 	search_fields = ["username"]
 
-class ProductViewSet(viewsets.ModelViewSet):
+class ProductViewSet(HasAuthorViewsetMixin):
 	queryset = Product.objects.all()
 	serializer_class = ProductSerializer
 	filterset_class = ProductFilter	
@@ -34,16 +36,13 @@ class ProductViewSet(viewsets.ModelViewSet):
 			serializer.save(author = request.user)
 			return Response(serializer.data, status=status.HTTP_201_CREATED)
 		return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)"""
-	def perform_create(self, serializer):
-		# The request user is set as author automatically.
-		serializer.save(author=self.request.user)
 
-class OrderViewSet(viewsets.ModelViewSet):
+class OrderViewSet(HasAuthorViewsetMixin):
 	queryset = Order.objects.all()
 	serializer_class = OrderSerializer
 	filterset_class = OrderFilter
 
-class CommentViewSet(viewsets.ModelViewSet):
+class CommentViewSet(HasAuthorViewsetMixin):
 	queryset = Comment.objects.all()
 	serializer_class = CommentSerializer
 	filterset_class = CommentFilter	

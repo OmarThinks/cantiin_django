@@ -73,12 +73,14 @@ class OrderSerializer(serializers.HyperlinkedModelSerializer):
 		model = Order
 		fields = ["url","id","product_id", "product", "amount",
 		"author_id", "author","created_at","updated_at"]
+		extra_kwargs = {'author': {'read_only': True}}
 
 class CommentSerializer(serializers.HyperlinkedModelSerializer):
 	class Meta:
 		model = Comment
 		fields = ["url","id","product_id","product","author_id","author",
 		"content","created_at","updated_at"]
+		extra_kwargs = {'author': {'read_only': True}}
 
 
 
