@@ -40,6 +40,13 @@ class Order(getHasUserForeignKeyMixin("orders"),
 	getHasProductForeignKeyMixin("orders"), getTimeStampMixin()):
 	amount = models.IntegerField(
 		 validators=[MinValueValidator(1),MaxValueValidator(1000)])
+	@property
+	def unit_price(self):
+		return self.product.price
+	@property
+	def cost(self):
+		return self.amount*self.product.price
+	
 	
 	def __str__(self):
 		return (str(self.product.name) + ", " + str(self.amount) + 
