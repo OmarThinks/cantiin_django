@@ -1,5 +1,62 @@
 # cantiin_django
-An ecommerce website using django and Django REST Framework
+An ecommerce RESTful API using django and Django REST Framework.
+
+
+
+# A) Technologies Used:
+1. Python
+2. Django
+3. Django REST Framework
+4. Djoser (Header Auth)
+5. django_filter
+
+
+# B) How to Run:
+
+```bash
+cd _app
+pip install -r requirements.txt
+python manage.py migrate
+python manage.py runserver
+```
+
+
+# C) Functionalities:
+
+## C-1) Authentication:
+
+The system uses Django authentication system.  
+To use the authentication system you can use this link:
+http://127.0.0.1:8000/api/auth/users/  
+Here there are djoser endpoints.
+This is a the <a href="https://djoser.readthedocs.io/en/latest/base_endpoints.html">documentation</a> of these endpoints.  
+
+<img src="images/auth.gif">
+
+The endpoints of authentication are there.  
+Authentication is made by cookie if you want to extend the application using the same origin.  
+And it also uses auth header if you want to extend the application 
+with different origin.  
+Authentication uses JWT.
+
+
+
+
+# C-2) What the app does:
+
+Beyound authentication, the app has three more models.  
+- Product (Where the users can handle products)
+- Order (Where the user can orders of products)
+- Comment (Where the user can handle comments on products)
+
+
+These are the endpoints of API recources:  
+"users": "http://127.0.0.1:8000/api/users/" (This is different from auth endpoints)  
+"products": "http://127.0.0.1:8000/api/products/"  
+"orders": "http://127.0.0.1:8000/api/orders/"  
+"comments": "http://127.0.0.1:8000/api/comments/"
+
+<img src="images/root.gif">
 
 
 
@@ -8,107 +65,53 @@ An ecommerce website using django and Django REST Framework
 
 
 
-<img src="images/drf_auth.gif">
-<img src="images/api_root.gif">
-<img src="images/users_list.gif">
+# C-3) Pagination:
+All the models have pagination.  
+Since it exists in the `settings.py` file.  
+The pagination uses pages.  
+Each page has 10 records.  
+
+
+<img src="images/pagination.gif">
 
 
 
+# C-4) Validation and Sanitization:
+Validation and is used here, it is built in django  and Django REST framework.  
+Because we are using Django REST Framework serialization.  
+When the user sends a wrong request, the correct response will be returned.
 
 
 
-# Models:
+# C-5) Rate Limit:
+It means the limit of requests that can be sent bu the users.  
+It is very helpful to prevent DoS attacks.  
+For users that are 
+- logged in: 1000 request/min/IP Adress
+- not logged in: 100 request/min/Users
 
-## 1) Authentication Models:
-The built-in auth models of Django.
 
-## 2) Product:
+These can be changed by changing `settings.py`.
 
-It has these fields:
-1. **author_id**: 
-	- **Description**: This is the id of the user who posted the product
-	- **Type**: int, ForeignKey
-	- required	- 
-2. **created_at**: 
-	- **Description**: The time of the creation of the product
-	- **Type**: datetime
-	- Auto generated
-3. **updated_at**: 
-	- **Description**: The time of the last update of the product
-	- Auto generated
-4. **name**: 
-	- **Description**: name of the product
-	- **Type**: string
-	- required
-	- **max length**: 150 characters
-5. **price**: 
-	- **Description**: price of the product
-	- **Type**: float
-	- required
-	- **max value**: 1000 000
-	- **min value**: .1
-6. **in_stock**: 
-	- **Description**: is the product in stock or out of stock
-	- **Type**: boolean
-	- required
+# C-6) Permissions:
+- Not Logged in Users:
+	- Create an account (Sign up)
+	- Sign in
+	- View all data of the API (Users (Username, id, products, and comments), Products, Comments and Orders )
+- Logged in Users:
+	- Not Logged in users permissions
+	- Create a Product, Order or leave a comment on a product
+	- Update or delete a product, comment, or order only if it was posted by this certain user.
+- Admins (Super users):
+	- Logged in users permissions 
+	- Update, delete any product, Comment or order posted by any other user.
+
+# C-7) Search:
+Search is done using Django Filter:
 
 
 
-
-
-## 3) Order:
-
-It has these fields:
-1. **author_id**: 
-	- **Description**: This is the id of the user who created the order
-	- **Type**: int, ForeignKey
-	- required	- 
-2. **created_at**: 
-	- **Description**: The time of the creation of the order
-	- **Type**: datetime
-	- Auto generated
-3. **updated_at**: 
-	- **Description**: The time of the last update of the order
-	- Auto generated
-4. **product_id**: 
-	- **Description**: id of the product related to teh order
-	- **Type**: int, ForeignKey
-	- required
-5. **amount**: 
-	- **Description**: amount of the products of the order
-	- **Type**: int
-	- required
-	- **max value**: 1000
-	- **min value**: 1
-
-
-
-
-
-## 4) Comment:
-
-It has these fields:
-1. **author_id**: 
-	- **Description**: This is the id of the user who created the comment
-	- **Type**: int, ForeignKey
-	- required	- 
-2. **created_at**: 
-	- **Description**: The time of the creation of the comment
-	- **Type**: datetime
-	- Auto generated
-3. **updated_at**: 
-	- **Description**: The time of the last update of the comment
-	- Auto generated
-4. **product_id**: 
-	- **Description**: id of the product related to teh comment
-	- **Type**: int, ForeignKey
-	- required
-5. **content**: 
-	- **Description**: The content of the comment
-	- **Type**: string
-	- required
-	- **max length**: 1000
-
+<img src="images/filter.gif">
 
 
 
