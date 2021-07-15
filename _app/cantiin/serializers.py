@@ -3,6 +3,7 @@ from cantiin.models import (Product, Order, Comment)
 
 from rest_framework import serializers
 from my_functions.urls import reverse
+from django_restql.mixins import DynamicFieldsMixin
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
