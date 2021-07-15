@@ -29,14 +29,6 @@ class ProductViewSet(HasAuthorViewsetMixin):
 	filter_backends = [DjangoFilterBackend, filters.SearchFilter]
 	search_fields = ["name"]
 
-	"""def post(self, request, format=None):
-		serializer = ProductSerializer(data=request.data, 
-			context={'author': request.user})
-		if serializer.is_valid():
-			serializer.save(author = request.user)
-			return Response(serializer.data, status=status.HTTP_201_CREATED)
-		return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)"""
-
 class OrderViewSet(HasAuthorViewsetMixin):
 	queryset = Order.objects.all()
 	serializer_class = OrderSerializer

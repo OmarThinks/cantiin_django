@@ -57,10 +57,6 @@ class ProductSerializer(serializers.HyperlinkedModelSerializer):
 	def get_orders_count(self,obj):
 		return Order.objects.filter(product_id=obj.id).count()
 
-	"""def create(self, validated_data):
-		#validated_data["author"] = author
-		return Product(**validated_data#, author = self.context.author
-			)"""
 	class Meta:
 		model = Product
 		fields = ["id","url","name","price","in_stock","author_id","author", 
