@@ -19,6 +19,9 @@ class Product(getHasUserForeignKeyMixin("products"),
 	def __str__(self):
 		return (str(self.id) +") "+ self.name + ", "+ str(self.author))
 
+
+
+
 def getHasProductForeignKeyMixin(related_name, default=None):
 	if default == None:
 		class HasProductForeignKeyMixin(models.Model):
