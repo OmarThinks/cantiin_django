@@ -14,5 +14,9 @@ def homepage(request):
 
 def products_list(request):
 	products = Product.objects.order_by("id").all()
-	return render(request, "products/list.html",{"products":products})
+	return render(request, "products/list_rest.html",{"products":products})
+
+
+
+
 
