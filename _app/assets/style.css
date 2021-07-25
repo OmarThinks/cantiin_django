@@ -13,9 +13,25 @@ body,html
 
 
 
-header > a, header>a:hover, header>a:visited
+.cantiin_header, .cantiin_header:hover, 
+.cantiin_header:visited, .cantiin_header:active
 {text-decoration: none;}
 
+
+
+.cantiin_header
+{
+	display: block;
+	padding: auto; margin: 0px;
+	text-align: center; vertical-align: middle;
+	width: 100%; height: 100%;
+	font-weight: bold;
+	font-size: 2em;
+	transition: color .5s;
+	color: blue;
+}
+.cantiin_header:hover
+{color: green;}
 
 
 
@@ -42,7 +58,7 @@ body {
     "side_nav_left main side_nav_right"
     'footer footer footer';
 	grid-gap: 0px 0px;
-	grid-template-columns: 2% 96% 2%;
+	grid-template-columns: 0% 100% 0%;
 	grid-template-rows: 50px 34px auto 50px;
 }
 
