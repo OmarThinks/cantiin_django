@@ -1,0 +1,15 @@
+{% load rest_framework %}
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+</head>
+<html><body>
+
+<h1>Product - {{ product.name }}</h1>
+
+<form action="{% url 'product-detail-test' id=product.pk %}" method="POST">
+    {% csrf_token %}
+    {% render_form serializer %}
+    <input type="submit" value="Save">
+</form>
+
+</body></html>
