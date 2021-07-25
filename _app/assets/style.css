@@ -60,20 +60,14 @@ body {
 	display: flex;
 	flex-flow: row nowrap;
 	justify-content: space-between;
-	padding: 0px; margin: 0px;
-	width: 100%;
 }
 
-
-.main_nav_bar > div {
-  background-color: #f1f1f1;
-  width: 100px;
-  margin: 0px;
-  text-align: center;
-  line-height: 75px;
-  font-size: 30px;
+.main_nav_bar_section {
+	background-color: #f1f1f1;
+	display: flex;
+	justify-content: flex-start;
+	display: inline;
 }
-
 
 
 
