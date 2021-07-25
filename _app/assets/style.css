@@ -36,14 +36,13 @@ body,html
 
 
 
-
 /*Grid System*/
 
 
 header { grid-area: header;}
 nav { grid-area: nav; background-color: yellow;}
 main { grid-area: main; background-color: blue;}
-footer { grid-area: footer; background-color: brown;}
+footer { grid-area: footer; background-color: lightgrey;}
 .side_nav_left{grid-area: side_nav_left; 
 	background-color: transparent; display: inline;}
 .side_nav_right{grid-area: side_nav_right; 
@@ -59,7 +58,7 @@ body {
     'footer footer footer';
 	grid-gap: 0px 0px;
 	grid-template-columns: 0% 100% 0%;
-	grid-template-rows: 70px 55px auto 50px;
+	grid-template-rows: 70px 55px auto 87px;
 }
 
 
@@ -96,7 +95,6 @@ body {
 	transition: background .5s, color .5s;
 	float: left;
 	font-size: 1.55em;
-
 }
 
 
@@ -107,7 +105,6 @@ body {
 .main_nav_bar_link:hover
 {
 	color: blue;
-	background-color:  white;
-
+	background-color: white;
 }
 
