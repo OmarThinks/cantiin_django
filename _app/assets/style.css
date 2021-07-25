@@ -43,6 +43,37 @@ body {
     'footer footer footer';
 	grid-gap: 0px 0px;
 	grid-template-columns: 2% 96% 2%;
-	grid-template-rows: 50px 50px auto 50px;
+	grid-template-rows: 50px 100px auto 50px;
 }
+
+
+
+
+
+
+
+
+/*Nav Bar*/
+
+.main_nav_bar
+{
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+	padding: 0px; margin: 0px;
+	width: 100%;
+}
+
+
+.main_nav_bar > div {
+  background-color: #f1f1f1;
+  width: 100px;
+  margin: 0px;
+  text-align: center;
+  line-height: 75px;
+  font-size: 30px;
+}
+
+
+
 
