@@ -1,20 +1,16 @@
 {% extends "base_layout.html" %}
 {% block title %}Products{% endblock %}
+{% block additional_css_files %}
+	<link rel="stylesheet" href="/static/css/cards/product.css">
+
+{% endblock %}
+
 {% block active_main_navbar %}products{% endblock %}
 {% block content %}
 
 
+
 <h1>Products List:</h1>
-
-
-<div class="alert alert-primary" role="alert">
-  A simple primary alert—check it out!
-</div>
-
-<div class="products_list">
-
-Here are the details of the products.
-</div>
 
 
 
@@ -22,7 +18,11 @@ Here are the details of the products.
 
 <ul>
     {% for product in products %}
-    <li>{{ product.name }}</li>
+    	
+    	<div class="product_card">
+    		product_name: {{ product.name }} 
+    	</div>
+    
     {% endfor %}
 </ul>
 
