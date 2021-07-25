@@ -6,18 +6,42 @@
 	<link rel="stylesheet" href="/static/style.css">
 	<title></title>
 </head>
-<body>
+<body class="container-fluid flex-column flex-nowrap m-0 p-0 bg-white">
 
 
 	<script src="/static/bootstrap/js/jquery.js"></script>
 	<script src="/static/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 
-	<div class="wrapper">
+
+<div class="container-fluid bg-dark p-0">
+	<header 
+	class="container-fluid bg-secondary p-1 text-center">
+	
+	
+
+	<a class="container-fluid m-0 text-info p-0 m-0" 
+	href="/"><h2 class="p-1 m-0">Cantiin</h2></a>
+
+</header>
+	<nav class="container-fluid bg-success m-0">I am Nav</nav>
+</div>
+
+
+<div class="container-fluid bg-primary m-0 p-0">
+
+
+
+
+	<main class="wrapper container-fluid m-0">
 		{% block content %}
 		{% endblock %}
-	</div>
+	</main>
+</div>
 
-	All inside the block
+
+
+
+
 </body>
 </html>
