@@ -1,4 +1,4 @@
-*{
+html, body>*{
 	box-sizing: border-box;
 	padding: 0px; margin: 0px;
 }
@@ -13,7 +13,8 @@ body,html
 
 
 
-header > a{text-decoration: none;}
+header > a, header>a:hover, header>a:visited
+{text-decoration: none;}
 
 
 
@@ -23,26 +24,25 @@ header > a{text-decoration: none;}
 /*Grid System*/
 
 
-header { grid-area: header; background-color: red;}
+header { grid-area: header;}
 nav { grid-area: nav; background-color: yellow;}
 main { grid-area: main; background-color: blue;}
 footer { grid-area: footer; background-color: brown;}
-.side_nav{grid-area: side_nav; background-color: magenta; display: inline;}
+.side_nav_left{grid-area: side_nav_left; 
+	background-color: transparent; display: inline;}
+.side_nav_right{grid-area: side_nav_right; 
+	background-color: transparent; display: inline;
+}
 
 body {
 	display: grid;
 	grid-template-areas:
-    'header header'
-    'nav nav'
-    "side_nav main"
-    'footer footer';
+    'header header header'
+    'nav nav nav'
+    "side_nav_left main side_nav_right"
+    'footer footer footer';
 	grid-gap: 0px 0px;
-	grid-template-columns: 10% 90%;
+	grid-template-columns: 2% 96% 2%;
 	grid-template-rows: 50px 50px auto 50px;
 }
-
-
-
-
-
 
