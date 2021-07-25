@@ -43,7 +43,7 @@ body {
     'footer footer footer';
 	grid-gap: 0px 0px;
 	grid-template-columns: 2% 96% 2%;
-	grid-template-rows: 50px 100px auto 50px;
+	grid-template-rows: 50px 34px auto 50px;
 }
 
 
@@ -74,7 +74,12 @@ body {
 {
 	background-color:  #212529;
 	text-decoration: none;
+	font-weight: bold;
+	margin: 0px;
+	padding: 5px;
 	transition: background .5s, color .5s;
+	float: left;
+
 }
 
 
