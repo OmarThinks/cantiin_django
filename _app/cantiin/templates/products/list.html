@@ -1,10 +1,10 @@
 {% extends "base_layout.html" %}
-
-
+{% block title %}Products{% endblock %}
+{% block active_main_navbar %}products{% endblock %}
 {% block content %}
 
 
-<h1>Products List</h1>
+<h1>Products List:</h1>
 
 
 <div class="alert alert-primary" role="alert">
@@ -17,5 +17,17 @@ Here are the details of the products.
 </div>
 
 
+
+
+
+<ul>
+    {% for product in products %}
+    <li>{{ product.name }}</li>
+    {% endfor %}
+</ul>
+
+
+
+{% endblock %}
 
 
