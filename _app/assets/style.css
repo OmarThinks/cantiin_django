@@ -63,11 +63,29 @@ body {
 }
 
 .main_nav_bar_section {
-	background-color: #f1f1f1;
+	background-color: #212529;
 	display: flex;
 	justify-content: flex-start;
 	display: inline;
 }
 
 
+.main_nav_bar_link
+{
+	background-color:  #212529;
+	text-decoration: none;
+	transition: background .5s, color .5s;
+}
+
+
+.main_nav_bar_link, .main_nav_bar_link:visited, 
+.main_nav_bar_link:active
+{color: lime;}
+
+.main_nav_bar_link:hover
+{
+	color: blue;
+	background-color:  white;
+
+}
 
