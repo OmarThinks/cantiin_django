@@ -1,9 +1,6 @@
 *{
 	box-sizing: border-box;
-	border: solid 1px black;
 	padding: 0px; margin: 0px;
-	text-align: center;
-	vertical-align: middle;
 }
 
 
@@ -12,12 +9,11 @@ body,html
 	margin: 0px; padding: 0px;
 	width: 100%;height: 100%;
 	border: none;
-	background-color: grey;
 }
 
 
 
-/*header > a:hover{text-decoration: none;}*/
+header > a{text-decoration: none;}
 
 
 
@@ -31,18 +27,18 @@ header { grid-area: header; background-color: red;}
 nav { grid-area: nav; background-color: yellow;}
 main { grid-area: main; background-color: blue;}
 footer { grid-area: footer; background-color: brown;}
+.side_nav{grid-area: side_nav; background-color: magenta; display: inline;}
 
 body {
 	display: grid;
-  grid-template-areas:
+	grid-template-areas:
     'header header'
     'nav nav'
-    "main main"
+    "side_nav main"
     'footer footer';
 	grid-gap: 0px 0px;
-	grid-template-columns: 20% 80%;
+	grid-template-columns: 10% 90%;
 	grid-template-rows: 50px 50px auto 50px;
-	background-color: magenta;
 }
 
 
