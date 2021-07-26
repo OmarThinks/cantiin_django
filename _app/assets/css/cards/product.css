@@ -26,21 +26,25 @@
 
 
 
-.product_name { grid-area: product_name; background-color: magenta;}
-.product_price { grid-area: product_price; background-color: yellow;}
-.product_author { grid-area: product_author; background-color: grey;}
-.product_in_stock { grid-area: product_in_stock; background-color: lightgrey;}
-.product_details { grid-area: product_details; background-color: pink; display: block;}
+.product_name_grid
+{grid-area: product_name_grid; background-color: magenta;}
+.product_author_grid { grid-area: product_author_grid; background-color: grey;}
+.product_price_grid { grid-area: product_price_grid; background-color: yellow;}
+.product_in_stock_grid { grid-area: product_in_stock_grid; background-color: lightgrey;}
+.product_details_grid { grid-area: product_details_grid; 
+	background-color: pink; display: block;
+	width: 100%; height: 100%;
+}
 
 
 .product_card {
 	display: grid;
 	grid-template-areas:
-    'product_name product_name product_price'
-    'product_author product_author product_author'
-    "product_in_stock product_details product_details";
+    'product_name_grid product_name_grid product_author_grid'
+    'product_price_grid product_price_grid product_price_grid'
+    "product_in_stock_grid product_details_grid product_details_grid";
 	grid-gap: 5px 5px;
-	grid-template-columns: 33% 33% 34%;
+	/*grid-template-columns: 33% 33% 34%;*/
 	grid-template-rows: 70px 55px 50px ;
 }
 

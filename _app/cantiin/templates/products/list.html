@@ -12,22 +12,22 @@
     {% for product in products %}
     	
     	<div class="product_card">
-    		<div class="product_name">
-    			{{ product.name }}
+    		<div class="product_name_grid">
+    				{{ product.name }}
     		</div>
-    		<div class="product_price">
+    		<div class="product_price_grid">
     			{{ product.price }}
     		</div>
-    		<div class="product_author">
-    			{{ product.author.username }}
+    		<div class="product_author_grid">
+    			Author: {{ product.author.username }}
     		</div>
-    		<div class="product_in_stock">
+    		<div class="product_in_stock_grid">
     			{{ product.in_stock }}
     		</div>
-				<a href="{% url 'product-detail-test' id=product.pk %}">
-				    		<div class="product_details">
-				    			Details
-				</a>
+			<a href="{% url 'product-detail-test' id=product.pk %}"
+			class="product_details_grid">
+			    Details
+			</a>
     		</div>
     	</div>
     
