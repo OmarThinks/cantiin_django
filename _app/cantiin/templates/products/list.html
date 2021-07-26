@@ -6,26 +6,27 @@
 
 <div class="items_container" style="padding: 2%;">
 
-    {% for product in products %}
-    	
-     <a class="product_card" 
-     href="{% url 'product-detail-test' id=product.pk %}">
-	    	<span class="product_name_grid">{{ product.name }}</span>
-	    	<div class="product_price_grid">
-	    			${{ product.price }}
-	    	</div>
-    		<div class="product_in_stock_grid">
-    			{% if product.in_stock %}
-    				<span class="product_in_stock">In Stock</span>
-    			{% else %}
-    				<span 
-    				class="product_out_stock">
-    				Out of Stock</span>
-    			{% endif %}
-    		</div>
-     </a>
+	{% for product in products %}
+		
+	 <a class="product_card" 
+	 href="{% url 'product-detail-test' id=product.pk %}">
+			<span class="product_name_grid">{{ product.name }}</span>
+			<div class="product_price_grid">
+					${{ product.price }}
+			</div>
+			<div class="product_in_stock_grid">
+				{% if product.in_stock %}
+					<span class="product_in_stock">In Stock</span>
+				{% else %}
+					<span 
+					class="product_out_stock">
+					Out of Stock
+					</span>
+				{% endif %}
+			</div>
+	 </a>
    
-    {% endfor %}
+	{% endfor %}
 
 </div>
 
