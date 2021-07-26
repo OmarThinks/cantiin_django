@@ -16,9 +16,11 @@
 	    	</div>
     		<div class="product_in_stock_grid">
     			{% if product.in_stock %}
-    				Available
+    				<span class="product_in_stock">In Stock</span>
     			{% else %}
-    				<span><del>Available</del></span>
+    				<span 
+    				class="product_out_stock">
+    				Out of Stock</span>
     			{% endif %}
     		</div>
      </a>
