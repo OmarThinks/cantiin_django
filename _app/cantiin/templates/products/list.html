@@ -6,35 +6,28 @@
 <h1>{{ title }}:</h1>
 
 
-
-<ul>
+<div class="items_container" style="margin: 0px; padding: 0px;">
 
     {% for product in products %}
     	
-    	<div class="product_card">
-    		<div class="product_name_grid">
-    				{{ product.name }}
-    		</div>
-    		<div class="product_price_grid">
-    			{{ product.price }}
-    		</div>
-    		<div class="product_author_grid">
-    			Author: {{ product.author.username }}
-    		</div>
+     <a class="product_card" 
+     href="{% url 'product-detail-test' id=product.pk %}">
+	    	<span class="product_name_grid">{{ product.name }}</span>
+	    	<div class="product_price_grid">
+	    			${{ product.price }}
+	    	</div>
     		<div class="product_in_stock_grid">
-    			{{ product.in_stock }}
+    			{% if product.in_stock %}
+    				Available
+    			{% else %}
+    				<span><del>Available</del></span>
+    			{% endif %}
     		</div>
-			<a href="{% url 'product-detail-test' id=product.pk %}"
-			class="product_details_grid">
-			    Details
-			</a>
-    		</div>
-    	</div>
-    
+     </a>
+   
     {% endfor %}
 
-</ul>
-
+</div>
 {% endblock %}
 
 
