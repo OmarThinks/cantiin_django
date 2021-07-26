@@ -28,13 +28,12 @@ def homepage(request):
 
 def abstract_list_renderer(request, items, items_plural, 
 	additional_css_files, active_main_navbar, title):
-	items = Product.objects.order_by("id").all()
 	return render(request, "products/list.html",
 		{
-			"products":items,
-			"additional_css_files":["/static/css/cards/product.css"],
-			"active_main_navbar": "products",
-			"title": "Products List"
+			items_plural:items,
+			"additional_css_files":additional_css_files,
+			"active_main_navbar": active_main_navbar,
+			"title": title
 		})
 
 
@@ -47,15 +46,15 @@ def products_list(request):
 	additional_css_files = ["/static/css/cards/product.css"]
 	active_main_navbar = "products"
 	title = "Products List"
-	"""return abstract_list_renderer(request, items, items_plural, 
-	additional_css_files, active_main_navbar, title)"""
-	return render(request, "products/list.html",
+	return abstract_list_renderer(request, items, items_plural, 
+	additional_css_files, active_main_navbar, title)
+	"""return render(request, "products/list.html",
 		{
 			"products":items,
 			"additional_css_files":["/static/css/cards/product.css"],
 			"active_main_navbar": "products",
 			"title": "Products List"
-		})
+		})"""
 
 
 
