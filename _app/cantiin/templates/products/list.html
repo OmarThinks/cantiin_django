@@ -12,7 +12,23 @@
     {% for product in products %}
     	
     	<div class="product_card">
-    		product_name: {{ product.name }} 
+    		<div class="product_name">
+    			{{ product.name }}
+    		</div>
+    		<div class="product_price">
+    			{{ product.price }}
+    		</div>
+    		<div class="product_author">
+    			{{ product.author.username }}
+    		</div>
+    		<div class="product_in_stock">
+    			{{ product.in_stock }}
+    		</div>
+				<a href="{% url 'product-detail-test' id=product.pk %}">
+				    		<div class="product_details">
+				    			Details
+				</a>
+    		</div>
     	</div>
     
     {% endfor %}

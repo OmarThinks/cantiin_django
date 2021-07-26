@@ -4,11 +4,46 @@
 	background-color: lightgrey;
 	border: solid 1px black;
 	border-radius: 3px;
-	margin : 5px;
-	padding: 50px;
+	margin : 10px 0px;
+	padding: 5px;
 	transition: background .5s;
 }
 .product_card:hover
 {
 	background-color: white;
 }
+
+
+
+
+
+
+
+
+
+/*Grid System*/
+
+
+
+
+.product_name { grid-area: product_name; background-color: magenta;}
+.product_price { grid-area: product_price; background-color: yellow;}
+.product_author { grid-area: product_author; background-color: grey;}
+.product_in_stock { grid-area: product_in_stock; background-color: lightgrey;}
+.product_details { grid-area: product_details; background-color: pink; display: block;}
+
+
+.product_card {
+	display: grid;
+	grid-template-areas:
+    'product_name product_name product_price'
+    'product_author product_author product_author'
+    "product_in_stock product_details product_details";
+	grid-gap: 5px 5px;
+	grid-template-columns: 33% 33% 34%;
+	grid-template-rows: 70px 55px 50px ;
+}
+
+
+
+
