@@ -16,11 +16,22 @@ def about(request):
 
 def homepage(request):
 	#return HttpResponse("Home Page")
-	return render(request, "home.html")
+	return render(request, "home.html",
+		{
+			"active_main_navbar": "home",
+			"title": "Home"
+		}			
+		)
 
 def products_list(request):
 	products = Product.objects.order_by("id").all()
-	return render(request, "products/list.html",{"products":products})
+	return render(request, "products/list.html",
+		{
+			"products":products,
+			"additional_css_files":["/static/css/cards/product.css"],
+			"active_main_navbar": "products",
+			"title": "Products List"
+		})
 
 
 

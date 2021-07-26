@@ -1,22 +1,14 @@
 {% extends "base_layout.html" %}
-{% block title %}Products{% endblock %}
-{% block additional_css_files %}
-	<link rel="stylesheet" href="/static/css/cards/product.css">
-
-{% endblock %}
-
-{% block active_main_navbar %}products{% endblock %}
 {% block content %}
 
 
 
-<h1>Products List:</h1>
-
-
+<h1>{{ title }}:</h1>
 
 
 
 <ul>
+
     {% for product in products %}
     	
     	<div class="product_card">
@@ -24,9 +16,8 @@
     	</div>
     
     {% endfor %}
+
 </ul>
-
-
 
 {% endblock %}
 
