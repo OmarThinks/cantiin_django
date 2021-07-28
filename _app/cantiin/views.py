@@ -62,6 +62,16 @@ def products_list(request):
 
 
 
+
+
+
+
+
+
+
+
+
+
 class ProductDetail(APIView):
 	renderer_classes = [TemplateHTMLRenderer]
 	template_name = 'resources/products/product_detail.html'
