@@ -20,19 +20,15 @@ def base_page(request):
 
 
 class UserViewSet(_UserViewSet):
-	renderer_classes = [TemplateHTMLRenderer]
 	template_name = 'base.html'
 
 class ProductViewSet(_ProductViewSet):
-	renderer_classes = [TemplateHTMLRenderer]
 	template_name = 'base.html'
 
 class OrderViewSet(_OrderViewSet):
-	renderer_classes = [TemplateHTMLRenderer]
 	template_name = 'base.html'
 
 class CommentViewSet(_CommentViewSet):
-	renderer_classes = [TemplateHTMLRenderer]
 	template_name = 'base.html'
 
 
