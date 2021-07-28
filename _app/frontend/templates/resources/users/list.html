@@ -7,18 +7,20 @@
 <div class="items_container" style="padding: 2%;">
 
 	{% for user in users %}
-		
-	 <div class="product_card">
-		<a class="product_name_grid" 
+	
+	<div class="user_card">
+		<span class="empty_cells_grid"></span>
+
+		<a class="user_name_grid" 
 			href="{% url item_url_name pk=user.pk %}">
 			{{ user.username }}
 
 		</a>
-		<div class="product_price_grid">
+		<div class="user_price_grid">
 			ID: {{ user.id }}
 		</div>
 
-			<a class="product_details_link_grid" 
+			<a class="user_details_link_grid" 
 				href="{% url item_url_name pk=user.pk %}">
 				View User Details
 			</a>

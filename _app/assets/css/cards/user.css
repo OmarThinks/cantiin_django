@@ -6,37 +6,41 @@ a
 }
 
 
-.product_name_grid
+.user_name_grid
 {
-	grid-area: product_name_grid; 
+	grid-area: user_name_grid; 
 	/*background-color: magenta;*/
 }
 
 
 
-.product_price_grid 
+.user_price_grid 
 { 
-	grid-area: product_price_grid; 
+	grid-area: user_price_grid; 
 	/*background-color: yellow;*/
 }
-.product_in_stock_grid 
+.user_in_stock_grid 
 { 
-	grid-area: product_in_stock_grid; 
+	grid-area: user_in_stock_grid; 
 	/*background-color: grey;*/
 }
-.product_details_link_grid
+.user_details_link_grid
 { 
-	grid-area: product_details_link_grid; 
+	grid-area: user_details_link_grid; 
 	/*background-color: blue;*/
 }
 
+.empty_cells_grid
+{
+	grid-area: empty_cells_grid; 
+	/*background-color: magenta;*/	
+}
 
-
-.product_card {
+.user_card {
 	display: grid;
 	grid-template-areas:
-    'product_name_grid product_name_grid product_in_stock_grid'
-    "product_price_grid product_price_grid product_details_link_grid";
+    'user_name_grid user_name_grid empty_cells_grid'
+    "user_price_grid user_price_grid user_details_link_grid";
     grid-template-columns: 33% 33% 34%;
 }
 
@@ -49,7 +53,7 @@ a
 /*Styling*/
 
 
-.product_card>*
+.user_card>*
 {
 	padding: 1%;
 	display: inline;
@@ -60,8 +64,8 @@ a
 
 
 
-.product_card, .product_card:hover,
-.product_card:active, .product_card:visited
+.user_card, .user_card:hover,
+.user_card:active, .user_card:visited
 {
 	background-color: #dbfdff;
 	border: solid 1px black;
@@ -74,7 +78,7 @@ a
 }
 
 
-.product_card:hover
+.user_card:hover
 {
 	background-color: white;
 }
@@ -82,7 +86,7 @@ a
 
 
 
-.product_name_grid
+.user_name_grid
 {
 	text-decoration: underline;
 	font-weight: bold;
@@ -93,7 +97,7 @@ a
 
 
 
-.product_name_grid:hover
+.user_name_grid:hover
 {
 	color:blue;
 }
@@ -103,7 +107,7 @@ a
 
 
 
-.product_in_stock_grid
+.user_in_stock_grid
 {
 	display: flex;
 	vertical-align: middle;
@@ -118,7 +122,7 @@ a
 
 
 
-.product_price_grid 
+.user_price_grid 
 { 
 	font-weight: bold;
 	font-size: 1.1em;
@@ -126,8 +130,8 @@ a
 }
 
 
-.product_details_link_grid, .product_details_link_grid:hover,
-.product_details_link_grid:active, .product_details_link_grid:visited
+.user_details_link_grid, .user_details_link_grid:hover,
+.user_details_link_grid:active, .user_details_link_grid:visited
 {
 	color: green;
 	background-color: #dbfdff;
@@ -141,7 +145,7 @@ a
 }
 
 
-.product_details_link_grid:hover
+.user_details_link_grid:hover
 {
 	color: blue;
 	background-color: lightgreen;
