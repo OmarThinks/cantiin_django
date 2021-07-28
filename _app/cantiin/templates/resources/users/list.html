@@ -1,0 +1,50 @@
+{% extends "base_layout.html" %}
+{% block content %}
+
+
+
+
+<div class="items_container" style="padding: 2%;">
+
+	{% for product in products %}
+		
+	 <div class="product_card">
+		<a class="product_name_grid" 
+			href="{% url item_url_name pk=product.pk %}">
+			{{ product.name }}
+		</a>
+		{% if product.in_stock %}
+			<div class="product_in_stock_grid" style="color: green;">
+			In Stock</div>
+		{% else %}
+			<div class="product_in_stock_grid" style="color: red;">
+			Out of Stock
+			</div>
+		{% endif %}
+		<div class="product_price_grid">
+				${{ product.price }}
+		</div>
+
+			<a class="product_details_link_grid" 
+				href="{% url item_url_name pk=product.pk %}">
+				View Products Details
+			</a>
+	 </div>
+   
+	{% endfor %}
+{% url "product-list" %}
+</div>
+
+
+
+<script type="text/javascript">
+	
+</script>
+
+
+
+
+
+{% endblock %}
+
+

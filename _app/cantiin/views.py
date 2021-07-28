@@ -28,7 +28,7 @@ def homepage(request):
 
 def abstract_list_renderer(request, items, items_plural, 
 	additional_css_files, active_main_navbar, title, item_url_name):
-	return render(request, "products/list.html",
+	return render(request, "resources/products/list.html",
 		{
 			items_plural:items,
 			"additional_css_files":additional_css_files,
@@ -64,7 +64,7 @@ def products_list(request):
 
 class ProductDetail(APIView):
 	renderer_classes = [TemplateHTMLRenderer]
-	template_name = 'products/product_detail.html'
+	template_name = 'resources/products/product_detail.html'
 
 	def get(self, request, id):
 		product = get_object_or_404(Product, pk=id)
