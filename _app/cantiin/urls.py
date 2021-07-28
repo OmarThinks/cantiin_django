@@ -26,21 +26,17 @@ from .views import (
 
 #from .views import (about, homepage, products_list, ProductDetail, ProductDetailTest)
 
-"""
 # Routers provide an easy way of automatically determining the URL conf.
 router = routers.DefaultRouter()
 router.register('users', UserViewSet)
 router.register('products', ProductViewSet)
 router.register('orders', OrderViewSet)
 router.register('comments', CommentViewSet)
-"""
 
 
 
 urlpatterns = [
-    #path('api/', include(router.urls)),
-
-
+    path('api/', include(router.urls)),
 ]
 
 """
