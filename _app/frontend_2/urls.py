@@ -21,14 +21,22 @@ from django.conf.urls import url
 
 from rest_framework import routers
 
-
-
+from .views import (
+    UserViewSet, ProductViewSet, OrderViewSet, CommentViewSet)
 from .views import (base_page)
 
+
+# Routers provide an easy way of automatically determining the URL conf.
+router = routers.DefaultRouter()
+router.register('users', UserViewSet)
+router.register('products', ProductViewSet)
+router.register('orders', OrderViewSet)
+router.register('comments', CommentViewSet)
 
 
 
 
 urlpatterns = [
-	path('base', base_page),
-	]
+    path('base/', include(router.urls)),
+]
+

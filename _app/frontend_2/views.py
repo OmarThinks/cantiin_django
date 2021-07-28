@@ -8,6 +8,9 @@ from cantiin.views import UserViewSet as _UserViewSet
 from cantiin.views import ProductViewSet as _ProductViewSet
 from cantiin.views import OrderViewSet as _OrderViewSet
 from cantiin.views import CommentViewSet as _CommentViewSet
+from rest_framework.renderers import TemplateHTMLRenderer
+
+
 
 def base_page(request):
 	#return HttpResponse("Home Page")
@@ -16,27 +19,19 @@ def base_page(request):
 
 
 
-
-
-
-
-
-
-
-
-class FrontEndUserViewSet(_UserViewSet):
+class UserViewSet(_UserViewSet):
 	renderer_classes = [TemplateHTMLRenderer]
 	template_name = 'base.html'
 
-class FrontEndProductViewSet(_ProductViewSet):
+class ProductViewSet(_ProductViewSet):
 	renderer_classes = [TemplateHTMLRenderer]
 	template_name = 'base.html'
 
-class FrontEndOrderViewSet(_OrderViewSet):
+class OrderViewSet(_OrderViewSet):
 	renderer_classes = [TemplateHTMLRenderer]
 	template_name = 'base.html'
 
-class FrontEndCommentViewSet(_UserViewSet):
+class CommentViewSet(_CommentViewSet):
 	renderer_classes = [TemplateHTMLRenderer]
 	template_name = 'base.html'
 
