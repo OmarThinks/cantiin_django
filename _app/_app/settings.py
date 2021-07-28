@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'accounts',
     'cantiin',
     'frontend',
+    'frontend_2',
     'rest_framework',
     'django_filters',
     'djoser',
