@@ -47,7 +47,7 @@ def products_list(request):
 	additional_css_files = ["/static/css/cards/product.css"]
 	active_main_navbar = "products"
 	title = "Products List"
-	item_url_name = "product-detail-test"
+	item_url_name = "product-detail"
 	return abstract_list_renderer(request, items, items_plural, 
 	additional_css_files, active_main_navbar, title, item_url_name)
 	"""return render(request, "products/list.html",

@@ -10,7 +10,7 @@
 		
 	 <div class="product_card">
 		<a class="product_name_grid" 
-			href="{% url item_url_name id=product.pk %}">
+			href="{% url item_url_name pk=product.pk %}">
 			{{ product.name }}
 		</a>
 		{% if product.in_stock %}
@@ -26,7 +26,7 @@
 		</div>
 
 			<a class="product_details_link_grid" 
-				href="{% url item_url_name id=product.pk %}">
+				href="{% url item_url_name pk=product.pk %}">
 				View Products Details
 			</a>
 	 </div>
