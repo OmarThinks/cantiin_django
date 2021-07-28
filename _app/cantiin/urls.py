@@ -21,10 +21,10 @@ from django.conf.urls import url
 
 from rest_framework import routers
 
-from .rest_views import (
+from .views import (
     UserViewSet, ProductViewSet, OrderViewSet, CommentViewSet)
 
-from .views import (about, homepage, products_list, ProductDetail, ProductDetailTest)
+#from .views import (about, homepage, products_list, ProductDetail, ProductDetailTest)
 
 
 # Routers provide an easy way of automatically determining the URL conf.
@@ -39,14 +39,22 @@ router.register('comments', CommentViewSet)
 
 urlpatterns = [
     path('api/', include(router.urls)),
+
+
+]
+
+"""
+     path('about/', about),
+
     path('', homepage),
-    path('about/', about),
+
     path('products/', products_list),
     path('productss/<int:id>/', ProductDetail.as_view(), 
         name="product-detail-test"),
     path('productsss/<int:id>/', ProductDetailTest.as_view()),
+"""
 
-]
+
 
 #    path('productss/<int:pk>', ProductDetail),
 #    url(r'^productss/(?P<pk>[0-9]+)/$', ProductDetail),
