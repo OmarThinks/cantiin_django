@@ -13,19 +13,18 @@
 			href="{% url item_url_name id=product.pk %}">
 			{{ product.name }}
 		</a>
+		{% if product.in_stock %}
+			<div class="product_in_stock_grid" style="color: green;">
+			In Stock</div>
+		{% else %}
+			<div class="product_in_stock_grid" style="color: red;">
+			Out of Stock
+			</div>
+		{% endif %}
 		<div class="product_price_grid">
 				${{ product.price }}
 		</div>
-		<div class="product_in_stock_grid">
-			{% if product.in_stock %}
-				<span class="product_in_stock">In Stock</span>
-			{% else %}
-				<span 
-				class="product_out_stock">
-				Out of Stock
-				</span>
-			{% endif %}
-		</div>
+
 			<a class="product_details_link_grid" 
 				href="{% url item_url_name id=product.pk %}">
 				View Products Details

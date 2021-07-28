@@ -37,8 +37,6 @@ a
 	grid-template-areas:
     'product_name_grid product_name_grid product_in_stock_grid'
     "product_price_grid product_details_link_grid product_details_link_grid";
-	grid-gap: 5px 5px;
-	grid-template-columns: 33% 33% 34%;
 }
 
 
@@ -49,6 +47,12 @@ a
 
 /*Styling*/
 
+
+.product_card>*
+{
+	padding: 1%;
+	display: inline;
+}
 
 
 
@@ -66,8 +70,7 @@ a
 	color: black;
 	text-decoration: none;
 	font-size: 1.5em;
-	padding: 1%;
-	padding-bottom: 0px;
+	padding: 0px;
 }
 
 
@@ -88,15 +91,40 @@ a
 	transition: color .5s;
 }
 
+
+
+
 .product_name_grid:hover
 {
 	color:blue;
 }
 
+
+
+
+
+
+.product_in_stock_grid
+{
+	display: flex;
+	vertical-align: middle;
+	text-align: center;
+	align-items: center;
+}
+
+
+
+
+
+
+
+
+
 .product_price_grid 
 { 
 	font-weight: bold;
 	font-size: 1.1em;
+	padding: 2%;
 }
 
 
