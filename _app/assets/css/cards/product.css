@@ -37,6 +37,7 @@ a
 	grid-template-areas:
     'product_name_grid product_name_grid product_in_stock_grid'
     "product_price_grid product_price_grid product_details_link_grid";
+    grid-template-columns: 33% 33% 34%;
 }
 
 

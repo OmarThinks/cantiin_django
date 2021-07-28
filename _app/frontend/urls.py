@@ -16,15 +16,27 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls import url
-from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+
+
+
+from rest_framework import routers
+
+
+
+from .views import (about, homepage)
+
+from .views_products import (products_list, ProductDetail, ProductDetailTest)
 
 
 
 urlpatterns = [
-	path('admin/', admin.site.urls),
-	path('api/auth/', include('djoser.urls')),
-	path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-	path('',include("cantiin.urls")),
-	path('',include("frontend.urls")),
-]
-urlpatterns += staticfiles_urlpatterns()
+	path('about/', about),
+	path('', homepage),
+	path('products/', products_list),
+	path('productss/<int:id>/', ProductDetail.as_view(), 
+		name="product-detail-test"),
+	path('productsss/<int:id>/', ProductDetailTest.as_view()),
+	]
+
+#    path('productss/<int:pk>', ProductDetail),
+#    url(r'^productss/(?P<pk>[0-9]+)/$', ProductDetail),
