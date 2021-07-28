@@ -36,7 +36,7 @@ a
 	display: grid;
 	grid-template-areas:
     'product_name_grid product_name_grid product_in_stock_grid'
-    "product_price_grid product_details_link_grid product_details_link_grid";
+    "product_price_grid product_price_grid product_details_link_grid";
 }
 
 
@@ -66,7 +66,6 @@ a
 	border: solid 1px black;
 	border-radius: 3px;
 	margin : 15px 0px;
-	transition: background .5s;
 	color: black;
 	text-decoration: none;
 	font-size: 1.5em;
@@ -84,11 +83,10 @@ a
 
 .product_name_grid
 {
-	text-decoration: none;
+	text-decoration: underline;
 	font-weight: bold;
 	font-size: 1.5em;
 	color: darkgreen;
-	transition: color .5s;
 }
 
 
@@ -108,7 +106,6 @@ a
 {
 	display: flex;
 	vertical-align: middle;
-	text-align: center;
 	align-items: center;
 }
 
@@ -124,7 +121,7 @@ a
 { 
 	font-weight: bold;
 	font-size: 1.1em;
-	padding: 2%;
+	padding: 1%;
 }
 
 
@@ -134,6 +131,19 @@ a
 	color: green;
 	background-color: #dbfdff;
 	text-align: center;
-	vertical-align: middle;
 	text-decoration: none;
+	margin: 1%;
+	border: solid black 2px;
+	border-radius: 50px;
+	font-weight: bold;
+	font-size: 1.1em;
 }
+
+
+.product_details_link_grid:hover
+{
+	color: blue;
+	background-color: lightgreen;
+
+}
+
