@@ -25,31 +25,10 @@ python manage.py runserver
 
 
 
-# C) Frontend (To Be Continued):
 
+# C) Backend:
 
-The frontend uses Bootstrap and CSS.  
-It it rendered using Jinja templating Engine.
-
-
-
-
-<img src="images/frontend.gif">
-
-
-
-
-
-
-
-
-
-
-
-
-# D) Backend:
-
-## D-1) Authentication:
+## C-1) Authentication:
 
 The system uses Django authentication system.  
 To use the authentication system you can use this link:
@@ -68,7 +47,7 @@ Authentication uses JWT.
 
 
 
-# D-2) What the app does:
+## C-2) What the app does:
 
 Beyound authentication, the app has three more models.  
 - Product (Where the users can handle products)
@@ -91,7 +70,7 @@ These are the endpoints of API recources:
 
 
 
-# D-3) Pagination:
+## C-3) Pagination:
 All the models have pagination.  
 Since it exists in the `settings.py` file.  
 The pagination uses pages.  
@@ -102,14 +81,14 @@ Each page has 10 records.
 
 
 
-# D-4) Validation and Sanitization:
+## C-4) Validation and Sanitization:
 Validation and is used here, it is built in django  and Django REST framework.  
 Because we are using Django REST Framework serialization.  
 When the user sends a wrong request, the correct response will be returned.
 
 
 
-# D-5) Rate Limit:
+## C-5) Rate Limit:
 It means the limit of requests that can be sent bu the users.  
 It is very helpful to prevent DoS attacks.  
 For users that are 
@@ -119,7 +98,7 @@ For users that are
 
 These can be changed by changing `settings.py`.
 
-# D-6) Permissions:
+## C-6) Permissions:
 - Not Logged in Users:
 	- Create an account (Sign up)
 	- Sign in
@@ -132,12 +111,46 @@ These can be changed by changing `settings.py`.
 	- Logged in users permissions 
 	- Update, delete any product, Comment or order posted by any other user.
 
-# D-7) Search:
+## C-7) Search:
 Search is done using Django Filter:
 
 
 
 <img src="images/filter.gif">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# D) Frontend (To Be Continued):
+
+
+The frontend uses Bootstrap and CSS.  
+It it rendered using Jinja templating Engine.
+
+
+
+
+<img src="images/frontend.gif">
+
+
+
+
+
+
 
 
 
