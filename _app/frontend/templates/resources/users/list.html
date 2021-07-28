@@ -11,23 +11,16 @@
 	 <div class="product_card">
 		<a class="product_name_grid" 
 			href="{% url item_url_name pk=user.pk %}">
-			{{ user.id }}
+			{{ user.username }}
+
 		</a>
-		{% if user.id %}
-			<div class="product_in_stock_grid" style="color: green;">
-			In Stock</div>
-		{% else %}
-			<div class="product_in_stock_grid" style="color: red;">
-			Out of Stock
-			</div>
-		{% endif %}
 		<div class="product_price_grid">
-				${{ user.id }}
+			ID: {{ user.id }}
 		</div>
 
 			<a class="product_details_link_grid" 
 				href="{% url item_url_name pk=user.pk %}">
-				View Products Details
+				View User Details
 			</a>
 	 </div>
    
