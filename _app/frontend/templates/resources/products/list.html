@@ -1,4 +1,164 @@
 {% extends "base_layout.html" %}
+{% block additional_css_content %}
+<style type="text/css">
+
+/*Grid System*/
+
+a 
+{
+	display: inline;
+}
+
+
+.product_name_grid
+{
+	grid-area: product_name_grid; 
+	/*background-color: magenta;*/
+}
+
+
+
+.product_price_grid 
+{ 
+	grid-area: product_price_grid; 
+	/*background-color: yellow;*/
+}
+.product_in_stock_grid 
+{ 
+	grid-area: product_in_stock_grid; 
+	/*background-color: grey;*/
+}
+.product_details_link_grid
+{ 
+	grid-area: product_details_link_grid; 
+	/*background-color: blue;*/
+}
+
+
+
+.product_card {
+	display: grid;
+	grid-template-areas:
+    'product_name_grid product_name_grid product_in_stock_grid'
+    "product_price_grid product_price_grid product_details_link_grid";
+    grid-template-columns: 33% 33% 34%;
+}
+
+
+
+
+
+
+
+/*Styling*/
+
+
+.product_card>*
+{
+	padding: 1%;
+	display: inline;
+}
+
+
+
+
+
+
+.product_card, .product_card:hover,
+.product_card:active, .product_card:visited
+{
+	background-color: #dbfdff;
+	border: solid 1px black;
+	border-radius: 3px;
+	margin : 15px 0px;
+	color: black;
+	text-decoration: none;
+	font-size: 1.5em;
+	padding: 0px;
+}
+
+
+.product_card:hover
+{
+	background-color: white;
+}
+
+
+
+
+.product_name_grid
+{
+	text-decoration: underline;
+	font-weight: bold;
+	font-size: 1.5em;
+	color: darkgreen;
+}
+
+
+
+
+.product_name_grid:hover
+{
+	color:blue;
+}
+
+
+
+
+
+
+.product_in_stock_grid
+{
+	display: flex;
+	vertical-align: middle;
+	align-items: center;
+}
+
+
+
+
+
+
+
+
+
+.product_price_grid 
+{ 
+	font-weight: bold;
+	font-size: 1.1em;
+	padding: 1%;
+}
+
+
+.product_details_link_grid, .product_details_link_grid:hover,
+.product_details_link_grid:active, .product_details_link_grid:visited
+{
+	color: green;
+	background-color: #dbfdff;
+	text-align: center;
+	text-decoration: none;
+	margin: 1%;
+	border: solid black 2px;
+	border-radius: 50px;
+	font-weight: bold;
+	font-size: 1.1em;
+}
+
+
+.product_details_link_grid:hover
+{
+	color: blue;
+	background-color: lightgreen;
+
+}
+
+
+
+</style>
+
+{% endblock %}
+
+
 {% block content %}
 
 

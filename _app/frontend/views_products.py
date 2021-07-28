@@ -16,7 +16,7 @@ def products_list(request):
 	items = Product.objects.order_by("id").all()
 	list_template_link = "resources/products/list.html"
 	items_plural = "products" 
-	additional_css_files = ["/static/css/cards/product.css"]
+	additional_css_files = []
 	active_main_navbar = "products"
 	title = "Products List"
 	item_url_name = "product-detail"

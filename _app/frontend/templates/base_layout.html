@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+	<title id="page_title">
+		{{ title }} | Cantiin
+	</title>
 	<link rel="stylesheet" href="/static/css/style.css">
 	<script src="/static/js/cantiin_functions.js"></script>
 	{% for css_file_link in additional_css_files %}
@@ -11,9 +13,12 @@
 	<script src="/static/bootstrap/js/jquery.js"></script>
 	<script src="/static/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-<title id="page_title">
-	{{ title }} | Cantiin
-</title>
+	{% block additional_css_content %}
+	{% endblock %}
+
+
+
+
 
 
 	<title></title>

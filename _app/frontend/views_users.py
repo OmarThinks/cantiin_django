@@ -16,7 +16,7 @@ def users_list(request):
 	items = User.objects.order_by("id").all()
 	list_template_link = "resources/users/list.html"
 	items_plural = "users" 
-	additional_css_files = ["/static/css/cards/user.css"]
+	additional_css_files = []
 	active_main_navbar = "users"
 	title = "Users List"
 	item_url_name = "user-detail"
