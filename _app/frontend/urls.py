@@ -23,7 +23,7 @@ from rest_framework import routers
 
 
 
-from .views import (about, homepage)
+from .views import (homepage)
 
 from .views_products import (products_list, ProductDetail, ProductDetailTest)
 from .views_users import (users_list)
@@ -31,7 +31,6 @@ from .views_users import (users_list)
 
 
 urlpatterns = [
-	path('about/', about),
 	path('', homepage),
 	path('products/', products_list),
 	path('users/', users_list),
