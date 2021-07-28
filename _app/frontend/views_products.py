@@ -14,13 +14,15 @@ from .abstract_renderers import abstract_list_renderer
 
 def products_list(request):
 	items = Product.objects.order_by("id").all()
+	list_template_link = "resources/products/list.html"
 	items_plural = "products" 
 	additional_css_files = ["/static/css/cards/product.css"]
 	active_main_navbar = "products"
 	title = "Products List"
 	item_url_name = "product-detail"
-	return abstract_list_renderer(request, items, items_plural, 
-	additional_css_files, active_main_navbar, title, item_url_name)
+	return abstract_list_renderer(request, list_template_link, 
+		items, items_plural, additional_css_files, 
+		active_main_navbar, title, item_url_name)
 	"""return render(request, "products/list.html",
 		{
 			"products":items,
