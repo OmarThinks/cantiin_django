@@ -30,6 +30,7 @@ from .views_users import (users_list)
 
 
 
+
 urlpatterns = [
 	path('', homepage),
 	path('products/', products_list),
