@@ -36,15 +36,15 @@ class UserViewSet(_UserViewSet):
 	
 
 class ProductViewSet(_ProductViewSet):
-	renderer_classes = [JSONRenderer,BrowsableAPIRenderer]
+	renderer_classes = [JSONRenderer,TemplateHTMLRenderer]
 	template_name = 'list_test.html'
 
-	"""def get_template_names(self):
-		print(self.__dir__(),flush=True)
+	def get_template_names(self):
+		print(self.response.data,flush=True)
 		if self.action == "list":
 			return ["list_test.html"]
 
-		return ["list_test.html"]"""
+		return ["list_test.html"]
 
 
 
