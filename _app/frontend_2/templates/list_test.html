@@ -1,9 +1,18 @@
 
-
+The page
+<br>
 
 
 {% if response %}
-{{ response.data }}
+{{ response.data.results.2.id }}
+<br>
 I see response
+<br>
 {% endif %}
+
+{% for product in response.data.results %}
+<br>
+There is a product
+
+{% endfor %}
 

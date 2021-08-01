@@ -159,14 +159,15 @@ a
 {% endblock %}
 
 
-{% block my_content %}
+{% block content %}
 
 This is list
 
 
 <div class="items_container" style="padding: 2%;">
 
-	{% for product in products %}
+
+	{% for product in response.data.results %}
 		
 	 <div class="product_card">
 		<a class="product_name_grid" 
@@ -195,12 +196,6 @@ This is list
 
 
 
-{% if content|urlize %}
-Found it
-
-{{ content }}
-
-{% endif %}
 
 
 

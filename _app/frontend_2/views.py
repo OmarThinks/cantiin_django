@@ -40,15 +40,29 @@ class customRenderer(TemplateHTMLRenderer):
 		#print(args2.__dict__,flush=True) a function
 		#print(type(request),flush=True)
 		#print(response.data,flush=True)
-		print(request.user.__dir__(),flush=True)
-		return{"response":response}
+		#print(request.user.__dir__(),flush=True)
+		results = response.data["results"]
+		"""print(results ,flush=True)
+		for product in results:
+			print(product, flush=True)
+			print(product["id"], flush=True)"""
+		#results_new = 
+		return{	
+			"response":response,
+			"items_plural":"products",
+			"additional_css_files":[],
+			"active_main_navbar": "products",
+			"title": "Products List",
+			"item_url_name" : "product-detail"
+		}
 	
 		
 	
 
+
 class ProductViewSet(_ProductViewSet):
 	renderer_classes = [JSONRenderer, customRenderer]
-	template_name = 'list_test.html'
+	template_name = 'base_layout.html'
 
 	def resolve_context(self):
 		return {"response":self.response}
@@ -57,8 +71,9 @@ class ProductViewSet(_ProductViewSet):
 		#print(self.response.data,flush=True)
 		if self.action == "list":
 			return ["list_test.html"]
+			#return ["resources/products/list.html"]
 
-		return ["list_test.html"]
+		return ["base_layout.html"]
 
 
 
