@@ -159,7 +159,7 @@ a
 {% endblock %}
 
 
-{% block content %}
+{% block my_content %}
 
 This is list
 
@@ -193,15 +193,14 @@ This is list
    
 	{% endfor %}
 
-<!--
-{% url "product-list" %}
--->
 
 
-{% if content %}
-I see items
+{% if content|urlize %}
+Found it
+
+{{ content|urlize }}
+
 {% endif %}
-
 
 
 

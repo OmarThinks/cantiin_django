@@ -35,11 +35,12 @@ class UserViewSet(_UserViewSet):
 
 class ProductViewSet(_ProductViewSet):
 	renderer_classes = [TemplateHTMLRenderer]
-	template_name = 'base.html'
+	template_name = 'list_test.html'
 
 	def get_template_names(self):
+		print(self.__dir__(),flush=True)
 		if self.action == "list":
-			return ["resources/products/list.html"]
+			return ["list_test.html"]
 
 		return ["base.html"]
 
