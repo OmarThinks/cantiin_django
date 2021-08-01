@@ -37,6 +37,8 @@ router.register('comments', CommentViewSet)
 
 
 urlpatterns = [
-    path('base/', include(router.urls)),
+   path('base/', base_page),
+   path('base/', include(router.urls)),
+
 ]
 

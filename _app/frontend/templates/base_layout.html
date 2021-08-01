@@ -2,7 +2,13 @@
 <html>
 <head>
 	<title id="page_title">
+
+
+{% if title %}
 		{{ title }} | Cantiin
+{% else %}
+	Cantiin
+{% endif %}
 	</title>
 	<link rel="stylesheet" href="/static/css/style.css">
 	<script src="/static/js/cantiin_functions.js"></script>
