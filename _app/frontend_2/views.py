@@ -70,8 +70,8 @@ class ProductViewSet(_ProductViewSet):
 	def get_template_names(self):
 		#print(self.response.data,flush=True)
 		if self.action == "list":
-			return ["list_test.html"]
-			#return ["resources/products/list.html"]
+			#return ["list_test.html"]
+			return ["resources/products/list.html"]
 
 		return ["base_layout.html"]
 
