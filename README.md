@@ -1,6 +1,12 @@
 # cantiin_django
 An ecommerce RESTful API using django and Django REST Framework.
 
+# Video:
+
+<div align="center">
+  <a href="https://www.youtube.com/watch?v=4RjUJZSEsS0"><img src="https://img.youtube.com/vi/4RjUJZSEsS0/0.jpg" alt="IMAGE ALT TEXT"></a>
+</div>
+
 
 
 # A) Technologies Used:
