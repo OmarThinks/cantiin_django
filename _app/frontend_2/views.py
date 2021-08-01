@@ -8,7 +8,9 @@ from cantiin.views import UserViewSet as _UserViewSet
 from cantiin.views import ProductViewSet as _ProductViewSet
 from cantiin.views import OrderViewSet as _OrderViewSet
 from cantiin.views import CommentViewSet as _CommentViewSet
-from rest_framework.renderers import TemplateHTMLRenderer
+from rest_framework.renderers import (
+	TemplateHTMLRenderer,BrowsableAPIRenderer,JSONRenderer,
+	 StaticHTMLRenderer)
 from rest_framework.views import APIView
 
 from frontend.abstract_renderers import abstract_list_renderer
@@ -34,15 +36,15 @@ class UserViewSet(_UserViewSet):
 	
 
 class ProductViewSet(_ProductViewSet):
-	renderer_classes = [TemplateHTMLRenderer]
+	renderer_classes = [JSONRenderer,BrowsableAPIRenderer]
 	template_name = 'list_test.html'
 
-	def get_template_names(self):
+	"""def get_template_names(self):
 		print(self.__dir__(),flush=True)
 		if self.action == "list":
 			return ["list_test.html"]
 
-		return ["base.html"]
+		return ["list_test.html"]"""
 
 
 
