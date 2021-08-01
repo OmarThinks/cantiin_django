@@ -32,15 +32,29 @@ class UserViewSet(_UserViewSet):
 	template_name = 'base.html'
 
 
-
+class customRenderer(TemplateHTMLRenderer):
+	def resolve_context(self, args2, request, 
+		response, *args, **kwargs):
+		#print(self.__dir__(),flush=True)
+		#print(type(self),flush=True)
+		#print(args2.__dict__,flush=True) a function
+		#print(type(request),flush=True)
+		#print(response.data,flush=True)
+		print(request.user.__dir__(),flush=True)
+		return{"response":response}
+	
+		
 	
 
 class ProductViewSet(_ProductViewSet):
-	renderer_classes = [JSONRenderer,TemplateHTMLRenderer]
+	renderer_classes = [JSONRenderer, customRenderer]
 	template_name = 'list_test.html'
 
+	def resolve_context(self):
+		return {"response":self.response}
+
 	def get_template_names(self):
-		print(self.response.data,flush=True)
+		#print(self.response.data,flush=True)
 		if self.action == "list":
 			return ["list_test.html"]
 
