@@ -27,6 +27,8 @@ from .views import (base_page)
 
 
 # Routers provide an easy way of automatically determining the URL conf.
+
+
 router = routers.DefaultRouter()
 router.register('users', UserViewSet)
 router.register('products', ProductViewSet)
