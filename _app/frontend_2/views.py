@@ -38,6 +38,9 @@ class UserViewSet(_UserViewSet):
 
 
 class customRenderer(TemplateHTMLRenderer):
+	def get_template_context(self, data, renderer_context):
+		print("get_template_context")
+		return {"view":"view"}
 	"""def resolve_context(self, args2, request, 
 		response, *args, **kwargs):
 		#print(self.__dir__(),flush=True)
@@ -64,14 +67,11 @@ class customRenderer(TemplateHTMLRenderer):
 			"title": "Products List",
 			"item_url_name" : "product-detail"
 		}"""
-	def get_default_renderer(*args,**kwargs):
+	"""def get_default_renderer(*args,**kwargs):
 		return BrowsableAPIRenderer.get_default_renderer(*args, **kwargs)
 
 	def get_template_context(self, data,  
 		renderer_context , accepted_media_type= "txt/html"):
-		"""
-		Returns the context used to render.
-		"""
 		view = renderer_context['view']
 		request = renderer_context['request']
 		response = renderer_context['response']
@@ -139,39 +139,28 @@ class customRenderer(TemplateHTMLRenderer):
 			'csrf_header_name': csrf_header_name
 		}	
 		print(final_context, flush=True)
-		return final_context
+		return final_context"""
 		
 	
 
 
 class ProductViewSet(_ProductViewSet):
-	renderer_classes = [JSONRenderer, TemplateHTMLRenderer]
+	renderer_classes = [JSONRenderer, customRenderer]
 	template_name = 'base_layout.html'
 
 	"""def resolve_context(self):
 		return {"response":self.response}"""
 	
-	def get_renderer_context(self, response):
-		# https://github.com/encode/django-rest-framework/blob/98e56e0327596db352b35fa3b3dc8355dc9bd030/rest_framework/views.py#L205
-		context = APIView.get_renderer_context(self)
-		print(context, flush=True)
-		"""{
-			'view': <frontend_2.views.ProductViewSet object at 
-				0x00000107495DAC40>, 
-			'args': (), 'kwargs': {}, 
-			'request': <rest_framework.request.Request: 
-				GET '/base/products/'>
-		}"""
-		print(self.__dir__(), flush=True)
-		print(self.request.__dir__(), flush=True)
-		print(self.request._full_data, flush=True)
-		print(self.request._data, flush=True)
-		#context["response"] = self.response
-		return context
+	"""def get_renderer_context(self, response):
+		return {
+			'view': self,
+			'args': getattr(self, 'args', ()),
+			'kwargs': getattr(self, 'kwargs', {}),
+			'request': getattr(self, 'request', None),
+			"response":response
+		}
 	def finalize_response(self, request, response, *args, **kwargs):
-		"""
-		Returns the final response object.
-		"""
+
 		# Make the error obvious if a proper response is not returned
 		assert isinstance(response, HttpResponseBase), (
 			'Expected a `Response`, `HttpResponse` or `HttpStreamingResponse` '
@@ -196,7 +185,7 @@ class ProductViewSet(_ProductViewSet):
 		for key, value in self.headers.items():
 			response[key] = value
 
-		return response
+		return response"""
 
 	def get_template_names(self):
 		#print(self.response.data,flush=True)
