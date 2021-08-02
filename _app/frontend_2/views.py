@@ -45,9 +45,10 @@ def generate_custom_renderer(
 			items_plural= items_plural, active_main_navbar=active_main_navbar,
 			title=title, additional_css_files= additional_css_files,
 			item_url_name= item_url_name):
-			response = data
+			response = dict(data)
 			#print(self, flush=True)
-			#print(data, flush=True)
+			print(response, flush=True)
+			print(type(response), flush=True)
 			#print(renderer_context["response"].__dir__(), flush=True)
 			#print(renderer_context["view"].__dir__(), flush=True)
 			items_plural = items_plural 

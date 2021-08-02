@@ -12,18 +12,16 @@
 {% endblock %}
 
 
-{% block title %}
-Product Details
-{% endblock %}
+
 
 {% block content %}
-Hi
 
 
 
-
-
-
+{% for key,value in response.items %}
+<b>{{ key }}</b>: {{ value }}
+<br>
+{% endfor %}
 
 
 <script type="text/javascript">
