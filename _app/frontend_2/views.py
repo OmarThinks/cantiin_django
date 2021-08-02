@@ -39,153 +39,18 @@ class UserViewSet(_UserViewSet):
 
 class customRenderer(TemplateHTMLRenderer):
 	def get_template_context(self, data, renderer_context):
-		print("get_template_context")
-		return {"view":"view"}
-	"""def resolve_context(self, args2, request, 
-		response, *args, **kwargs):
-		#print(self.__dir__(),flush=True)
-		#print(type(self),flush=True)
-		#print(args2.__dict__,flush=True) a function
-		#print(type(request),flush=True)
-		#print(response.__dir__(),flush=True)
-		print(self.__dict__,flush=True)
-		print(args2.__dict__,flush=True)
-		print(request.__dict__,flush=True)
-		print(response.__dict__,flush=True)
-		#print(request.user.__dir__(),flush=True)
-		#results = response.data["results"]
-		print(results ,flush=True)
-		for product in results:
-			print(product, flush=True)
-			print(product["id"], flush=True)
-		#results_new = 
-		return{	
-			"response":response,
-			"items_plural":"products",
-			"additional_css_files":[],
-			"active_main_navbar": "products",
-			"title": "Products List",
-			"item_url_name" : "product-detail"
-		}"""
-	"""def get_default_renderer(*args,**kwargs):
-		return BrowsableAPIRenderer.get_default_renderer(*args, **kwargs)
+		print(self.__dir__(),flush=True)
+		print(data.__dir__(),flush=True)
+		print(renderer_context["response"].data,flush=True)
+		return {"view":"view", 
+		"response":renderer_context["response"] }
 
-	def get_template_context(self, data,  
-		renderer_context , accepted_media_type= "txt/html"):
-		view = renderer_context['view']
-		request = renderer_context['request']
-		response = renderer_context['response']
-
-		renderer = self.get_default_renderer(view)
-
-		raw_data_post_form = self.get_raw_data_form(data, view, 'POST', request)
-		raw_data_put_form = self.get_raw_data_form(data, view, 'PUT', request)
-		raw_data_patch_form = self.get_raw_data_form(data, view, 'PATCH', request)
-		raw_data_put_or_patch_form = raw_data_put_form or raw_data_patch_form
-
-		response_headers = OrderedDict(sorted(response.items()))
-		renderer_content_type = ''
-		if renderer:
-			renderer_content_type = '%s' % renderer.media_type
-			if renderer.charset:
-				renderer_content_type += ' ;%s' % renderer.charset
-		response_headers['Content-Type'] = renderer_content_type
-
-		if getattr(view, 'paginator', None) and view.paginator.display_page_controls:
-			paginator = view.paginator
-		else:
-			paginator = None
-
-		csrf_cookie_name = settings.CSRF_COOKIE_NAME
-		csrf_header_name = settings.CSRF_HEADER_NAME
-		if csrf_header_name.startswith('HTTP_'):
-			csrf_header_name = csrf_header_name[5:]
-		csrf_header_name = csrf_header_name.replace('_', '-')
-
-		final_context =  {
-			'content': self.get_content(renderer, data, accepted_media_type, renderer_context),
-			'code_style': pygments_css(self.code_style),
-			'view': view,
-			'request': request,
-			'response': response,
-			'user': request.user,
-			'description': self.get_description(view, response.status_code),
-			'name': self.get_name(view),
-			'version': VERSION,
-			'paginator': paginator,
-			'breadcrumblist': self.get_breadcrumbs(request),
-			'allowed_methods': view.allowed_methods,
-			'available_formats': [renderer_cls.format for renderer_cls in view.renderer_classes],
-			'response_headers': response_headers,
-
-			'put_form': self.get_rendered_html_form(data, view, 'PUT', request),
-			'post_form': self.get_rendered_html_form(data, view, 'POST', request),
-			'delete_form': self.get_rendered_html_form(data, view, 'DELETE', request),
-			'options_form': self.get_rendered_html_form(data, view, 'OPTIONS', request),
-
-			'extra_actions': self.get_extra_actions(view, response.status_code),
-
-			'filter_form': self.get_filter_form(data, view, request),
-
-			'raw_data_put_form': raw_data_put_form,
-			'raw_data_post_form': raw_data_post_form,
-			'raw_data_patch_form': raw_data_patch_form,
-			'raw_data_put_or_patch_form': raw_data_put_or_patch_form,
-
-			'display_edit_forms': bool(response.status_code != 403),
-
-			'api_settings': api_settings,
-			'csrf_cookie_name': csrf_cookie_name,
-			'csrf_header_name': csrf_header_name
-		}	
-		print(final_context, flush=True)
-		return final_context"""
-		
-	
 
 
 class ProductViewSet(_ProductViewSet):
 	renderer_classes = [JSONRenderer, customRenderer]
 	template_name = 'base_layout.html'
 
-	"""def resolve_context(self):
-		return {"response":self.response}"""
-	
-	"""def get_renderer_context(self, response):
-		return {
-			'view': self,
-			'args': getattr(self, 'args', ()),
-			'kwargs': getattr(self, 'kwargs', {}),
-			'request': getattr(self, 'request', None),
-			"response":response
-		}
-	def finalize_response(self, request, response, *args, **kwargs):
-
-		# Make the error obvious if a proper response is not returned
-		assert isinstance(response, HttpResponseBase), (
-			'Expected a `Response`, `HttpResponse` or `HttpStreamingResponse` '
-			'to be returned from the view, but received a `%s`'
-			% type(response)
-		)
-
-		if isinstance(response, Response):
-			if not getattr(request, 'accepted_renderer', None):
-				neg = self.perform_content_negotiation(request, force=True)
-				request.accepted_renderer, request.accepted_media_type = neg
-
-			response.accepted_renderer = request.accepted_renderer
-			response.accepted_media_type = request.accepted_media_type
-			response.renderer_context = self.get_renderer_context(response)
-
-		# Add new vary headers to the response instead of overwriting.
-		vary_headers = self.headers.pop('Vary', None)
-		if vary_headers is not None:
-			patch_vary_headers(response, cc_delim_re.split(vary_headers))
-
-		for key, value in self.headers.items():
-			response[key] = value
-
-		return response"""
 
 	def get_template_names(self):
 		#print(self.response.data,flush=True)
