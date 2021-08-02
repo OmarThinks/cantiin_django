@@ -195,12 +195,17 @@ h1,h2, h3
 
 .pagination_nav li
 {
+	display: flex;
+	justify-content: center;
+	align-items: center;	
 	margin: 0px;
-	padding: 8px;
+	width: 45px;
+	height: 45px;
 	text-decoration: none;
 	font-size: 1.3em;
 	border: solid 1px black;
 	background-color: lightyellow;
+
 }
 
 .pagination_nav li:hover
