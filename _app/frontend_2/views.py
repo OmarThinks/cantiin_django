@@ -41,17 +41,20 @@ def generate_custom_renderer(
 	items_plural, active_main_navbar, title,
 	additional_css_files=[], item_url_name=""):
 	class customRenderer(TemplateHTMLRenderer):
-		def get_template_context(self, data, renderer_context):
+		def get_template_context(self, data, renderer_context, 
+			items_plural= items_plural, active_main_navbar=active_main_navbar,
+			title=title, additional_css_files= additional_css_files,
+			item_url_name= item_url_name):
 			response = data
 			#print(self, flush=True)
 			#print(data, flush=True)
 			#print(renderer_context["response"].__dir__(), flush=True)
 			#print(renderer_context["view"].__dir__(), flush=True)
-			items_plural = "products" 
-			additional_css_files = []
-			active_main_navbar = "products"
-			title = "Products List"
-			item_url_name = "frontend:product-detail"
+			items_plural = items_plural 
+			additional_css_files = additional_css_files
+			active_main_navbar = active_main_navbar
+			title = title
+			item_url_name = item_url_name
 
 			paginator = renderer_context["view"].paginator
 			#print(paginator.__dir__(), flush=True)
@@ -87,7 +90,10 @@ class ProductViewSet(_ProductViewSet):
 			return ["resources/products/retrieve.html"]
 		return ["base_layout.html"]
 	def get_renderers(self):
-		customRenderer = generate_custom_renderer(1,1,1)
+		customRenderer = generate_custom_renderer(
+			items_plural="products",active_main_navbar= "products",
+			title="Product Details", additional_css_files=[], 
+			item_url_name="frontend:product-detail")
 		renderers = [JSONRenderer, customRenderer]
 		return [renderer() for renderer in renderers]
 
