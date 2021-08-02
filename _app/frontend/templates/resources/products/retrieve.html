@@ -1,15 +1,39 @@
+{% extends "base_layout.html" %}
+{% load static %}
+{% load i18n %}
 {% load rest_framework %}
-<head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-</head>
-<html><body>
 
-<h1>Product - {{ product.name }}</h1>
+{% block additional_css_content %}
+<style type="text/css">
 
-<form action="{% url 'product-detail' pk=product.id %}" method="POST">
-    {% csrf_token %}
-    {% render_form serializer %}
-    <input type="submit" value="Save">
-</form>
 
-</body></html>
+</style>
+
+{% endblock %}
+
+
+{% block title %}
+Product Details
+{% endblock %}
+
+{% block content %}
+Hi
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+	
+</script>
+
+
+
+
+
+{% endblock %}
+
+

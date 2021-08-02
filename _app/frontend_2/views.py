@@ -37,42 +37,45 @@ class UserViewSet(_UserViewSet):
 	template_name = 'base.html'
 
 
-class customRenderer(TemplateHTMLRenderer):
-	def get_template_context(self, data, renderer_context):
-		response = data
-		#print(self, flush=True)
-		#print(data, flush=True)
-		#print(renderer_context["response"].__dir__(), flush=True)
-		#print(renderer_context["view"].__dir__(), flush=True)
-		items_plural = "products" 
-		additional_css_files = []
-		active_main_navbar = "products"
-		title = "Products List"
-		item_url_name = "frontend:product-detail"
+def generate_custom_renderer(
+	items_plural, active_main_navbar, title,
+	additional_css_files=[], item_url_name=""):
+	class customRenderer(TemplateHTMLRenderer):
+		def get_template_context(self, data, renderer_context):
+			response = data
+			#print(self, flush=True)
+			#print(data, flush=True)
+			#print(renderer_context["response"].__dir__(), flush=True)
+			#print(renderer_context["view"].__dir__(), flush=True)
+			items_plural = "products" 
+			additional_css_files = []
+			active_main_navbar = "products"
+			title = "Products List"
+			item_url_name = "frontend:product-detail"
 
-		paginator = renderer_context["view"].paginator
-		#print(paginator.__dir__(), flush=True)
-
-		context = {
-		"response":response,
-		"item_url_name":item_url_name,
-		"items_plural" : items_plural, 
-		"additional_css_files": additional_css_files,
-		"active_main_navbar": active_main_navbar, "title": title,
-		"paginator":paginator
-		}
-		try:
 			paginator = renderer_context["view"].paginator
-			context["paginator"] = paginator
-		except Exception as e:
-			pass
-		#print(context["paginator"],flush=True)
-		return context
+			#print(paginator.__dir__(), flush=True)
 
+			context = {
+			"response":response,
+			"item_url_name":item_url_name,
+			"items_plural" : items_plural, 
+			"additional_css_files": additional_css_files,
+			"active_main_navbar": active_main_navbar, "title": title,
+			"paginator":paginator
+			}
+			try:
+				paginator = renderer_context["view"].paginator
+				context["paginator"] = paginator
+			except Exception as e:
+				pass
+			#print(context["paginator"],flush=True)
+			return context
+	return customRenderer
 
 
 class ProductViewSet(_ProductViewSet):
-	renderer_classes = [JSONRenderer, customRenderer]
+	#renderer_classes = [JSONRenderer, customRenderer]
 	template_name = 'base_layout.html'
 
 
@@ -82,10 +85,11 @@ class ProductViewSet(_ProductViewSet):
 			return ["resources/products/list.html"]
 		if self.action == "retrieve":
 			return ["resources/products/retrieve.html"]
-			
-
 		return ["base_layout.html"]
-
+	def get_renderers(self):
+		customRenderer = generate_custom_renderer(1,1,1)
+		renderers = [JSONRenderer, customRenderer]
+		return [renderer() for renderer in renderers]
 
 
 class OrderViewSet(_OrderViewSet):
