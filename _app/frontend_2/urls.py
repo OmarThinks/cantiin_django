@@ -38,9 +38,13 @@ router.register('comments', CommentViewSet)
 
 
 
+
+
+
+
 urlpatterns = [
    path('base/', base_page),
-   path('base/', include(router.urls)),
+   path('base/', include((router.urls,"cantiin_frontend"), namespace="frontend")),
 
 ]
 

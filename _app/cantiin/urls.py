@@ -35,8 +35,10 @@ router.register('comments', CommentViewSet)
 
 
 
+
+
 urlpatterns = [
-    path('api/', include(router.urls)),
+    path('api/', include((router.urls,"cantiin"), namespace="api")),
 ]
 
 """
