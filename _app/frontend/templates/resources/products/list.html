@@ -160,40 +160,13 @@ a
 
 
 {% block content %}
-This is list
 
-{% if response.data.results %}
-{{ response.data.results }}
-{% else %}
-No results
-{% endif %}
-
-
-
-{% if view %}
-I see view
-{% else %}
-No View
-{% endif %}
-
-
-{% if response %}
-Found response
-{% else %}
-No Response
-{% endif %}
-
-{% if renderer_context %}
-Found renderer_context
-{% else %}
-No renderer_context
-{% endif %}
 
 
 <div class="items_container" style="padding: 2%;">
 
 
-	{% for product in response.data.results %}
+	{% for product in response.results %}
 		
 	 <div class="product_card">
 		<a class="product_name_grid" 

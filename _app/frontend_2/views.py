@@ -39,11 +39,31 @@ class UserViewSet(_UserViewSet):
 
 class customRenderer(TemplateHTMLRenderer):
 	def get_template_context(self, data, renderer_context):
-		print(self.__dir__(),flush=True)
-		print(data.__dir__(),flush=True)
-		print(renderer_context["response"].data,flush=True)
-		return {"view":"view", 
-		"response":renderer_context["response"] }
+		response = data
+		#print(self, flush=True)
+		#print(data, flush=True)
+		#print(renderer_context["response"].__dir__(), flush=True)
+		#print(renderer_context["view"].__dir__(), flush=True)
+
+
+
+		items_plural = "products" 
+		additional_css_files = []
+		active_main_navbar = "products"
+		title = "Products List"
+		item_url_name = "product-detail"
+
+		paginator = renderer_context["view"].paginator
+		print(paginator.__dir__(), flush=True)
+
+		context = {"response":response,"item_url_name":item_url_name,
+		"items_plural" : items_plural, 
+		"additional_css_files": additional_css_files,
+		"active_main_navbar": active_main_navbar, "title": title,
+		"paginator":paginator
+		}
+		
+		return context
 
 
 
