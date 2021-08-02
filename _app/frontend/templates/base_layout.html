@@ -74,8 +74,63 @@
 
 	<main class="wrapper">
 		<h1 id="page_h1">{{ title }}:</h1>
+
+	<div class="pagination_nav">
+	  {% if paginator %}
+	    <nav>
+	      {% get_pagination_html paginator %}
+	    </nav>
+	  {% endif %}
+	</div>
+
+
+
+<!--
+
+
+	<div class="pagination_nav">
+	  
+	    <nav>
+	      <ul class="pagination" style="margin: 5px 0 10px 0">
+  
+    <li class="disabled">
+      <a href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+  
+        <li class="active">
+          <a href="http://127.0.0.1:8000/base/products/">1</a>
+        </li>
+
+        <li>
+          <a href="http://127.0.0.1:8000/base/products/?page=2">2</a>
+        </li>
+    <li>
+      <a href="http://127.0.0.1:8000/base/products/?page=2" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  
+</ul>
+
+	    </nav>
+	  
+	</div>
+
+-->
+
 		{% block content %}
 		{% endblock %}
+
+	<div class="pagination_nav">
+	  {% if paginator %}
+	    <nav>
+	      {% get_pagination_html paginator %}
+	    </nav>
+	  {% endif %}
+	</div>
+
 	</main>
 
 
