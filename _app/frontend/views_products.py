@@ -19,7 +19,7 @@ def products_list(request):
 	additional_css_files = []
 	active_main_navbar = "products"
 	title = "Products List"
-	item_url_name = "product-detail"
+	item_url_name = 'product-detail'
 	return abstract_list_renderer(request, list_template_link, 
 		items, items_plural, additional_css_files, 
 		active_main_navbar, title, item_url_name)

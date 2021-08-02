@@ -164,6 +164,9 @@ a
 
 
 {% block content %}
+<div>
+
+</div>
 
 	<div class="pagination_nav">
 	  {% if paginator %}
@@ -238,7 +241,7 @@ a
 		</div>
 
 			<a class="product_details_link_grid" 
-				href="{% url item_url_name pk=product.id %}">
+			href="{% url item_url_name pk=product.id %}">
 				View Product Details
 			</a>
 	 </div>

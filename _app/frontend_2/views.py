@@ -48,7 +48,7 @@ class customRenderer(TemplateHTMLRenderer):
 		additional_css_files = []
 		active_main_navbar = "products"
 		title = "Products List"
-		item_url_name = "product-detail"
+		item_url_name = "frontend:product-detail"
 
 		paginator = renderer_context["view"].paginator
 		#print(paginator.__dir__(), flush=True)
