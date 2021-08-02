@@ -1,4 +1,8 @@
 {% extends "base_layout.html" %}
+{% load static %}
+{% load i18n %}
+{% load rest_framework %}
+
 {% block additional_css_content %}
 <style type="text/css">
 
@@ -161,9 +165,19 @@ a
 
 {% block content %}
 
+	<div class="container-fluid">
+	  {% if paginator %}
+	    <nav>
+	      {% get_pagination_html paginator %}
+	    </nav>
+	  {% endif %}
+	</div>
+
+
 
 
 <div class="items_container" style="padding: 2%;">
+
 
 
 	{% for product in response.results %}
