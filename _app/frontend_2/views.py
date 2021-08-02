@@ -44,9 +44,6 @@ class customRenderer(TemplateHTMLRenderer):
 		#print(data, flush=True)
 		#print(renderer_context["response"].__dir__(), flush=True)
 		#print(renderer_context["view"].__dir__(), flush=True)
-
-
-
 		items_plural = "products" 
 		additional_css_files = []
 		active_main_navbar = "products"
@@ -54,15 +51,22 @@ class customRenderer(TemplateHTMLRenderer):
 		item_url_name = "product-detail"
 
 		paginator = renderer_context["view"].paginator
-		print(paginator.__dir__(), flush=True)
+		#print(paginator.__dir__(), flush=True)
 
-		context = {"response":response,"item_url_name":item_url_name,
+		context = {
+		"response":response,
+		"item_url_name":item_url_name,
 		"items_plural" : items_plural, 
 		"additional_css_files": additional_css_files,
 		"active_main_navbar": active_main_navbar, "title": title,
 		"paginator":paginator
 		}
-		
+		try:
+			paginator = renderer_context["view"].paginator
+			context["paginator"] = paginator
+		except Exception as e:
+			pass
+		#print(context["paginator"],flush=True)
 		return context
 
 
@@ -73,10 +77,12 @@ class ProductViewSet(_ProductViewSet):
 
 
 	def get_template_names(self):
-		#print(self.response.data,flush=True)
+		print(self.action,flush=True)
 		if self.action == "list":
-			#return ["list_test.html"]
 			return ["resources/products/list.html"]
+		if self.action == "retrieve":
+			return ["resources/products/retrieve.html"]
+			
 
 		return ["base_layout.html"]
 

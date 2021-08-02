@@ -6,7 +6,7 @@
 
 <h1>Product - {{ product.name }}</h1>
 
-<form action="{% url 'product-detail-test' id=product.pk %}" method="POST">
+<form action="{% url 'product-detail' pk=product.id %}" method="POST">
     {% csrf_token %}
     {% render_form serializer %}
     <input type="submit" value="Save">

@@ -191,6 +191,7 @@ h1,h2, h3
 .pagination_nav a{
 	text-decoration: none;
 	color: black;
+	font-weight: bold;
 }
 
 .pagination>li>a
