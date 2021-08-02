@@ -193,7 +193,7 @@ h1,h2, h3
 	color: black;
 }
 
-.pagination_nav li
+.pagination>li>a
 {
 	display: flex;
 	justify-content: center;
@@ -205,18 +205,19 @@ h1,h2, h3
 	font-size: 1.3em;
 	border: solid 1px black;
 	background-color: lightyellow;
-
 }
 
-.pagination_nav li:hover
+
+
+.pagination>li>a:hover
 {background-color: lightgreen;}
 
-.pagination_nav  li.disabled
-{background-color: lightgrey;}
 
-.pagination_nav li.active
+
+.pagination>.active>a,.pagination>.active>a:hover 
 {background-color: cyan;}
 
 
 
-
+.pagination>.disabled>a
+{cursor: not-allowed;pointer-events: none;background: lightgrey;}
