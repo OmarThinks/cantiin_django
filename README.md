@@ -1,3 +1,7 @@
+[![CircleCI](https://circleci.com/gh/OmarThinks/cantiin_django.svg?style=svg)](https://circleci.com/gh/OmarThinks/cantiin_django)
+[![CircleCI Build Status](https://circleci.com/gh/OmarThinks/cantiin_django.svg?style=shield "CircleCI Build Status")](https://circleci.com/gh/OmarThinks/cantiin_django) 
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/OmarThinks/CircleCI-hello-world/master/LICENSE) 
+
 # cantiin_django
 An ecommerce RESTful API using django and Django REST Framework.
 
