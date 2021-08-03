@@ -44,12 +44,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'accounts',
-    'cantiin',
-    'frontend',
     'rest_framework',
     'django_filters',
     'djoser',
+    'accounts',
+    'cantiin',
+    'frontend',
+    "testing",
 ]
 
 
