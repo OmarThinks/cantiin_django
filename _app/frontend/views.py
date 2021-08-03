@@ -1,31 +1,14 @@
-
-
-
-
-
-
 from django.shortcuts import render
 
-# Create your views here.
+from cantiin.views import (
+	UserViewSet as _UserViewSet, ProductViewSet as _ProductViewSet,
+	OrderViewSet as _OrderViewSet, CommentViewSet as _CommentViewSet)
 
-import json
-
-from cantiin.views import UserViewSet as _UserViewSet
-from cantiin.views import ProductViewSet as _ProductViewSet
-from cantiin.views import OrderViewSet as _OrderViewSet
-from cantiin.views import CommentViewSet as _CommentViewSet
 from rest_framework.renderers import (
-	TemplateHTMLRenderer,BrowsableAPIRenderer,JSONRenderer,
-	 StaticHTMLRenderer)
-from rest_framework.views import APIView
-
-from frontend.abstract_renderers import abstract_list_renderer
-from django.http.response import HttpResponseBase
-from rest_framework.response import Response
-from django.utils.cache import cc_delim_re, patch_vary_headers
+	TemplateHTMLRenderer,JSONRenderer)
 
 
-from rest_framework.views import APIView
+
 
 
 
