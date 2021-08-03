@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-vpx#*q#5n4ih&w*-y#wsy&ed+hz%1t0w51cs!*!-dr@i7!kjyc
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["cantiin.com","www.cantiin.com"]
 
 
 
