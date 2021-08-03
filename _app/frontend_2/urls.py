@@ -13,6 +13,8 @@ Including another URLconf
 	1. Import the include() function: from django.urls import include, path
 	2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+"""
+
 from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls import url
@@ -21,9 +23,9 @@ from django.conf.urls import url
 
 from rest_framework import routers
 
-from .views import (
+from frontend_2.views import (
     UserViewSet, ProductViewSet, OrderViewSet, CommentViewSet)
-from .views import (base_page)
+from frontend_2.views import (base_page)
 
 
 # Routers provide an easy way of automatically determining the URL conf.
@@ -48,3 +50,4 @@ urlpatterns = [
 
 ]
 
+"""

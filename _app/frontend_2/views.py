@@ -47,8 +47,8 @@ def generate_custom_renderer(
 			item_url_name= item_url_name):
 			response = dict(data)
 			#print(self, flush=True)
-			print(response, flush=True)
-			print(type(response), flush=True)
+			#print(response, flush=True)
+			#print(type(response), flush=True)
 			#print(renderer_context["response"].__dir__(), flush=True)
 			#print(renderer_context["view"].__dir__(), flush=True)
 			items_plural = items_plural 
