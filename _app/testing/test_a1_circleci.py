@@ -14,7 +14,7 @@ pytest -rP --junitxml=test-reports/junit.xml --html=test-reports/pytest_report.h
 
 class CircleCITestCase(unittest.TestCase):
     def test_001(self):
-        self.assertEqual(1,1)
+        self.assertEqual(1,2)
         print("test_001: testing CircleCI")
 
 
