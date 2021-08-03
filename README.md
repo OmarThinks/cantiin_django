@@ -23,6 +23,10 @@ https://www.cantiin.com
 3. Django REST Framework
 4. Djoser (Header Auth)
 5. django_filter
+6. Jinja
+7. unittest
+8. pytest
+9. CircleCI
 
 
 # B) How to Run:
