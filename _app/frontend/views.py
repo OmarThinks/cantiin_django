@@ -109,4 +109,21 @@ class CommentViewSet(_CommentViewSet):
 
 
 
+### Authentication
+
+
+from djoser.serializers import UserCreateSerializer
+from rest_framework.views import APIView
+from rest_framework.response import Response
+
+
+class SignupView(APIView):
+    renderer_classes = [TemplateHTMLRenderer]
+    template_name = 'resources/auth/createuser.html'
+
+    def get(self, request):
+        serializer = UserCreateSerializer()
+        return Response({'serializer': serializer, "title":"Sign Up"})
+
+
 

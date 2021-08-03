@@ -20,7 +20,8 @@ from django.conf.urls import url
 
 
 from rest_framework import routers
-from .views import (homepage, UserViewSet, ProductViewSet, OrderViewSet, CommentViewSet)
+from .views import (homepage, UserViewSet, ProductViewSet, OrderViewSet, CommentViewSet,
+	SignupView)
 
 
 # Routers provide an easy way of automatically determining the URL conf.
@@ -42,6 +43,7 @@ router.register('comments', CommentViewSet)
 urlpatterns = [
 	path('', homepage),
    	path('', include((router.urls,"cantiin_frontend"), namespace="frontend")),
+	path('signup/', SignupView.as_view()),
 
 ]
 

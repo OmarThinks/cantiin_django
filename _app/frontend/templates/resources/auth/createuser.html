@@ -1,0 +1,31 @@
+{% extends "base_layout.html" %}
+{% load static %}
+{% load i18n %}
+{% load rest_framework %}
+
+
+
+
+{% block content %}
+
+
+
+
+<form action="/api/auth/users/" method="POST">
+    {% csrf_token %}
+    {% render_form serializer %}
+    <input type="submit" value="Save">
+</form>
+
+
+<script type="text/javascript">
+	
+</script>
+
+
+
+
+
+{% endblock %}
+
+
