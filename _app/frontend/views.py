@@ -1,16 +1,5 @@
-"""from django.shortcuts import render
 
 
-def homepage(request):
-	#return HttpResponse("Home Page")
-	return render(request, "pages/home.html",
-		{
-			"active_main_navbar": "home",
-			"title": "Home"
-		}			
-	)
-
-"""
 
 
 
@@ -37,6 +26,22 @@ from django.utils.cache import cc_delim_re, patch_vary_headers
 
 
 from rest_framework.views import APIView
+
+
+
+
+
+def homepage(request):
+	#return HttpResponse("Home Page")
+	return render(request, "pages/home.html",
+		{
+			"active_main_navbar": "home",
+			"title": "Home"
+		}			
+	)
+
+
+
 
 
 def base_page(request):

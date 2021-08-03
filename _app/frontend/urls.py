@@ -70,6 +70,7 @@ from django.conf.urls import url
 
 
 from rest_framework import routers
+from .views import (homepage)
 
 from .views import (
     UserViewSet, ProductViewSet, OrderViewSet, CommentViewSet)
@@ -93,8 +94,8 @@ router.register('comments', CommentViewSet)
 
 
 urlpatterns = [
-   path('base/', base_page),
-   path('', include((router.urls,"cantiin_frontend"), namespace="frontend")),
+	path('', homepage),
+   	path('', include((router.urls,"cantiin_frontend"), namespace="frontend")),
 
 ]
 
