@@ -56,7 +56,7 @@ def base_page(request):
 
 class UserViewSet(_UserViewSet):
 	renderer_classes = [TemplateHTMLRenderer]
-	template_name = 'base.html'
+	template_name = 'base_layout.html'
 
 
 def generate_custom_renderer(
@@ -123,11 +123,11 @@ class ProductViewSet(_ProductViewSet):
 
 class OrderViewSet(_OrderViewSet):
 	renderer_classes = [TemplateHTMLRenderer]
-	template_name = 'base.html'
+	template_name = 'base_layout.html'
 
 class CommentViewSet(_CommentViewSet):
 	renderer_classes = [TemplateHTMLRenderer]
-	template_name = 'base.html'
+	template_name = 'base_layout.html'
 
 
 
