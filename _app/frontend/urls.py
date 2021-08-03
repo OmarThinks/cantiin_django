@@ -70,11 +70,7 @@ from django.conf.urls import url
 
 
 from rest_framework import routers
-from .views import (homepage)
-
-from .views import (
-    UserViewSet, ProductViewSet, OrderViewSet, CommentViewSet)
-from .views import (base_page)
+from .views import (homepage, UserViewSet, ProductViewSet, OrderViewSet, CommentViewSet)
 
 
 # Routers provide an easy way of automatically determining the URL conf.
