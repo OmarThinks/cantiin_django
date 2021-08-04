@@ -11,7 +11,7 @@
 
 
 
-<form action="/api/auth/users/" method="POST">
+<form method="POST">
     {% csrf_token %}
     {% render_form serializer %}
     <input type="submit" value="Save">

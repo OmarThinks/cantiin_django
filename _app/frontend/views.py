@@ -98,7 +98,7 @@ class UserViewSet(_UserViewSet):
 
 def generate_custom_renderer(
 	items_plural, active_main_navbar, title,
-	additional_css_files=[], item_url_name="", just_renderer_context=False):
+	additional_css_files=[], item_url_name=""):
 	class customRenderer(TemplateHTMLRenderer):
 		def get_template_context(self, data, renderer_context, 
 			items_plural= items_plural, active_main_navbar=active_main_navbar,
@@ -227,12 +227,44 @@ class UserRenderer(BrowsableAPIRenderer):
 		
 
 
+
+
+
+def genrateDjoserRenderer(title):
+	items_plural ="users"
+	active_main_navbar="login"
+	renderer = generate_custom_renderer(
+		items_plural=items_plural, active_main_navbar=active_main_navbar, 
+		title=title)
+	class MyRenderer(renderer):
+		def get_template_context(self, data, renderer_context, 
+			items_plural= items_plural, active_main_navbar=active_main_navbar,
+			title=title):
+			
+			context = renderer.get_template_context(self, data, 
+				renderer_context, 
+			items_plural= items_plural, active_main_navbar=active_main_navbar,
+			title=title)
+			
+			return context
+	return MyRenderer
+			
+
+
+
+
+
 class DjoserUserViewSet(_DjoserUserViewSet):
-	template_name = 'base_layout.html'
+	renderer_classes = [JSONRenderer,genrateDjoserRenderer("Sign Up")]
+	def create(self, request, *args, **kwargs):
+		response = _DjoserUserViewSet.create(
+			self, request, *args, **kwargs)
+		return response
+	template_name = 'resources/auth/createuser.html'
 	#template_name = 'base_layout.html'
 	"""renderer_classes = [JSONRenderer, 
 		generate_custom_renderer(
 		items_plural="users", active_main_navbar="", title="User",
 		additional_css_files=[], item_url_name="", just_renderer_context=True)]"""
-	renderer_classes = [UserRenderer]
+	#renderer_classes = [UserRenderer]
 

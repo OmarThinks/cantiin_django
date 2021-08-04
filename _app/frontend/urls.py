@@ -32,7 +32,7 @@ router.register('users', UserViewSet)
 router.register('products', ProductViewSet)
 router.register('orders', OrderViewSet)
 router.register('comments', CommentViewSet)
-router.register('userauth', DjoserUserViewSet)
+router.register('auth', DjoserUserViewSet)
 #router.register('products', ProductViewSetMod)
 
 
