@@ -14,6 +14,49 @@ from rest_framework.renderers import (
 
 
 
+class ProductViewSetMod(_ProductViewSet):
+	#renderer_classes = [JSONRenderer, customRenderer]
+	template_name = 'base_layout.html'
+
+	renderer_classes = [JSONRenderer,BrowsableAPIRenderer]
+
+	"""def get_template_names(self):
+		print(self.action,flush=True)
+		if self.action == "list":
+			return ["resources/products/list.html"]
+		if self.action == "retrieve":
+			return ["resources/products/retrieve.html"]
+		return ["base_layout.html"]"""
+	"""def get_renderers(self):
+		customRenderer = generate_custom_renderer(
+			items_plural="products",active_main_navbar= "products",
+			title="Product Details", additional_css_files=[], 
+			item_url_name="frontend:product-detail")
+		renderers = [JSONRenderer, customRenderer]
+		return [renderer() for renderer in renderers]"""
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 def homepage(request):
 	#return HttpResponse("Home Page")
 	return render(request, "pages/home.html",
@@ -99,6 +142,16 @@ class ProductViewSet(_ProductViewSet):
 			item_url_name="frontend:product-detail")
 		renderers = [JSONRenderer, customRenderer]
 		return [renderer() for renderer in renderers]
+
+
+
+
+
+
+
+
+
+
 
 
 class OrderViewSet(_OrderViewSet):

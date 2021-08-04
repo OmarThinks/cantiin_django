@@ -21,7 +21,7 @@ from django.conf.urls import url
 
 from rest_framework import routers
 from .views import (homepage, UserViewSet, ProductViewSet, OrderViewSet, CommentViewSet,
-	DjoserUserViewSet)
+	DjoserUserViewSet,ProductViewSetMod)
 
 
 # Routers provide an easy way of automatically determining the URL conf.
@@ -29,10 +29,11 @@ from .views import (homepage, UserViewSet, ProductViewSet, OrderViewSet, Comment
 
 router = routers.DefaultRouter()
 router.register('users', UserViewSet)
-router.register('products', ProductViewSet)
+#router.register('products', ProductViewSet)
 router.register('orders', OrderViewSet)
 router.register('comments', CommentViewSet)
 router.register('userauth', DjoserUserViewSet)
+router.register('products', ProductViewSetMod)
 
 
 
