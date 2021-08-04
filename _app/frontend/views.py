@@ -5,7 +5,7 @@ from cantiin.views import (
 	OrderViewSet as _OrderViewSet, CommentViewSet as _CommentViewSet)
 
 from rest_framework.renderers import (
-	TemplateHTMLRenderer,JSONRenderer)
+	TemplateHTMLRenderer,JSONRenderer, BrowsableAPIRenderer)
 
 
 
@@ -35,12 +35,16 @@ class UserViewSet(_UserViewSet):
 
 def generate_custom_renderer(
 	items_plural, active_main_navbar, title,
-	additional_css_files=[], item_url_name=""):
+	additional_css_files=[], item_url_name="", just_renderer_context=False):
 	class customRenderer(TemplateHTMLRenderer):
 		def get_template_context(self, data, renderer_context, 
 			items_plural= items_plural, active_main_navbar=active_main_navbar,
 			title=title, additional_css_files= additional_css_files,
-			item_url_name= item_url_name):
+			item_url_name= item_url_name, just_renderer_context= just_renderer_context):
+			print(renderer_context,flush=True)
+
+			if just_renderer_context:
+				return TemplateHTMLRenderer.get_template_context(self,data,renderer_context)
 			response = dict(data)
 			#print(self, flush=True)
 			#print(response, flush=True)
@@ -111,19 +115,37 @@ class CommentViewSet(_CommentViewSet):
 
 ### Authentication
 
-
+"""
 from djoser.serializers import UserCreateSerializer
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
 
 class SignupView(APIView):
-    renderer_classes = [TemplateHTMLRenderer]
-    template_name = 'resources/auth/createuser.html'
+	renderer_classes = [TemplateHTMLRenderer]
+	template_name = 'resources/auth/createuser.html'
 
-    def get(self, request):
-        serializer = UserCreateSerializer()
-        return Response({'serializer': serializer, "title":"Sign Up"})
+	def get(self, request):
+		serializer = UserCreateSerializer()
+		return Response({'serializer': serializer, "title":"Sign Up"})
+
+"""
 
 
+
+
+from djoser.views import UserViewSet as _DjoserUserViewSet
+from rest_framework.views import APIView
+from rest_framework.response import Response
+
+
+class DjoserUserViewSet(_DjoserUserViewSet):
+	template_name = 'base_layout.html'
+	#template_name = 'base_layout.html'
+	"""renderer_classes = [JSONRenderer, 
+		generate_custom_renderer(
+		items_plural="users", active_main_navbar="", title="User",
+		additional_css_files=[], item_url_name="", just_renderer_context=True)]"""
+	renderer_classes = [JSONRenderer,generate_custom_renderer(
+		items_plural="users", active_main_navbar="", title="User", just_renderer_context=True)]
 
