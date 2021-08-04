@@ -36,7 +36,9 @@ class ProductViewSetMod(_ProductViewSet):
 		print(context["request"].__dict__, flush=True)
 		print(context["view"].__dict__, flush=True)
 		print(context["view"]._paginator.__dict__, flush=True)
+		print(context["view"].get(context["request"]).__dict__, flush=True)
 		return context
+
 
 	"""def get_template_names(self):
 		print(self.action,flush=True)
@@ -101,18 +103,26 @@ def generate_custom_renderer(
 		def get_template_context(self, data, renderer_context, 
 			items_plural= items_plural, active_main_navbar=active_main_navbar,
 			title=title, additional_css_files= additional_css_files,
-			item_url_name= item_url_name, just_renderer_context= just_renderer_context):
-			print(self.__dir__(),flush=True)
-			print(data,flush=True)
-			print(renderer_context,flush=True)
+			item_url_name= item_url_name):
+			
+
+			#print(self.__dir__(),flush=True)
+			#print(renderer_context,flush=True)
+			#  The only userful thing in renderer_context is ["view"]
+			print(renderer_context["view"].__dict__,flush=True)
+
+			
+			#print(renderer_context["request"].__dict__,flush=True)
+			#print(renderer_context["view"].get(renderer_context["request"]).__dict__, flush=True)
 
 			#if just_renderer_context:
 			#	return TemplateHTMLRenderer.get_template_context(self,data,renderer_context)
-			response = dict(data)
+			response = renderer_context["view"].get(renderer_context["request"]).data
+			
 			#print(self, flush=True)
-			print(response, flush=True)
+			#print(response, flush=True)
 			#print(type(response), flush=True)
-			#print(renderer_context["response"].__dir__(), flush=True)
+			#print(renderer_context["response"].__dict__, flush=True)
 			#print(renderer_context["view"].__dir__(), flush=True)
 			items_plural = items_plural 
 			additional_css_files = additional_css_files
@@ -158,7 +168,7 @@ class ProductViewSet(_ProductViewSet):
 			items_plural="products",active_main_navbar= "products",
 			title="Product Details", additional_css_files=[], 
 			item_url_name="frontend:product-detail")
-		renderers = [JSONRenderer, customRenderer]
+		renderers = [customRenderer]
 		return [renderer() for renderer in renderers]
 
 

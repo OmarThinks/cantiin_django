@@ -29,11 +29,11 @@ from .views import (homepage, UserViewSet, ProductViewSet, OrderViewSet, Comment
 
 router = routers.DefaultRouter()
 router.register('users', UserViewSet)
-#router.register('products', ProductViewSet)
+router.register('products', ProductViewSet)
 router.register('orders', OrderViewSet)
 router.register('comments', CommentViewSet)
 router.register('userauth', DjoserUserViewSet)
-router.register('products', ProductViewSetMod)
+#router.register('products', ProductViewSetMod)
 
 
 
