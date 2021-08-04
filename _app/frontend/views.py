@@ -15,10 +15,9 @@ from rest_framework.renderers import (
 
 
 class ProductViewSetMod(_ProductViewSet):
-	#renderer_classes = [JSONRenderer, customRenderer]
-	template_name = 'base_layout.html'
-
-	renderer_classes = [JSONRenderer,BrowsableAPIRenderer]
+	def get_renderers(self):
+		renderers = [JSONRenderer,BrowsableAPIRenderer]
+		return [renderer() for renderer in renderers]
 
 	"""def get_template_names(self):
 		print(self.action,flush=True)
