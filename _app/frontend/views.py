@@ -10,62 +10,6 @@ from rest_framework.renderers import (
 
 
 
-def genrateMyCustomRenderer(template_name):
-	class MyRenderer(BrowsableAPIRenderer):
-		template = template_name
-	return MyRenderer
-			
-
-
-
-class ProductViewSetMod(_ProductViewSet):
-	def get_renderers(self):
-		print(self.__dict__, flush=True)
-		if self.action == "list":
-			template_name = "resources/products/list.html"
-		if self.action == "retrieve":
-			template_name = "resources/products/retrieve.html"
-		
-		renderers = [genrateMyCustomRenderer(template_name)]
-		return [renderer() for renderer in renderers]
-	
-	def get_renderer_context(self):
-		context = APIView.get_renderer_context(self)
-		print(context, flush=True)
-		#{'view': <frontend.views.ProductViewSetMod object at 0x0000020B1ECC59A0>, 'args': (), 'kwargs': {}, 'request': <rest_framework.request.Request: GET '/products/'>}
-		print(context["request"].__dict__, flush=True)
-		print(context["view"].__dict__, flush=True)
-		print(context["view"]._paginator.__dict__, flush=True)
-		print(context["view"].get(context["request"]).__dict__, flush=True)
-		return context
-
-
-	"""def get_template_names(self):
-		print(self.action,flush=True)
-		if self.action == "list":
-			return ["resources/products/list.html"]
-		if self.action == "retrieve":
-			return ["resources/products/retrieve.html"]
-		return ["base_layout.html"]"""
-	"""def get_renderers(self):
-		customRenderer = generate_custom_renderer(
-			items_plural="products",active_main_navbar= "products",
-			title="Product Details", additional_css_files=[], 
-			item_url_name="frontend:product-detail")
-		renderers = [JSONRenderer, customRenderer]
-		return [renderer() for renderer in renderers]"""
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -189,6 +133,110 @@ class OrderViewSet(_OrderViewSet):
 class CommentViewSet(_CommentViewSet):
 	renderer_classes = [TemplateHTMLRenderer]
 	template_name = 'base_layout.html'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+"""
+
+Deprecated
+
+
+"""
+
+
+
+
+
+
+
+
+
+
+def genrateMyCustomRenderer(template_name):
+	class MyRenderer(BrowsableAPIRenderer):
+		template = template_name
+	return MyRenderer
+			
+
+
+
+class ProductViewSetMod(_ProductViewSet):
+	def get_renderers(self):
+		print(self.__dict__, flush=True)
+		if self.action == "list":
+			template_name = "resources/products/list.html"
+		if self.action == "retrieve":
+			template_name = "resources/products/retrieve.html"
+		
+		renderers = [genrateMyCustomRenderer(template_name)]
+		return [renderer() for renderer in renderers]
+	
+	def get_renderer_context(self):
+		context = APIView.get_renderer_context(self)
+		print(context, flush=True)
+		#{'view': <frontend.views.ProductViewSetMod object at 0x0000020B1ECC59A0>, 'args': (), 'kwargs': {}, 'request': <rest_framework.request.Request: GET '/products/'>}
+		print(context["request"].__dict__, flush=True)
+		print(context["view"].__dict__, flush=True)
+		print(context["view"]._paginator.__dict__, flush=True)
+		print(context["view"].get(context["request"]).__dict__, flush=True)
+		return context
+
+
+	"""def get_template_names(self):
+		print(self.action,flush=True)
+		if self.action == "list":
+			return ["resources/products/list.html"]
+		if self.action == "retrieve":
+			return ["resources/products/retrieve.html"]
+		return ["base_layout.html"]"""
+	"""def get_renderers(self):
+		customRenderer = generate_custom_renderer(
+			items_plural="products",active_main_navbar= "products",
+			title="Product Details", additional_css_files=[], 
+			item_url_name="frontend:product-detail")
+		renderers = [JSONRenderer, customRenderer]
+		return [renderer() for renderer in renderers]"""
+
+
+
+
+
+
+
+
 
 
 
