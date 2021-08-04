@@ -41,13 +41,15 @@ def generate_custom_renderer(
 			items_plural= items_plural, active_main_navbar=active_main_navbar,
 			title=title, additional_css_files= additional_css_files,
 			item_url_name= item_url_name, just_renderer_context= just_renderer_context):
+			print(self.__dir__(),flush=True)
+			print(data,flush=True)
 			print(renderer_context,flush=True)
 
-			if just_renderer_context:
-				return TemplateHTMLRenderer.get_template_context(self,data,renderer_context)
+			#if just_renderer_context:
+			#	return TemplateHTMLRenderer.get_template_context(self,data,renderer_context)
 			response = dict(data)
 			#print(self, flush=True)
-			#print(response, flush=True)
+			print(response, flush=True)
 			#print(type(response), flush=True)
 			#print(renderer_context["response"].__dir__(), flush=True)
 			#print(renderer_context["view"].__dir__(), flush=True)
@@ -139,6 +141,11 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 
 
+class UserRenderer(BrowsableAPIRenderer):
+	template = "base_layout.html"
+		
+
+
 class DjoserUserViewSet(_DjoserUserViewSet):
 	template_name = 'base_layout.html'
 	#template_name = 'base_layout.html'
@@ -146,6 +153,5 @@ class DjoserUserViewSet(_DjoserUserViewSet):
 		generate_custom_renderer(
 		items_plural="users", active_main_navbar="", title="User",
 		additional_css_files=[], item_url_name="", just_renderer_context=True)]"""
-	renderer_classes = [JSONRenderer,generate_custom_renderer(
-		items_plural="users", active_main_navbar="", title="User", just_renderer_context=True)]
+	renderer_classes = [UserRenderer]
 
