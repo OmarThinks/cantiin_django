@@ -21,9 +21,14 @@ def genrateMyCustomRenderer(template_name):
 class ProductViewSetMod(_ProductViewSet):
 	def get_renderers(self):
 		print(self.__dict__, flush=True)
+		if self.action == "list":
+			template_name = "resources/products/list.html"
+		if self.action == "retrieve":
+			template_name = "resources/products/retrieve.html"
 		
-		renderers = [genrateMyCustomRenderer("base_layout.html")]
+		renderers = [genrateMyCustomRenderer(template_name)]
 		return [renderer() for renderer in renderers]
+	
 	def get_renderer_context(self):
 		context = APIView.get_renderer_context(self)
 		print(context, flush=True)
