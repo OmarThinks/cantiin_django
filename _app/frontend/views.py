@@ -10,14 +10,19 @@ from rest_framework.renderers import (
 
 
 
-
+def genrateMyCustomRenderer(template_name):
+	class MyRenderer(BrowsableAPIRenderer):
+		template = template_name
+	return MyRenderer
+			
 
 
 
 class ProductViewSetMod(_ProductViewSet):
 	def get_renderers(self):
 		print(self.__dict__, flush=True)
-		renderers = [BrowsableAPIRenderer]
+		
+		renderers = [genrateMyCustomRenderer("base_layout.html")]
 		return [renderer() for renderer in renderers]
 	def get_renderer_context(self):
 		context = APIView.get_renderer_context(self)
