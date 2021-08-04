@@ -16,8 +16,17 @@ from rest_framework.renderers import (
 
 class ProductViewSetMod(_ProductViewSet):
 	def get_renderers(self):
-		renderers = [JSONRenderer,BrowsableAPIRenderer]
+		print(self.__dict__, flush=True)
+		renderers = [BrowsableAPIRenderer]
 		return [renderer() for renderer in renderers]
+	def get_renderer_context(self):
+		context = APIView.get_renderer_context(self)
+		print(context, flush=True)
+		#{'view': <frontend.views.ProductViewSetMod object at 0x0000020B1ECC59A0>, 'args': (), 'kwargs': {}, 'request': <rest_framework.request.Request: GET '/products/'>}
+		print(context["request"].__dict__, flush=True)
+		print(context["view"].__dict__, flush=True)
+		print(context["view"]._paginator.__dict__, flush=True)
+		return context
 
 	"""def get_template_names(self):
 		print(self.action,flush=True)
