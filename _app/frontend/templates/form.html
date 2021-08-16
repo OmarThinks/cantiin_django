@@ -1,0 +1,104 @@
+{% extends "base_layout.html" %}
+{% block title %}Login{% endblock %} 
+{% block active_main_navbar %}login{% endblock %}
+{% load rest_framework %}
+
+{% block content %}
+
+
+<form id="form">
+    {% csrf_token %}
+    {% render_form serializer template_pack='rest_framework/vertical' %}
+    <button type="submit" class="btn btn-default">Sign in</button>
+</form>
+
+<p id="err_message"></p>
+
+
+
+
+
+
+<script>
+   function toSubmit(e){
+      alert('I will not submit');
+      return false;
+   }
+</script>
+
+
+<script type="text/javascript">
+
+
+function form_data_to_request_settings()
+{
+    let all_inputs = document.getElementsByTagName('input');
+    let inputs = {};
+    let headers = {}
+    for(i in all_inputs)
+    {
+      let input = all_inputs[i];
+      if(typeof(input)!=typeof({"1":2})){continue;}
+      if (input.type == "hidden")
+      {
+        headers["X-CSRFToken"]=input.value;
+        continue;
+      }
+      inputs[input.name] = input.value;
+    }
+
+
+    let method = "{{ method }}";
+    //console.log(method);
+    let request_to = "{{ request_to }}";
+    //console.log(request_to);
+    let next = "{{ next }}";
+    //console.log(next);
+
+    var settings = {
+      "url": request_to,
+      "method": method,
+      "timeout": 0,
+      "headers": {
+        "Content-Type": "application/json",
+        "X-CSRFToken":headers["X-CSRFToken"]
+      },
+      "data": JSON.stringify(inputs),
+    };
+    return settings;
+}
+
+
+
+function handle_form(event)
+{
+    event.preventDefault();
+    let request_settings = form_data_to_request_settings();
+    console.log(request_settings);
+
+
+
+    $.ajax(request_settings)
+    .done((res)=>{console.log(res);})
+    .catch((err)=>{console.log(err);});
+
+}
+
+
+
+
+
+
+
+const form = document.getElementById('form');
+form.addEventListener('submit', handle_form);
+
+
+
+</script>
+
+
+
+
+
+{% endblock %}

@@ -6,12 +6,18 @@ from django.shortcuts import render
 from rest_framework import serializers
 
 from django.contrib.auth import views
+
+
+
+
+
+
 class LoginView(views.LoginView):
 	extra_context = {"title":"Login"}
 	next_page = "/products"
 	redirect_authenticated_user = True
 	redirect_field_name = "product-list"
-	template_name ='pages/login_new.html'	
+	template_name ='pages/login.html'	
 	def get_context_data(self, **kwargs):
 		context = views.LoginView.get_context_data(self, **kwargs)
 		#print(context, flush=True)
@@ -19,6 +25,17 @@ class LoginView(views.LoginView):
 		return context
 	def get_success_url(self):
 		return "/products"
+
+
+
+
+
+
+
+
+
+
+
 
 
 
