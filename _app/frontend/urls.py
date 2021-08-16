@@ -23,7 +23,7 @@ from rest_framework import routers
 from .views import (homepage, UserViewSet, ProductViewSet, 
 	OrderViewSet, CommentViewSet,
 	DjoserUserViewSet,ProductViewSetMod, create_product)
-from .views_auth import (LoginView)
+from .views_auth import (LoginView, logout)
 
 # Routers provide an easy way of automatically determining the URL conf.
 
@@ -49,5 +49,6 @@ urlpatterns = [
 	path("products/create", create_product),
 	path('', include((router.urls,"cantiin_frontend"), namespace="frontend")),
 	path('login/', LoginView.as_view(), name='login'),
+	path('logout/', logout),
 ]
 
