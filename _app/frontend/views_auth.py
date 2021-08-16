@@ -29,16 +29,20 @@ class LoginSerializer(serializers.Serializer):
 
 def login(request):
 	#return HttpResponse("Login")
-	return render(request, "pages/login.html",
-		{
-			"active_main_navbar": "login",
-			"title": "Login",
-			"serializer":LoginSerializer,
-			"method":"POST",
-			"request_to":"/api-auth/login/",
-			"next":"/"
-		}			
-	)
+	#print(request.method, flush=True)
+	if(request.method=="GET"):
+		return render(request, "pages/login.html",
+			{
+				"active_main_navbar": "login",
+				"title": "Login",
+				"serializer":LoginSerializer,
+				"method":"POST",
+				"request_to":"/login/",
+				"next":""
+			}			
+		)
+	else:
+		return HttpResponse("Hey")
 
 def login_old(request):
 	#return HttpResponse("Login")

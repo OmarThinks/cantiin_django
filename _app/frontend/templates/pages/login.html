@@ -30,27 +30,23 @@
 <script type="text/javascript">
 
 
-function form_data_to_object()
+function form_data_to_request_settings()
 {
     let all_inputs = document.getElementsByTagName('input');
     let inputs = {};
+    let headers = {}
     for(i in all_inputs)
     {
       let input = all_inputs[i];
       if(typeof(input)!=typeof({"1":2})){continue;}
-      //if (input.type == "hidden") {continue;}
+      if (input.type == "hidden")
+      {
+        headers["X-CSRFToken"]=input.value;
+        continue;
+      }
       inputs[input.name] = input.value;
     }
-    return inputs;
-}
 
-
-
-function handle_form(event)
-{
-    event.preventDefault();
-    let form_data = form_data_to_object();
-    console.log(form_data);
 
     let method = "{{ method }}";
     //console.log(method);
@@ -64,15 +60,27 @@ function handle_form(event)
       "method": method,
       "timeout": 0,
       "headers": {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "X-CSRFToken":headers["X-CSRFToken"]
       },
-      "data": JSON.stringify(form_data),
+      "data": JSON.stringify(inputs),
     };
+    return settings;
+}
 
-    $.ajax(settings).done(function (response) {
-      console.log(response);
-    });
 
+
+function handle_form(event)
+{
+    event.preventDefault();
+    let request_settings = form_data_to_request_settings();
+    console.log(request_settings);
+
+
+
+    $.ajax(request_settings)
+    .done((res)=>{console.log(res);})
+    .catch((err)=>{console.log(err);});
 
 }
 
