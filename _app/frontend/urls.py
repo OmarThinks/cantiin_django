@@ -20,9 +20,10 @@ from django.conf.urls import url
 
 
 from rest_framework import routers
-from .views import (homepage, UserViewSet, ProductViewSet, OrderViewSet, CommentViewSet,
+from .views import (homepage, UserViewSet, ProductViewSet, 
+	OrderViewSet, CommentViewSet,
 	DjoserUserViewSet,ProductViewSetMod, create_product)
-from .views_auth import (login)
+from .views_auth import (login, LoginView)
 
 # Routers provide an easy way of automatically determining the URL conf.
 
@@ -39,14 +40,17 @@ router.register('comments', CommentViewSet)
 
 
 
+#from django.contrib.auth import views
 
 
 
 urlpatterns = [
 	path('', homepage),
 	path("products/create", create_product),
-   	path('', include((router.urls,"cantiin_frontend"), namespace="frontend")),
-	path('login/', login),
+	path('', include((router.urls,"cantiin_frontend"), namespace="frontend")),
+	path('login/', LoginView.as_view(
+		template_name='pages/login_new.html'), name='login'),
+	#path('login/', login),
 
 ]
 
