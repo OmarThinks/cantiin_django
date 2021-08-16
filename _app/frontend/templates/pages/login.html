@@ -38,7 +38,7 @@ function form_data_to_object()
     {
       let input = all_inputs[i];
       if(typeof(input)!=typeof({"1":2})){continue;}
-      if (input.type == "hidden") {continue;}
+      //if (input.type == "hidden") {continue;}
       inputs[input.name] = input.value;
     }
     return inputs;
@@ -51,20 +51,27 @@ function handle_form(event)
     event.preventDefault();
     let form_data = form_data_to_object();
     console.log(form_data);
-      
 
+    let method = "{{ method }}";
+    //console.log(method);
+    let request_to = "{{ request_to }}";
+    //console.log(request_to);
+    let next = "{{ next }}";
+    //console.log(next);
 
+    var settings = {
+      "url": request_to,
+      "method": method,
+      "timeout": 0,
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "data": JSON.stringify(form_data),
+    };
 
-
-
-
-
-
-
-
-
-
-
+    $.ajax(settings).done(function (response) {
+      console.log(response);
+    });
 
 
 }

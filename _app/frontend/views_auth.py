@@ -33,7 +33,10 @@ def login(request):
 		{
 			"active_main_navbar": "login",
 			"title": "Login",
-			"serializer":LoginSerializer
+			"serializer":LoginSerializer,
+			"method":"POST",
+			"request_to":"/api-auth/login/",
+			"next":"/"
 		}			
 	)
 
