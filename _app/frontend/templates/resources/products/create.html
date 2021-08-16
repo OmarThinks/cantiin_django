@@ -1,0 +1,91 @@
+{% extends "base_layout.html" %}
+{% block title %}Login{% endblock %} 
+{% block active_main_navbar %}login{% endblock %}
+{% load rest_framework %}
+
+{% block content %}
+
+
+<form id="form">
+    {% csrf_token %}
+    {% render_form serializer template_pack='rest_framework/vertical' %}
+    <button type="submit" class="btn btn-default">Sign in</button>
+</form>
+
+<p id="err_message"></p>
+
+
+
+
+
+
+<script>
+   function toSubmit(e){
+      alert('I will not submit');
+      return false;
+   }
+</script>
+
+
+<script type="text/javascript">
+
+
+function handle_form(event)
+{
+  //console.log("Here we go");
+  event.preventDefault();
+  let form = document.getElementById('form');
+  //console.log(form);
+  let children = form.children;
+  console.log(children);
+
+  let form_group=[];
+
+  for(i in children)
+  {
+    let child = children[i];
+    //console.log(child);
+    let classList=child.classList;
+    //console.log(classList);
+    //console.log(typeof(classList));
+
+    if (classList== undefined) { //console.log("I will continue");
+    continue;}
+    for (var i = classList.length - 1; i >= 0; i--) {
+      if (classList[i] == "form-group") {
+        //console.log(child);
+        console.log("I got It");
+        try{
+          console.log(child.children[1].name);
+          console.log(child.children[1].value);
+        }
+        catch{
+          console.log(child);
+          console.log(child.children[0].name);
+        }
+      }
+    }
+  }
+
+
+}
+
+
+
+
+
+
+
+const form = document.getElementById('form');
+form.addEventListener('submit', handle_form);
+
+
+
+
+
+</script>
+
+
+
+
+{% endblock %}

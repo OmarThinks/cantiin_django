@@ -1,5 +1,7 @@
 from django.shortcuts import render
 
+from cantiin.serializers import ProductSerializer
+
 from cantiin.views import (
 	UserViewSet as _UserViewSet, ProductViewSet as _ProductViewSet,
 	OrderViewSet as _OrderViewSet, CommentViewSet as _CommentViewSet)
@@ -116,6 +118,16 @@ class ProductViewSet(_ProductViewSet):
 		return [renderer() for renderer in renderers]
 
 
+
+
+def create_product(request):
+	#return HttpResponse("Login")
+	return render(request, "resources/products/create.html",
+		{
+			"title": "Create Product",
+			"serializer":ProductSerializer
+		})		
+	
 
 
 
