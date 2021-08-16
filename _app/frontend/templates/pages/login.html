@@ -53,8 +53,16 @@ function handle_form(event)
     continue;}
     for (var i = classList.length - 1; i >= 0; i--) {
       if (classList[i] == "form-group") {
-        console.log(child);
+        //console.log(child);
         console.log("I got It");
+        try{
+          console.log(child.children[1].name);
+          console.log(child.children[1].value);
+        }
+        catch{
+          console.log(child);
+          console.log(child.children[0].name);
+        }
       }
     }
   }

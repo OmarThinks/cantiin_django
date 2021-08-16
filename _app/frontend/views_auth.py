@@ -16,7 +16,9 @@ class AuthViewSet(DjoserViewSet):
 class LoginSerializer(serializers.Serializer):
     Username_or_Email = serializers.CharField(
         max_length=100,
-        style={'placeholder': 'Username or Email', 'autofocus': True}
+        style={'placeholder': 'Username or Email', 'autofocus': True,
+        "name":"username", "tag":"username"
+        }
     )
     password = serializers.CharField(
         max_length=100,
