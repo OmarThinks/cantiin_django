@@ -50,7 +50,5 @@ urlpatterns = [
 	path('', include((router.urls,"cantiin_frontend"), namespace="frontend")),
 	path('login/', LoginView.as_view(
 		template_name='pages/login_new.html'), name='login'),
-	#path('login/', login),
-
 ]
 
