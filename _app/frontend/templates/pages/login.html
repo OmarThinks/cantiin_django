@@ -30,42 +30,41 @@
 <script type="text/javascript">
 
 
+function form_data_to_object()
+{
+    let all_inputs = document.getElementsByTagName('input');
+    let inputs = {};
+    for(i in all_inputs)
+    {
+      let input = all_inputs[i];
+      if(typeof(input)!=typeof({"1":2})){continue;}
+      if (input.type == "hidden") {continue;}
+      inputs[input.name] = input.value;
+    }
+    return inputs;
+}
+
+
+
 function handle_form(event)
 {
-  //console.log("Here we go");
-  event.preventDefault();
-  let form = document.getElementById('form');
-  //console.log(form);
-  let children = form.children;
-  console.log(children);
+    event.preventDefault();
+    let form_data = form_data_to_object();
+    console.log(form_data);
+      
 
-  let form_group=[];
 
-  for(i in children)
-  {
-    let child = children[i];
-    //console.log(child);
-    let classList=child.classList;
-    //console.log(classList);
-    //console.log(typeof(classList));
 
-    if (classList== undefined) { //console.log("I will continue");
-    continue;}
-    for (var i = classList.length - 1; i >= 0; i--) {
-      if (classList[i] == "form-group") {
-        //console.log(child);
-        console.log("I got It");
-        try{
-          console.log(child.children[1].name);
-          console.log(child.children[1].value);
-        }
-        catch{
-          console.log(child);
-          console.log(child.children[0].name);
-        }
-      }
-    }
-  }
+
+
+
+
+
+
+
+
+
+
 
 
 }
@@ -81,9 +80,8 @@ form.addEventListener('submit', handle_form);
 
 
 
-
-
 </script>
+
 
 
 

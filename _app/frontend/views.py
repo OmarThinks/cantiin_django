@@ -122,6 +122,7 @@ class ProductViewSet(_ProductViewSet):
 
 def create_product(request):
 	#return HttpResponse("Login")
+	print(ProductSerializer.__dict__,flush=True)
 	return render(request, "resources/products/create.html",
 		{
 			"title": "Create Product",
