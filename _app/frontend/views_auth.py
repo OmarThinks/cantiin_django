@@ -29,15 +29,11 @@ class LoginSerializer(serializers.Serializer):
 #from django.contrib.auth import views
 from django.contrib.auth import views
 class LoginView(views.LoginView):
+	extra_context = {"title":"Login"}
 	def get_context_data(self, **kwargs):
-		context = super().get_context_data(**kwargs)
-		current_site = get_current_site(self.request)
-		context.update({
-			self.redirect_field_name: self.get_redirect_url(),
-			'site': current_site,
-			'site_name': current_site.name,
-			**(self.extra_context or {})
-		})
+		context = views.LoginView.get_context_data(self, **kwargs)
+		print(context, flush=True)
+		print(context["form"].__dict__)
 		return context
 
 
