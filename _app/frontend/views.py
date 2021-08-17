@@ -10,8 +10,10 @@ from rest_framework.renderers import (
 	TemplateHTMLRenderer,JSONRenderer, BrowsableAPIRenderer)
 
 
+from my_functions.forms import form_renderer
 
-import pprint
+
+#import pprint
 from pprint import pprint
 
 
@@ -142,6 +144,9 @@ def create_product(request):
 			"type":"checkbox"
 		},
 	]
+
+	rendered_form = form_renderer(form_dict)
+
 	return render(request, "resources/products/create.html",
 		{
 			"title": "Create Product",
