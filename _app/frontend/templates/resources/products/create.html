@@ -3,13 +3,39 @@
 {% block active_main_navbar %}login{% endblock %}
 {% load rest_framework %}
 
+{% block additional_css_content %}
+
+<style type="text/css">
+.create_button
+{
+  background: lime;
+  margin: 1em 0em;
+  padding: .3em;
+  font-weight: bold;
+  font-size: 1.2em;
+  border-radius: .4em;
+  box-shadow: 0px;
+  border: solid 2px green;
+}
+
+
+.create_button:hover
+{
+  background: yellow;
+}
+
+</style>
+
+{% endblock %}
+
+
 {% block content %}
 
 
-<form id="form">
+<form id="form" method="POST">
     {% csrf_token %}
     {% render_form serializer template_pack='rest_framework/vertical' %}
-    <button type="submit" class="btn btn-default">Sign in</button>
+    <button class="create_button" type="submit">Create</button>
 </form>
 
 <p id="err_message"></p>
@@ -19,55 +45,58 @@
 
 
 
-<script>
-   function toSubmit(e){
-      alert('I will not submit');
-      return false;
-   }
-</script>
-
 
 <script type="text/javascript">
+
+
+function get_form_settings()
+{
+  var data = $('#form').serializeArray().reduce(function(obj, item) {
+    obj[item.name] = item.value;
+    return obj;
+}, {});
+
+  headers={};
+  
+  try{
+
+    let elements = document.getElementsByTagName('input');
+    headers[" X-CSRFToken"]=
+    elements.csrfmiddlewaretoken.attributes["value"]["value"];
+  }
+  catch{}
+
+  console.log(headers);
+  console.log(data);
+
+
+var settings = {
+  "url": "http://127.0.0.1:3000/products",
+  "method": "POST",
+  "timeout": 0,
+  "headers": {
+    "Content-Type": "application/json"
+  },
+  "data": JSON.stringify({
+    "hi": "hi"
+  }),
+};
+
+
+
+
+
+
+
+}
+
 
 
 function handle_form(event)
 {
   //console.log("Here we go");
   event.preventDefault();
-  let form = document.getElementById('form');
-  //console.log(form);
-  let children = form.children;
-  console.log(children);
-
-  let form_group=[];
-
-  for(i in children)
-  {
-    let child = children[i];
-    //console.log(child);
-    let classList=child.classList;
-    //console.log(classList);
-    //console.log(typeof(classList));
-
-    if (classList== undefined) { //console.log("I will continue");
-    continue;}
-    for (var i = classList.length - 1; i >= 0; i--) {
-      if (classList[i] == "form-group") {
-        //console.log(child);
-        console.log("I got It");
-        try{
-          console.log(child.children[1].name);
-          console.log(child.children[1].value);
-        }
-        catch{
-          console.log(child);
-          console.log(child.children[0].name);
-        }
-      }
-    }
-  }
-
-
+get_form_settings();
 }
 
 
@@ -79,6 +108,12 @@ function handle_form(event)
 const form = document.getElementById('form');
 form.addEventListener('submit', handle_form);
 
+
+
+
+
+  let elements = document.getElementsByTagName('input');
+  console.log(elements);
 
 
 
