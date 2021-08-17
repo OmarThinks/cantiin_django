@@ -124,11 +124,17 @@ class ProductViewSet(_ProductViewSet):
 
 def create_product(request):
 	#return HttpResponse("Login")
-	print(ProductSerializer.__dict__,flush=True)
+	pprint(ProductSerializer().__dict__)
+	pprint(ProductSerializer().__dir__())
+	pprint(ProductSerializer().fields)
+	#pprint(ProductSerializer.Meta.__dict__)
+	#uctSerializer.__dir__())
 	return render(request, "resources/products/create.html",
 		{
 			"title": "Create Product",
-			"serializer":ProductSerializer
+			"serializer":ProductSerializer,
+			"request_destination":"/api/products/",
+			"request_method":"POST"
 		})		
 	
 

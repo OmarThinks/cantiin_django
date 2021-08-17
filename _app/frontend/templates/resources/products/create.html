@@ -32,6 +32,7 @@
 {% block content %}
 
 
+
 <form id="form" method="POST">
     {% csrf_token %}
     {% render_form serializer template_pack='rest_framework/vertical' %}
@@ -56,38 +57,27 @@ function get_form_settings()
     return obj;
 }, {});
 
-  headers={};
+  headers={"Content-Type": "application/json"};
   
   try{
-
     let elements = document.getElementsByTagName('input');
     headers[" X-CSRFToken"]=
     elements.csrfmiddlewaretoken.attributes["value"]["value"];
   }
   catch{}
 
-  console.log(headers);
-  console.log(data);
+  //console.log(headers);
+  //console.log(data);
 
 
 var settings = {
-  "url": "http://127.0.0.1:3000/products",
-  "method": "POST",
+  "url": "{{ request_destination }}",
+  "method": "{{ request_method }}",
   "timeout": 0,
-  "headers": {
-    "Content-Type": "application/json"
-  },
-  "data": JSON.stringify({
-    "hi": "hi"
-  }),
+  "headers": headers,
+  "data": data,
 };
-
-
-
-
-
-
-
+return settings;
 }
 
 
@@ -96,7 +86,12 @@ function handle_form(event)
 {
   //console.log("Here we go");
   event.preventDefault();
-get_form_settings();
+  let settings = get_form_settings();
+  console.log(settings);
+  /*$.ajax(settings).done(function (response) {
+    console.log(response);
+  });
+  */
 }
 
 
@@ -112,8 +107,8 @@ form.addEventListener('submit', handle_form);
 
 
 
-  let elements = document.getElementsByTagName('input');
-  console.log(elements);
+let elements = document.getElementsByTagName('input');
+console.log(elements);
 
 
 
