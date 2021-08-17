@@ -20,8 +20,11 @@ class LoginView(views.LoginView):
 	template_name ='pages/login.html'	
 	def get_context_data(self, **kwargs):
 		context = views.LoginView.get_context_data(self, **kwargs)
+		context["user"] = self.request.user
 		print(context, flush=True)
-		print(self.request.__dict__, flush=True)
+		#print(self.request.user.is_authenticated, flush=True)
+		#print(context["view"].__dict__, flush=True)
+		#print(context["request"].user.__dict__,flush=True)
 		return context
 	def get_success_url(self):
 		return "/products"

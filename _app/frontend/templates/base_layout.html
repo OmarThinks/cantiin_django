@@ -69,14 +69,22 @@
 		<div class="main_nav_bar_section p-0 m-0"
 		style="justify-content: flex-end;">
 
+
+
+
+
+               {% if user.is_authenticated %}
+			<a class="main_nav_bar_link" href="/logout"  
+				style="margin-right: 10px;" 
+				id="main_nav_link_login">Log Out</a>                 
+                {% else %}
 			<a class="main_nav_bar_link" href="/"
 				id="main_nav_link_signup">SignUp</a>
 			<a class="main_nav_bar_link" href="/login"  
 				style="margin-right: 10px;" 
-				id="main_nav_link_login">Login</a>
-			<a class="main_nav_bar_link" href="/logout"  
-				style="margin-right: 10px;" 
-				id="main_nav_link_login">Log Out</a>
+				id="main_nav_link_login">Login</a> 
+
+				{% endif %}
 
 		</div>
 	</nav>
