@@ -1,5 +1,5 @@
 from pprint import pprint as pp
-
+from markupsafe import Markup
 
 def render_text(field_name, field_name_capitalized, field_type):
 	return f'''
@@ -52,22 +52,32 @@ def form_renderer(form_list):
 		final_form += f'''
 
 			<ul class="form_field_error" 
-				id="form_field_error_{field_name}">
+				id="form_field_error_{field_name}"">
 				<li>Something is wrong</li>
 			</ul>
 		
 		</div>
 
 		'''
-
-
-
-	return final_form
-
+	return Markup(final_form)
 
 
 
 
 
+def form_fields_names_list(form_list):
+	fields_names = []
+	for form_element in form_list:
+		#pp(form_element["name"])
+		fields_names.append(form_element["name"])
+	#pp(fields_names)
+	return fields_names
 
+
+def form_errors_ids_list(form_list):
+	fields_names = form_fields_names_list(form_list)
+	errors_ids = []
+	for field_name in fields_names:
+		errors_ids.append( "form_field_error_" + field_name)
+	return errors_ids
 

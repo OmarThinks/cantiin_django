@@ -26,7 +26,7 @@
 
 
 .form_field_error
-{color:red;}
+{color:red; display: none;}
 
 
 </style>
@@ -176,7 +176,11 @@ function clear_errors()
   {error_messages[i].style.display="none";}
 }
 
-clear_errors();
+//clear_errors();
+
+console.log( {{ fields_names|safe }} );
+console.log( {{ errors_ids|safe }} );
+
 
 </script>
 

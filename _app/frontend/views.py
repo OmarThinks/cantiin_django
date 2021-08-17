@@ -10,7 +10,8 @@ from rest_framework.renderers import (
 	TemplateHTMLRenderer,JSONRenderer, BrowsableAPIRenderer)
 
 
-from my_functions.forms import form_renderer
+from my_functions.forms import (form_renderer,
+	form_fields_names_list, form_errors_ids_list)
 
 
 #import pprint
@@ -144,9 +145,15 @@ def create_product(request):
 			"type":"checkbox"
 		},
 	]
-
 	rendered_form = form_renderer(form_list)
-	pp(rendered_form)
+	
+	fields_names = form_fields_names_list(form_list)
+	errors_ids=form_errors_ids_list(form_list)
+	
+	#pp(rendered_form)
+	#pp(fields_names)
+	#pp(errors_ids)
+
 
 	return render(request, "resources/products/create.html",
 		{
@@ -154,8 +161,10 @@ def create_product(request):
 			"serializer":ProductSerializer,
 			"request_destination":"/api/products/",
 			"request_method":"POST", 
-			"rendered_form":Markup(rendered_form),
-			"after_scuess_url":"/my_products/"
+			"rendered_form":rendered_form,
+			"after_scuess_url":"/my_products/",
+			"fields_names":fields_names,
+			"errors_ids":errors_ids
 		})		
 	
 
