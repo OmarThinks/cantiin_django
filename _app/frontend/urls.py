@@ -45,7 +45,7 @@ router.register('comments', CommentViewSet)
 
 urlpatterns = [
 	path('', homepage),
-	path("products/create", create_product),
+	path("create/products/", create_product),
 	path('', include((router.urls,"cantiin_frontend"), namespace="frontend")),
 	path("my_products/", my_products),
 	path('login/', LoginView.as_view(), name='login'),

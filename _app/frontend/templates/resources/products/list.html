@@ -191,11 +191,10 @@ a
 
 
 
-{% if request.path == '/my_products/' %}
+{% if create_link %}
 
 <div>
 <a href="{{ create_link }}">
-
 <button class="create_button">
 {{ create_text }}
 
