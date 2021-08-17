@@ -11,7 +11,6 @@ from rest_framework.renderers import (
 
 
 
-
 import pprint
 from pprint import pprint
 
@@ -124,11 +123,25 @@ class ProductViewSet(_ProductViewSet):
 
 def create_product(request):
 	#return HttpResponse("Login")
-	pprint(ProductSerializer().__dict__)
-	pprint(ProductSerializer().__dir__())
-	pprint(ProductSerializer().fields)
+	#pprint(ProductSerializer().__dict__)
+	#pprint(ProductSerializer().__dir__())
+	#pprint(ProductSerializer().fields)
 	#pprint(ProductSerializer.Meta.__dict__)
 	#uctSerializer.__dir__())
+	form_dict = [
+		{	"name":"name",
+			"name_capitalized":"Name",
+			"type":"text"
+		},
+		{	"name":"price",
+			"name_capitalized":"Price",
+			"type":"number"
+		},
+		{	"name":"in_stock",
+			"name_capitalized":"In Stock",
+			"type":"checkbox"
+		},
+	]
 	return render(request, "resources/products/create.html",
 		{
 			"title": "Create Product",
