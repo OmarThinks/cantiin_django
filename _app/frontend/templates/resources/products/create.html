@@ -127,6 +127,8 @@ function handle_form(event)
 {
   //console.log("Here we go");
   event.preventDefault();
+  clear_errors()
+
   let settings = get_form_settings();
   console.log(settings);
   $.ajax(settings).
@@ -172,14 +174,15 @@ document.getElementsByClassName('form_field_error');
 var fields_names = {{ fields_names|safe }};
 var errors_ids = {{ errors_ids|safe }};
 
+console.log(errors_ids);
 
 function clear_errors()
 {
-  for(i in error_message_elements)
-  {error_messages[i].style.display="none";}
+  for(i in errors_ids)
+  {document.getElementById(errors_ids[i]).style.display="none";}
 }
 
-//clear_errors();
+clear_errors();
 
 //console.log( fields_names );
 //console.log( errors_ids );
