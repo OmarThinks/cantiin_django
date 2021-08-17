@@ -89,6 +89,34 @@ return settings;
 
 
 
+
+
+
+let elements = document.getElementsByTagName('input');
+console.log(elements);
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+{% block form_handler %}
+
+
+<script type="text/javascript">
+
+
+
 function handle_form(event)
 {
   //console.log("Here we go");
@@ -102,25 +130,32 @@ function handle_form(event)
 }
 
 
+</script>
+
+{% endblock %}
 
 
-
-
+<script type="text/javascript">
 
 const form = document.getElementById('form');
 form.addEventListener('submit', handle_form);
 
 
 
-
-
-let elements = document.getElementsByTagName('input');
-console.log(elements);
-
-
-
-
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
