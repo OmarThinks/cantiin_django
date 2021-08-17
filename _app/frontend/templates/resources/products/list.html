@@ -158,12 +158,63 @@ a
 
 
 
+
+.create_button
+{
+	background: lime;
+	margin: 1em 0em;
+	padding: .3em;
+	font-weight: bold;
+	font-size: 1.7em;
+	/*border-radius: .25em;*/
+	border-radius: 0px;
+	box-shadow: 0px;
+	border: solid 2px green;
+}
+
+
+.create_button:hover
+{
+	background: yellow;
+}
+
+
+
 </style>
 
 {% endblock %}
 
 
 {% block content %}
+
+
+
+
+
+{% if request.path == '/my_products/' %}
+
+<div>
+<a href="{{ create_link }}">
+
+<button class="create_button">
+{{ create_text }}
+
+</button>
+</a>
+
+</div>
+
+
+
+{% endif %}
+
+
+
+
+
+
+
+
 
 	<div class="pagination_nav">
 	  {% if paginator %}
@@ -212,9 +263,7 @@ a
 
 
 
-{% if request.path == '/my_products/' %}
-It is my products
-{% endif %}
+
 
 
 <div class="items_container" style="padding: 2%;">

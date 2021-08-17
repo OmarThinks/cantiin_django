@@ -22,7 +22,9 @@ class MyProductsViewSet(_ProductViewSet):
 		customRenderer = generate_custom_renderer(
 			items_plural="products",active_main_navbar= "my_products",
 			title="My Products", additional_css_files=[], 
-			item_url_name="frontend:product-detail")
+			item_url_name="frontend:product-detail", 
+			create_text="Create Product",
+			create_link="/create/products/")
 		renderers = [customRenderer]
 		return [renderer() for renderer in renderers]
 

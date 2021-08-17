@@ -43,12 +43,14 @@ class UserViewSet(_UserViewSet):
 
 def generate_custom_renderer(
 	items_plural, active_main_navbar, title,
-	additional_css_files=[], item_url_name=""):
+	additional_css_files=[], item_url_name="", create_text="",
+	create_link=""):
 	class customRenderer(TemplateHTMLRenderer):
 		def get_template_context(self, data, renderer_context, 
 			items_plural= items_plural, active_main_navbar=active_main_navbar,
 			title=title, additional_css_files= additional_css_files,
-			item_url_name= item_url_name):
+			item_url_name= item_url_name, create_text=create_text,
+			create_link=create_link):
 			#print(type(info))
 			#print(self.__dir__(),flush=True)
 			#print(self.get_template_context.__dir__(),flush=True)
@@ -63,7 +65,6 @@ def generate_custom_renderer(
 			#if just_renderer_context:
 			#	return TemplateHTMLRenderer.get_template_context(self,data,renderer_context)
 			response = renderer_context["view"].get(renderer_context["request"]).data
-			pprint(self.__dir__())
 			#print(self, flush=True)
 			#print(response, flush=True)
 			#print(type(response), flush=True)
@@ -84,7 +85,9 @@ def generate_custom_renderer(
 			"items_plural" : items_plural, 
 			"additional_css_files": additional_css_files,
 			"active_main_navbar": active_main_navbar, "title": title,
-			"paginator":paginator
+			"paginator":paginator,
+			"create_text":create_text,
+			"create_link":create_link
 			}
 			try:
 				paginator = renderer_context["view"].paginator
