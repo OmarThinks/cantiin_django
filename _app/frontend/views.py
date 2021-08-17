@@ -17,7 +17,7 @@ from my_functions.forms import form_renderer
 from pprint import pprint as pp
 
 
-
+from markupsafe import Markup
 
 
 
@@ -153,7 +153,8 @@ def create_product(request):
 			"title": "Create Product",
 			"serializer":ProductSerializer,
 			"request_destination":"/api/products/",
-			"request_method":"POST"
+			"request_method":"POST", 
+			"rendered_form":Markup(rendered_form),
 		})		
 	
 

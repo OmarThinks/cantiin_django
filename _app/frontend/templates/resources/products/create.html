@@ -29,13 +29,20 @@
 {% endblock %}
 
 
-{% block content %}
 
+<!--
+    {% render_form serializer template_pack='rest_framework/vertical' %}
+-->
+
+
+{% block content %}
 
 
 <form id="form" method="POST">
     {% csrf_token %}
-    {% render_form serializer template_pack='rest_framework/vertical' %}
+
+    {{ rendered_form }}
+
     <button class="create_button" type="submit">Create</button>
 </form>
 
