@@ -24,6 +24,11 @@
   background: yellow;
 }
 
+
+.form_field_error
+{color:red;}
+
+
 </style>
 
 {% endblock %}
@@ -128,11 +133,12 @@ function handle_form(event)
   then(function (response) {
     console.log("You Made it");
     console.log(response);
-    //window.location.replace("{{ after_scuess_url }}");
+    window.location.replace("{{ after_scuess_url }}");
   })
   .catch((err)=>{
     console.log("Something Went Wrong");
     console.log(err);
+    console.log(err.responseJSON);
   })
   
 }
@@ -155,6 +161,24 @@ form.addEventListener('submit', handle_form);
 
 
 
+
+
+<script type="text/javascript">
+  /*Handling Errors*/
+var error_messages =
+document.getElementsByClassName('form_field_error');
+
+
+
+function clear_errors()
+{
+  for(i in error_messages)
+  {error_messages[i].style.display="none";}
+}
+
+clear_errors();
+
+</script>
 
 
 

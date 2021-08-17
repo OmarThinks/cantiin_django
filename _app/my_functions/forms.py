@@ -7,7 +7,6 @@ def render_text(field_name, field_name_capitalized, field_type):
 		<label>{field_name_capitalized}</label>
 		<input name="{field_name}" class="form-control" 
 		type="{field_type}"  value="" >
-
 	'''
 
 def render_number(field_name, field_name_capitalized,field_type):
@@ -50,7 +49,12 @@ def form_renderer(form_list):
 		final_form += render_field(field_name, 
 			field_name_capitalized, field_type)
 
-		final_form += '''
+		final_form += f'''
+
+			<ul class="form_field_error" 
+				id="form_field_error_{field_name}">
+				<li>Something is wrong</li>
+			</ul>
 		
 		</div>
 
