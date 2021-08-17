@@ -24,6 +24,7 @@ from .views import (homepage, UserViewSet, ProductViewSet,
 	OrderViewSet, CommentViewSet,
 	DjoserUserViewSet,ProductViewSetMod, create_product)
 from .views_auth import (LoginView, logout)
+from .views_special import (my_products)
 
 # Routers provide an easy way of automatically determining the URL conf.
 
@@ -42,12 +43,11 @@ router.register('comments', CommentViewSet)
 
 #from django.contrib.auth import views
 
-
-
 urlpatterns = [
 	path('', homepage),
 	path("products/create", create_product),
 	path('', include((router.urls,"cantiin_frontend"), namespace="frontend")),
+	path("my_products/", my_products),
 	path('login/', LoginView.as_view(), name='login'),
 	path('logout/', logout),
 ]
