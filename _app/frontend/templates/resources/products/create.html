@@ -99,7 +99,7 @@ return settings;
 
 
 let elements = document.getElementsByTagName('input');
-console.log(elements);
+//console.log(elements);
 
 
 
@@ -165,21 +165,27 @@ form.addEventListener('submit', handle_form);
 
 <script type="text/javascript">
   /*Handling Errors*/
-var error_messages =
+var error_message_elements =
 document.getElementsByClassName('form_field_error');
 
+
+var fields_names = {{ fields_names|safe }};
+var errors_ids = {{ errors_ids|safe }};
 
 
 function clear_errors()
 {
-  for(i in error_messages)
+  for(i in error_message_elements)
   {error_messages[i].style.display="none";}
 }
 
 //clear_errors();
 
-console.log( {{ fields_names|safe }} );
-console.log( {{ errors_ids|safe }} );
+//console.log( fields_names );
+//console.log( errors_ids );
+
+
+
 
 
 </script>
