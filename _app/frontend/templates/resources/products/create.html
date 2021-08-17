@@ -64,12 +64,13 @@ function get_form_settings()
     return obj;
 }, {});
 
-  headers={"Content-Type": "application/json"};
+  //headers={"Content-Type": "application/json"};
+  headers={};
   
   try{
     let elements = document.getElementsByTagName('input');
-    headers[" X-CSRFToken"]=
-    elements.csrfmiddlewaretoken.attributes["value"]["value"];
+    /*headers[" X-CSRFToken"]=
+    elements.csrfmiddlewaretoken.attributes["value"]["value"];*/
   }
   catch{}
 
@@ -123,10 +124,17 @@ function handle_form(event)
   event.preventDefault();
   let settings = get_form_settings();
   console.log(settings);
-  /*$.ajax(settings).done(function (response) {
+  $.ajax(settings).
+  then(function (response) {
+    console.log("You Made it");
     console.log(response);
-  });
-  */
+    //window.location.replace("{{ after_scuess_url }}");
+  })
+  .catch((err)=>{
+    console.log("Something Went Wrong");
+    console.log(err);
+  })
+  
 }
 
 

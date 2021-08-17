@@ -155,6 +155,7 @@ def create_product(request):
 			"request_destination":"/api/products/",
 			"request_method":"POST", 
 			"rendered_form":Markup(rendered_form),
+			"after_scuess_url":"/my_products/"
 		})		
 	
 
