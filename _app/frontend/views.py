@@ -14,7 +14,7 @@ from my_functions.forms import form_renderer
 
 
 #import pprint
-from pprint import pprint
+from pprint import pprint as pp
 
 
 
@@ -130,7 +130,7 @@ def create_product(request):
 	#pprint(ProductSerializer().fields)
 	#pprint(ProductSerializer.Meta.__dict__)
 	#uctSerializer.__dir__())
-	form_dict = [
+	form_list = [
 		{	"name":"name",
 			"name_capitalized":"Name",
 			"type":"text"
@@ -145,7 +145,8 @@ def create_product(request):
 		},
 	]
 
-	rendered_form = form_renderer(form_dict)
+	rendered_form = form_renderer(form_list)
+	pp(rendered_form)
 
 	return render(request, "resources/products/create.html",
 		{
