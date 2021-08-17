@@ -12,9 +12,8 @@ from rest_framework.renderers import (
 
 
 
-
-
-
+import pprint
+from pprint import pprint
 
 
 
@@ -50,12 +49,12 @@ def generate_custom_renderer(
 			items_plural= items_plural, active_main_navbar=active_main_navbar,
 			title=title, additional_css_files= additional_css_files,
 			item_url_name= item_url_name):
-			
-
+			#print(type(info))
 			#print(self.__dir__(),flush=True)
+			#print(self.get_template_context.__dir__(),flush=True)
 			#print(renderer_context,flush=True)
 			#  The only userful thing in renderer_context is ["view"]
-			print(renderer_context["view"].__dict__,flush=True)
+			#print(renderer_context["view"].__dict__,flush=True)
 
 			
 			#print(renderer_context["request"].__dict__,flush=True)
@@ -64,7 +63,7 @@ def generate_custom_renderer(
 			#if just_renderer_context:
 			#	return TemplateHTMLRenderer.get_template_context(self,data,renderer_context)
 			response = renderer_context["view"].get(renderer_context["request"]).data
-			
+			pprint(self.__dir__())
 			#print(self, flush=True)
 			#print(response, flush=True)
 			#print(type(response), flush=True)
@@ -92,7 +91,7 @@ def generate_custom_renderer(
 				context["paginator"] = paginator
 			except Exception as e:
 				pass
-			#print(context["paginator"],flush=True)
+			#print(context,flush=True)
 			return context
 	return customRenderer
 
@@ -103,7 +102,7 @@ class ProductViewSet(_ProductViewSet):
 
 
 	def get_template_names(self):
-		print(self.action,flush=True)
+		#print(self.action,flush=True)
 		if self.action == "list":
 			return ["resources/products/list.html"]
 		if self.action == "retrieve":

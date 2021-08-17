@@ -2,11 +2,20 @@ from cantiin.models import (Product)
 from .views import ProductViewSet as _ProductViewSet, generate_custom_renderer
 from django.shortcuts import redirect
 from django.http import (HttpResponse)
+#from pprint import pprint as pp
+#pp = pprint.PrettyPrinter(indent=4)
+import pprint
+pp = pprint.PrettyPrinter(indent=4).pprint
+
 
 
 class MyProductsViewSet(_ProductViewSet):
 	def get_queryset(self):
-		print(self.__dir__(), flush=True)
+		#pp(self.request.__dict__)
+		#print(type(self.request.__dict__))
+		#pp(self.request.__dict__)
+		#pp(["1"])
+		#print(self.request, flush=True)
 		user_id = self.request.user.id
 		return Product.objects.filter(author_id=user_id).all()
 	def get_renderers(self):
