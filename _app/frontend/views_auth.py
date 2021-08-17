@@ -21,7 +21,7 @@ class LoginView(views.LoginView):
 	def get_context_data(self, **kwargs):
 		context = views.LoginView.get_context_data(self, **kwargs)
 		context["user"] = self.request.user
-		print(context, flush=True)
+		#print(context, flush=True)
 		#print(self.request.user.is_authenticated, flush=True)
 		#print(context["view"].__dict__, flush=True)
 		#print(context["request"].user.__dict__,flush=True)
