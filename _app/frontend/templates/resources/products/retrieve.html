@@ -7,6 +7,32 @@
 <style type="text/css">
 
 
+
+
+
+.delete_button
+{
+	background: white;
+	margin: 1em 0em;
+	padding: .3em;
+	font-weight: bold;
+	font-size: 1.7em;
+	/*border-radius: .25em;*/
+  	border-radius: .4em;
+	box-shadow: 0px;
+	border: solid 2px red;
+}
+
+
+.delete_button:hover
+{
+	background: red;
+	color: white;
+}
+
+
+
+
 </style>
 
 {% endblock %}
@@ -23,9 +49,14 @@
 
 
 
-<button id="delete_button" onclick="delete_item()">
+<button class="delete_button" id="delete_button" onclick="delete_item()">
 {% csrf_token %}
 DELETE</button>
+
+
+
+
+
 
 
 
