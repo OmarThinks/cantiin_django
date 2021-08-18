@@ -10,6 +10,27 @@
 
 
 
+.edit_button
+{
+	background: yellow;
+	margin: 1em 0em;
+	padding: .3em;
+	font-weight: bold;
+	font-size: 1.7em;
+	/*border-radius: .25em;*/
+  	border-radius: .4em;
+	box-shadow: 0px;
+	border: solid 2px black;
+}
+
+
+.edit_button:hover
+{
+	background: lime;
+}
+
+
+
 .delete_button
 {
 	background: white;
@@ -62,7 +83,7 @@ DELETE</button>
 
 <hr>
 <a href="/update{{ request.path }}">
-<button>Edit</button>
+<button class="edit_button">Edit</button>
 </a>
 
 
