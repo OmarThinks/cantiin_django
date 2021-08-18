@@ -190,3 +190,14 @@ h1,h2, h3
 
 .pagination>.disabled>a
 {cursor: not-allowed;pointer-events: none;background: lightgrey;}
+
+
+
+
+
+
+
+.unstyled_link,.unstyled_link:hover,.unstyled_link:visited,.unstyled_link:active 
+{
+	color: black; text-decoration: none;
+}

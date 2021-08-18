@@ -68,9 +68,17 @@
 
 
 
+<div style="display: flex; justify-content: space-between;">
 
 
-<button class="delete_button" id="delete_button" onclick="delete_item()">
+<button class="edit_button">
+	<a class="unstyled_link" href="/update{{ request.path }}">
+Edit</a></button>
+
+
+
+<button class="delete_button" id="delete_button" 
+onclick="delete_item()">
 {% csrf_token %}
 DELETE</button>
 
@@ -79,21 +87,13 @@ DELETE</button>
 
 
 
-
-
-<hr>
-<a href="/update{{ request.path }}">
-<button class="edit_button">Edit</button>
-</a>
-
-
-<hr>
+</div>
 
 
 
 
 
-
+<div>
 
 
 
@@ -103,7 +103,7 @@ DELETE</button>
 <br>
 {% endfor %}
 
-
+</div>
 <script type="text/javascript">
 
 
