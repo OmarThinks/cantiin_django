@@ -109,39 +109,48 @@ It will have 2 Options:
 
 If you are loggin in, you will notice that the header 
 has a My Products option.  
-```
-My Products Link Highlighted
-```
+
+<img src="images/changed_header.gif">    
+
+
 When You click on the button, you will be reditected to the 
 My Products page.  
 This page displays a list of products that you have created, 
 There is pagination to see the next products.
+<img src="images/my_products_page.gif">       
 
-```
-My Products image With pagination Highlighted
-```
 
 ### C-B-2) Create Product:
 
 On the top of My products page, there is a Craete Product button.  
-```
-Create Product Button
-```
-When you Click onb that Button, You will be taken to the Create Product Form.
-```
-Create Product Form
-```
+
+
+
+<img src="images/create_product_button.gif">       
+
+
+
+When you Click on that Button, You will be taken to the Create Product Form.
+
+<img src="images/create_product_form.gif">       
+
+
+There is validation, Be Careful :) :
+
+<img src="images/create_product_form_validation.gif">       
+
+
 ### C-B-3) Product Details:
 
 On My Products page, You will find a list of Products.  
-```
-Card Highlited
-```
+<img src="images/product_card.gif">       
+
+
+
 When you CLick on the View Product Details in the card, 
 you will be able to see all the details of the product
-```
-Product Details Page
-```
+<img src="images/product_details_page.gif">       
+
 
 
 
@@ -152,9 +161,13 @@ Product Details Page
 
 On the product details page, You can Delete the product or edit it 
 (If you are the one who posted it).  
-```
-Image with product delete and edit button
-```
+
+
+<img src="images/delete_and_update.gif">       
+
+
+
+
 
 But If the product was not Your's, then you can not edit it.
 

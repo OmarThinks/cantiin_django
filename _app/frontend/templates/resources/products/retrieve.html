@@ -63,9 +63,9 @@
 
 {% block content %}
 
-<div>
+{% if request.user.is_authenticated %}
 
-
+{% if request.user.id == response.author_id %}
 
 
 <div style="display: flex; justify-content: space-between;">
@@ -83,12 +83,9 @@ onclick="delete_item()">
 DELETE</button>
 
 
-
-
-
-
 </div>
-
+{% endif %}
+{% endif %}
 
 
 
