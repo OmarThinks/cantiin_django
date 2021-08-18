@@ -161,7 +161,7 @@ def create_product(request):
 	#pp(fields_names)
 	#pp(errors_ids)
 
-	return render(request, "form_master.html",
+	return render(request, "resources/products/create.html",
 		{
 			"title": "Create Product",
 			"serializer":ProductSerializer,
@@ -171,7 +171,8 @@ def create_product(request):
 			"after_scuess_url":"/my_products/",
 			"fields_names":fields_names,
 			"errors_ids":errors_ids,
-			"button_text":"Create"
+			"button_text":"Create",
+			"resource_url":"/products/"
 		})		
 	
 
@@ -216,7 +217,8 @@ def update_product(request, pk):
 			"after_scuess_url":"/my_products/",
 			"fields_names":fields_names,
 			"errors_ids":errors_ids,
-			"button_text":"Update"
+			"button_text":"Update",
+			"resource_url":"/products/"
 		})		
 	
 	

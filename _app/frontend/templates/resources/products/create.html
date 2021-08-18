@@ -1,125 +1,11 @@
-{% extends "base_layout.html" %}
-{% block title %}Login{% endblock %} 
-{% block active_main_navbar %}login{% endblock %}
-{% load rest_framework %}
-
-{% block additional_css_content %}
-
-<style type="text/css">
-.create_button
-{
-  background: lime;
-  margin: 1em 0em;
-  padding: .3em;
-  font-weight: bold;
-  font-size: 1.2em;
-  border-radius: .4em;
-  box-shadow: 0px;
-  border: solid 2px green;
-}
-
-
-.create_button:hover
-{
-  background: yellow;
-}
-
-
-.form_field_error
-{color:red; display: none;}
-
-
-</style>
-
-{% endblock %}
-
-
-
-<!--
-    {% render_form serializer template_pack='rest_framework/vertical' %}
--->
-
-
-{% block content %}
-
-
-<form id="form" method="POST">
-    {% csrf_token %}
-
-    {{ rendered_form }}
-
-    <button class="create_button" type="submit">Create</button>
-</form>
-
-<p id="err_message"></p>
-
-
-
-
-
-
-
-<script type="text/javascript">
-
-
-function get_form_settings()
-{
-  var data = $('#form').serializeArray().reduce(function(obj, item) {
-    obj[item.name] = item.value;
-    return obj;
-}, {});
-
-  //headers={"Content-Type": "application/json"};
-  headers={};
-  
-  try{
-    let elements = document.getElementsByTagName('input');
-    /*headers[" X-CSRFToken"]=
-    elements.csrfmiddlewaretoken.attributes["value"]["value"];*/
-  }
-  catch{}
-
-  //console.log(headers);
-  //console.log(data);
-
-
-var settings = {
-  "url": "{{ request_destination }}",
-  "method": "{{ request_method }}",
-  "timeout": 0,
-  "headers": headers,
-  "data": data,
-};
-return settings;
-}
-
-
-
-
-
-
-let elements = document.getElementsByTagName('input');
-//console.log(elements);
-
-
-
-
-</script>
-
-
-
-
-
-
-
-
+{% extends "form_master.html" %}
 
 
 
 {% block form_handler %}
 
-
 <script type="text/javascript">
+
 
 
 
@@ -134,7 +20,9 @@ function handle_form(event)
   then(function (response) {
     //console.log("You Made it");
     //console.log(response);
-    window.location.replace("{{ after_scuess_url }}");
+    //console.log(response["id"]);
+    window.location.replace(
+      "{{ resource_url }}"+response["id"].toString()+"/");
   })
   .catch((err)=>{
     //console.log("Something Went Wrong");
@@ -165,56 +53,6 @@ function handle_form(event)
 
 </script>
 
-{% endblock %}
-
-
-<script type="text/javascript">
-
-const form = document.getElementById('form');
-form.addEventListener('submit', handle_form);
-
-
-
-</script>
-
-
-
-
-
-
-<script type="text/javascript">
-  /*Handling Errors*/
-var error_message_elements =
-document.getElementsByClassName('form_field_error');
-
-
-var fields_names = {{ fields_names|safe }};
-var errors_ids = {{ errors_ids|safe }};
-
-//console.log(errors_ids);
-
-function clear_errors()
-{
-  for(i in errors_ids)
-  {
-    document.getElementById(errors_ids[i]).style.display="none";
-    document.getElementById(errors_ids[i]).innerHTML="";
-
-  }
-}
-
-clear_errors();
-
-//console.log( fields_names );
-//console.log( errors_ids );
-
-
-
-
-
-</script>
-
-
 
 
 
@@ -227,3 +65,4 @@ clear_errors();
 
 
 {% endblock %}
+
