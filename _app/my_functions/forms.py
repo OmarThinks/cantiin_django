@@ -13,6 +13,9 @@ def render_text(field_name, field_name_capitalized, field_type):
 def render_number(field_name, field_name_capitalized,field_type):
 	return render_text(field_name, field_name_capitalized, field_type)
 
+def render_password(field_name, field_name_capitalized,field_type):
+	return render_text(field_name, field_name_capitalized, field_type)
+
 def render_checkbox(field_name, field_name_capitalized, field_type):
 	return f'''
 		
@@ -34,6 +37,8 @@ def render_field(field_name:str, field_name_capitalized:str, field_type:str):
 		return render_number(field_name, field_name_capitalized, field_type)
 	if field_type == "checkbox":
 		return render_checkbox(field_name, field_name_capitalized, field_type)
+	if field_type == "password":
+		return render_password(field_name, field_name_capitalized, field_type)
 	raise Exception("This field is unknown: "+str(field_name))
 
 

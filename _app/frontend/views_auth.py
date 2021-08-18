@@ -53,11 +53,11 @@ def signup(request):
 		},
 		{	"name":"pasword",
 			"name_capitalized":"Password *",
-			"type":"text"
+			"type":"password"
 		},
 		{	"name":"re_password",
 			"name_capitalized":"Re-enter Password *",
-			"type":"text"
+			"type":"password"
 		},
 	]
 	rendered_form = form_renderer(form_list)
