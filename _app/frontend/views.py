@@ -161,7 +161,7 @@ def create_product(request):
 	#pp(fields_names)
 	#pp(errors_ids)
 
-	return render(request, "resources/products/create.html",
+	return render(request, "masters/forms/to_item.html",
 		{
 			"title": "Create Product",
 			"serializer":ProductSerializer,
@@ -207,7 +207,7 @@ def update_product(request, pk):
 	#pp(fields_names)
 	#pp(errors_ids)
 
-	return render(request, "form_master.html",
+	return render(request, "masters/forms/to_item.html",
 		{
 			"title": "Update Product",
 			"serializer":ProductSerializer,
