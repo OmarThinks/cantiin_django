@@ -5,7 +5,8 @@ def render_text(field_name, field_name_capitalized, field_type):
 	return f'''
 
 		<label>{field_name_capitalized}</label>
-		<input name="{field_name}" class="form-control" 
+		<input id="input_field_{field_name}"
+		name="{field_name}" class="form-control" 
 		type="{field_type}"  value="" >
 	'''
 
@@ -17,7 +18,8 @@ def render_checkbox(field_name, field_name_capitalized, field_type):
 		
 		<div class="{field_type}">
 		<label>
-		  <input type="{field_type}" name="{field_name}" value=true >
+		  <input id="input_field_{field_name}"
+		  type="{field_type}" name="{field_name}" value=true >
 		    {field_name_capitalized}
 		</label>
 		</div>
