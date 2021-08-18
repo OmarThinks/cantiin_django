@@ -157,7 +157,6 @@ def create_product(request):
 	#pp(fields_names)
 	#pp(errors_ids)
 
-
 	return render(request, "form_master.html",
 		{
 			"title": "Create Product",
@@ -171,7 +170,8 @@ def create_product(request):
 		})		
 	
 
-def edit_product(request):
+def update_product(request, pk):
+	print(pk, flush=True)
 	#return HttpResponse("Login")
 	#pprint(ProductSerializer().__dict__)
 	#pprint(ProductSerializer().__dir__())
@@ -201,7 +201,6 @@ def edit_product(request):
 	#pp(fields_names)
 	#pp(errors_ids)
 
-
 	return render(request, "form_master.html",
 		{
 			"title": "Create Product",
@@ -213,6 +212,7 @@ def edit_product(request):
 			"fields_names":fields_names,
 			"errors_ids":errors_ids
 		})		
+	
 	
 
 

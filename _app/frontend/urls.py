@@ -22,7 +22,7 @@ from django.conf.urls import url
 from rest_framework import routers
 from .views import (homepage, UserViewSet, ProductViewSet, 
 	OrderViewSet, CommentViewSet,
-	DjoserUserViewSet,ProductViewSetMod, create_product, create_product)
+	DjoserUserViewSet,ProductViewSetMod, create_product, update_product)
 from .views_auth import (LoginView, logout)
 from .views_special import (my_products)
 
@@ -50,5 +50,6 @@ urlpatterns = [
 	path("my_products/", my_products),
 	path('login/', LoginView.as_view(), name='login'),
 	path('logout/', logout),
+	path('update/products/<int:pk>/', update_product)
 ]
 
