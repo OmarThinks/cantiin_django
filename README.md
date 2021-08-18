@@ -138,6 +138,8 @@ When you Click on that Button, You will be taken to the Create Product Form.
 There is validation, Be Careful :) :
 
 <img src="images/create_product_form_validation.gif">       
+<img src="images/disappointed.gif">       
+
 
 
 ### C-B-3) Product Details:
