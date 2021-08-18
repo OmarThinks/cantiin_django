@@ -22,7 +22,7 @@ from django.conf.urls import url
 from rest_framework import routers
 from .views import (homepage, UserViewSet, ProductViewSet, 
 	OrderViewSet, CommentViewSet,
-	DjoserUserViewSet,ProductViewSetMod, create_product)
+	DjoserUserViewSet,ProductViewSetMod, create_product, create_product)
 from .views_auth import (LoginView, logout)
 from .views_special import (my_products)
 

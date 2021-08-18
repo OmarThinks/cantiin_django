@@ -66,7 +66,10 @@ def generate_custom_renderer(
 
 			#if just_renderer_context:
 			#	return TemplateHTMLRenderer.get_template_context(self,data,renderer_context)
-			response = renderer_context["view"].get(renderer_context["request"]).data
+			response = dict(renderer_context["view"].get(renderer_context["request"]).data)
+			#print(response, flush=True)
+			#print(type(response), flush=True)
+			#print(type(dict(response)), flush=True)
 			#print(self, flush=True)
 			#print(response, flush=True)
 			#print(type(response), flush=True)
@@ -125,6 +128,50 @@ class ProductViewSet(_ProductViewSet):
 
 
 def create_product(request):
+	#return HttpResponse("Login")
+	#pprint(ProductSerializer().__dict__)
+	#pprint(ProductSerializer().__dir__())
+	#pprint(ProductSerializer().fields)
+	#pprint(ProductSerializer.Meta.__dict__)
+	#uctSerializer.__dir__())
+	form_list = [
+		{	"name":"name",
+			"name_capitalized":"Name",
+			"type":"text"
+		},
+		{	"name":"price",
+			"name_capitalized":"Price",
+			"type":"number"
+		},
+		{	"name":"in_stock",
+			"name_capitalized":"In Stock",
+			"type":"checkbox"
+		},
+	]
+	rendered_form = form_renderer(form_list)
+	
+	fields_names = form_fields_names_list(form_list)
+	errors_ids=form_errors_ids_list(form_list)
+	
+	#pp(rendered_form)
+	#pp(fields_names)
+	#pp(errors_ids)
+
+
+	return render(request, "form_master.html",
+		{
+			"title": "Create Product",
+			"serializer":ProductSerializer,
+			"request_destination":"/api/products/",
+			"request_method":"POST", 
+			"rendered_form":rendered_form,
+			"after_scuess_url":"/my_products/",
+			"fields_names":fields_names,
+			"errors_ids":errors_ids
+		})		
+	
+
+def edit_product(request):
 	#return HttpResponse("Login")
 	#pprint(ProductSerializer().__dict__)
 	#pprint(ProductSerializer().__dir__())

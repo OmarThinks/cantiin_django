@@ -16,6 +16,25 @@
 
 {% block content %}
 
+<div>
+{{ response.author_id }}
+
+<hr>
+
+
+{{ request.user.id }}
+
+
+<hr>
+
+
+{% if request.user.id == response.author_id %}
+He is the Author
+{% endif %}
+
+</div>
+
+
 
 
 {% for key,value in response.items %}
