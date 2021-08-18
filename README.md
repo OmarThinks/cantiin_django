@@ -12,7 +12,7 @@ https://www.cantiin.com
 # Video:
 
 <div align="center">
-  <a href="https://www.youtube.com/watch?v=4RjUJZSEsS0"><img src="https://img.youtube.com/vi/4RjUJZSEsS0/0.jpg" alt="IMAGE ALT TEXT"></a>
+  <a href="https://www.youtube.com/watch?v=vKo34O6E3O8"><img src="https://img.youtube.com/vi/vKo34O6E3O8/0.jpg" alt="Cantiin v1.0"></a>
 </div>
 
 
