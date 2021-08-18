@@ -65,7 +65,7 @@ def signup(request):
 	#pp(fields_names)
 	#pp(errors_ids)
 
-	return render(request, "masters/forms/_general.html",
+	return render(request, "resources/auth/signup.html",
 		{
 			"title": "Sign Up",
 			"serializer":"",
