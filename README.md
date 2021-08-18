@@ -170,11 +170,10 @@ On the product details page, You can Delete the product or edit it
 
 
 But If the product was not Your's, then you can not edit it.
+<img src="images/no_delete_or_edit.gif">       
 
-```
-Image with logged in user, but can not delete or edit
-```
-
+As in this image, the user is logged in, 
+but there is no delete or edit buttons.
 
 
 
