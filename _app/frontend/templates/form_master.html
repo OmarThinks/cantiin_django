@@ -42,6 +42,23 @@
 
 {% block content %}
 
+<div>
+
+
+
+
+
+
+
+
+{{ request_method }}
+{{ request_destination }}
+</div>
+
+
+
+
+
 
 <form id="form" method="POST">
     {% csrf_token %}
@@ -158,6 +175,7 @@ let elements = document.getElementsByTagName('input');
 
 
 
+
 function handle_form(event)
 {
   //console.log("Here we go");
@@ -199,6 +217,43 @@ function handle_form(event)
 }
 
 </script>
+
+
+
+
+
+
+
+{% if request_method == "PUT" %}
+
+
+<script type="text/javascript">
+
+var get_settings = {
+  "url": "{{ request_destination }}",
+  "method": "GET",
+};
+
+function get_item()
+{
+  $.ajax(get_settings).
+  done(function (response) {
+    console.log(response);
+  });
+}
+
+
+
+
+window.onload = get_item;
+</script>
+
+
+
+
+{% endif %}
+
+
 
 {% endblock %}
 
@@ -247,6 +302,9 @@ clear_errors();
 
 
 </script>
+
+
+
 
 
 

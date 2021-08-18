@@ -127,6 +127,10 @@ class ProductViewSet(_ProductViewSet):
 
 
 
+
+
+
+
 def create_product(request):
 	#return HttpResponse("Login")
 	#pprint(ProductSerializer().__dict__)
@@ -205,8 +209,8 @@ def update_product(request, pk):
 		{
 			"title": "Create Product",
 			"serializer":ProductSerializer,
-			"request_destination":"/api/products/",
-			"request_method":"POST", 
+			"request_destination":f"/api/products/{pk}/",
+			"request_method":"PUT", 
 			"rendered_form":rendered_form,
 			"after_scuess_url":"/my_products/",
 			"fields_names":fields_names,
