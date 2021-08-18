@@ -17,22 +17,29 @@
 {% block content %}
 
 <div>
-{{ response.author_id }}
+
+
+
+
+
+
+<button id="delete_button" onclick="delete_item()">DELETE</button>
+
+
+
+<hr>
+<a href="/update{{ request.path }}">
+<button>Edit</button>
+</a>
+
 
 <hr>
 
 
-{{ request.user.id }}
 
 
-<hr>
 
 
-{% if request.user.id == response.author_id %}
-He is the Author
-{% endif %}
-
-</div>
 
 
 
@@ -44,8 +51,38 @@ He is the Author
 
 
 <script type="text/javascript">
+
+
+
+function delete_item(event){
+
+console.log("I will be deleted");
+var settings = {
+  "url": "/api{{ request.path }}",
+  "method": "DELETE",
+  "timeout": 0,
+};
+
+console.log(settings);
+
+$.ajax(settings).
+then(function (response) {
+  window.location.replace("/my_products/");
+});
+
+}
+
+
+
+
+
+const delete_button = document.getElementById('delete_button');
+delete_button.addEventListener('click', handle_form);
+
+
 	
 </script>
+
 
 
 
