@@ -44,9 +44,74 @@ python manage.py runserver
 
 
 
-# C) Backend:
 
-## C-1) Authentication:
+
+
+
+
+
+
+
+
+# C) Frontend:
+
+
+The frontend uses Bootstrap and CSS.  
+It it rendered using Jinja templating Engine.
+
+
+<img src="images/frontend.gif">
+
+
+
+
+## C-A) Authentication:
+
+### C-A-1) Signup:
+
+If the user is not logged in.  
+then, on the top of the page, there will be a sign up button.
+<img src="images/signup_button.gif">
+On clicking this button:
+
+
+<img src="images/signup_form.gif">
+
+The user will be redirected to the sign up form.
+
+
+
+### C-A-2) Logging In:
+
+
+Just like Sign ing up, there is a log in Button that appears 
+when the user is not logged in.
+<img src="images/login_button.gif">
+<img src="images/logic.gif">
+
+
+### C-A-3) After Logging In:
+
+After loggin in, the header will change.
+<img src="images/changed_header.gif">  
+It will have 2 Options:
+1. **My Products**: To display a list of user's products
+2. **Log Out**: To log out of the system
+
+
+
+
+
+
+
+
+
+
+
+
+# D) Backend:
+
+## D-1) Authentication:
 
 The system uses Django authentication system.  
 To use the authentication system you can use this link:
@@ -65,7 +130,7 @@ Authentication uses JWT.
 
 
 
-## C-2) What the app does:
+## D-2) What the app does:
 
 Beyound authentication, the app has three more models.  
 - Product (Where the users can handle products)
@@ -88,7 +153,7 @@ These are the endpoints of API recources:
 
 
 
-## C-3) Pagination:
+## D-3) Pagination:
 All the models have pagination.  
 Since it exists in the `settings.py` file.  
 The pagination uses pages.  
@@ -99,14 +164,14 @@ Each page has 10 records.
 
 
 
-## C-4) Validation and Sanitization:
+## D-4) Validation and Sanitization:
 Validation and is used here, it is built in django  and Django REST framework.  
 Because we are using Django REST Framework serialization.  
 When the user sends a wrong request, the correct response will be returned.
 
 
 
-## C-5) Rate Limit:
+## D-5) Rate Limit:
 It means the limit of requests that can be sent bu the users.  
 It is very helpful to prevent DoS attacks.  
 For users that are 
@@ -116,7 +181,7 @@ For users that are
 
 These can be changed by changing `settings.py`.
 
-## C-6) Permissions:
+## D-6) Permissions:
 - Not Logged in Users:
 	- Create an account (Sign up)
 	- Sign in
@@ -129,7 +194,7 @@ These can be changed by changing `settings.py`.
 	- Logged in users permissions 
 	- Update, delete any product, Comment or order posted by any other user.
 
-## C-7) Search:
+## D-7) Search:
 Search is done using Django Filter:
 
 
@@ -148,21 +213,6 @@ Search is done using Django Filter:
 
 
 
-
-
-
-
-
-# D) Frontend (To Be Continued):
-
-
-The frontend uses Bootstrap and CSS.  
-It it rendered using Jinja templating Engine.
-
-
-
-
-<img src="images/frontend.gif">
 
 
 
