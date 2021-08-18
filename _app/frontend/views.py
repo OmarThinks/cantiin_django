@@ -155,7 +155,7 @@ def create_product(request):
 	#pp(errors_ids)
 
 
-	return render(request, "resources/products/create.html",
+	return render(request, "form_master.html",
 		{
 			"title": "Create Product",
 			"serializer":ProductSerializer,
