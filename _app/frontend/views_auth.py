@@ -51,12 +51,8 @@ def signup(request):
 			"name_capitalized":"Username or Email *",
 			"type":"text"
 		},
-		{	"name":"pasword",
+		{	"name":"password",
 			"name_capitalized":"Password *",
-			"type":"password"
-		},
-		{	"name":"re_password",
-			"name_capitalized":"Re-enter Password *",
 			"type":"password"
 		},
 	]
@@ -69,7 +65,7 @@ def signup(request):
 	#pp(fields_names)
 	#pp(errors_ids)
 
-	return render(request, "masters/forms/to_item.html",
+	return render(request, "masters/forms/_general.html",
 		{
 			"title": "Sign Up",
 			"serializer":"",
