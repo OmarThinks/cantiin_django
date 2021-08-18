@@ -23,7 +23,9 @@
 
 
 
-<button id="delete_button" onclick="delete_item()">DELETE</button>
+<button id="delete_button" onclick="delete_item()">
+{% csrf_token %}
+DELETE</button>
 
 
 
@@ -53,23 +55,31 @@
 <script type="text/javascript">
 
 
+function get_csrf_token()
+{
+	return document.getElementsByTagName('input').csrfmiddlewaretoken.defaultValue;
+}
+
+
 
 function delete_item(event){
 
-console.log("I will be deleted");
+//console.log("I will be deleted");
+
+
+
 var settings = {
   "url": "/api{{ request.path }}",
   "method": "DELETE",
   "timeout": 0,
+  "headers": {"X-CSRFTOKEN":get_csrf_token()}
 };
 
-console.log(settings);
-
+//console.log(settings);
 $.ajax(settings).
 then(function (response) {
   window.location.replace("/my_products/");
 });
-
 }
 
 
