@@ -127,24 +127,41 @@ function handle_form(event)
 {
   //console.log("Here we go");
   event.preventDefault();
-  clear_errors()
 
   let settings = get_form_settings();
-  console.log(settings);
+  //console.log(settings);
   $.ajax(settings).
   then(function (response) {
-    console.log("You Made it");
-    console.log(response);
+    //console.log("You Made it");
+    //console.log(response);
     window.location.replace("{{ after_scuess_url }}");
   })
   .catch((err)=>{
-    console.log("Something Went Wrong");
-    console.log(err);
-    console.log(err.responseJSON);
+    //console.log("Something Went Wrong");
+    clear_errors();
+    //console.log(err);
+    //console.log(err.responseJSON);
+    let json_error = err.responseJSON;
+
+    for(i in json_error)
+    {
+      let err_element = document.getElementById("form_field_error_"+i);
+      err_element.style.display="block";
+      //console.log(err_element);
+      for(j in json_error[i])
+      {
+        //console.log(json_error[i][j]);
+        var node = document.createElement("LI");                 // Create a <li> node
+        var textnode = document.createTextNode(json_error[i][j]);         // Create a text node
+        node.appendChild(textnode);                              // Append the text to <li>
+        err_element.appendChild(node);     // Append <li> to <ul> with id="myList" 
+      }
+
+    }
+
   })
   
 }
-
 
 </script>
 
@@ -174,12 +191,16 @@ document.getElementsByClassName('form_field_error');
 var fields_names = {{ fields_names|safe }};
 var errors_ids = {{ errors_ids|safe }};
 
-console.log(errors_ids);
+//console.log(errors_ids);
 
 function clear_errors()
 {
   for(i in errors_ids)
-  {document.getElementById(errors_ids[i]).style.display="none";}
+  {
+    document.getElementById(errors_ids[i]).style.display="none";
+    document.getElementById(errors_ids[i]).innerHTML="";
+
+  }
 }
 
 clear_errors();
