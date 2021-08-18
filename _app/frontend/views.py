@@ -170,7 +170,8 @@ def create_product(request):
 			"rendered_form":rendered_form,
 			"after_scuess_url":"/my_products/",
 			"fields_names":fields_names,
-			"errors_ids":errors_ids
+			"errors_ids":errors_ids,
+			"button_text":"Create"
 		})		
 	
 
@@ -207,14 +208,15 @@ def update_product(request, pk):
 
 	return render(request, "form_master.html",
 		{
-			"title": "Create Product",
+			"title": "Update Product",
 			"serializer":ProductSerializer,
 			"request_destination":f"/api/products/{pk}/",
 			"request_method":"PUT", 
 			"rendered_form":rendered_form,
 			"after_scuess_url":"/my_products/",
 			"fields_names":fields_names,
-			"errors_ids":errors_ids
+			"errors_ids":errors_ids,
+			"button_text":"Update"
 		})		
 	
 	

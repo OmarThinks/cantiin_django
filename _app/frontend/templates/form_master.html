@@ -6,7 +6,7 @@
 {% block additional_css_content %}
 
 <style type="text/css">
-.create_button
+.form_button
 {
   background: lime;
   margin: 1em 0em;
@@ -19,7 +19,7 @@
 }
 
 
-.create_button:hover
+.form_button:hover
 {
   background: yellow;
 }
@@ -52,7 +52,8 @@
 
     {{ rendered_form }}
 
-    <button class="create_button" type="submit">Create</button>
+    <button class="form_button" type="submit">
+    {{ button_text }}</button>
 </form>
 
 <p id="err_message"></p>
@@ -304,7 +305,7 @@ function fill_form()
 {
   $.ajax(get_settings).
   done(function (response) {
-    console.log(response);
+    //console.log(response);
     for(i in fields_names)
     {
       //console.log(fields_names[i]);
@@ -313,7 +314,7 @@ function fill_form()
       let value = response[fields_names[i]];
 
 
-      console.log(fieldname, value);
+      //console.log(fieldname, value);
 
       let field_type = document.getElementById(
         "input_field_"+fieldname).type;
