@@ -9,7 +9,8 @@ from django.contrib.auth import views
 from django.shortcuts import redirect
 
 
-
+from my_functions.forms import (form_renderer,
+	form_fields_names_list, form_errors_ids_list)
 
 
 class LoginView(views.LoginView):
@@ -38,7 +39,49 @@ def logout(request):
 
 
 
+def signup(request):
+	#return HttpResponse("Login")
+	#pprint(ProductSerializer().__dict__)
+	#pprint(ProductSerializer().__dir__())
+	#pprint(ProductSerializer().fields)
+	#pprint(ProductSerializer.Meta.__dict__)
+	#uctSerializer.__dir__())
+	form_list = [
+		{	"name":"username",
+			"name_capitalized":"Username or Email *",
+			"type":"text"
+		},
+		{	"name":"pasword",
+			"name_capitalized":"Password *",
+			"type":"text"
+		},
+		{	"name":"re_password",
+			"name_capitalized":"Re-enter Password *",
+			"type":"text"
+		},
+	]
+	rendered_form = form_renderer(form_list)
+	
+	fields_names = form_fields_names_list(form_list)
+	errors_ids=form_errors_ids_list(form_list)
+	
+	#pp(rendered_form)
+	#pp(fields_names)
+	#pp(errors_ids)
 
+	return render(request, "masters/forms/to_item.html",
+		{
+			"title": "Sign Up",
+			"serializer":"",
+			"request_destination":"/api/auth/users/",
+			"request_method":"POST", 
+			"rendered_form":rendered_form,
+			"after_scuess_url":"/my_products/",
+			"fields_names":fields_names,
+			"errors_ids":errors_ids,
+			"button_text":"Sign Up",
+			"resource_url":"/api/auth/users/"
+		})	
 
 
 

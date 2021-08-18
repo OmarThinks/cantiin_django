@@ -23,7 +23,7 @@ from rest_framework import routers
 from .views import (homepage, UserViewSet, ProductViewSet, 
 	OrderViewSet, CommentViewSet,
 	DjoserUserViewSet,ProductViewSetMod, create_product, update_product)
-from .views_auth import (LoginView, logout)
+from .views_auth import (LoginView, logout, signup)
 from .views_special import (my_products)
 
 # Routers provide an easy way of automatically determining the URL conf.
@@ -51,5 +51,6 @@ urlpatterns = [
 	path("my_products/", my_products),
 	path('login/', LoginView.as_view(), name='login'),
 	path('logout/', logout),
+	path('signup/', signup),
 ]
 

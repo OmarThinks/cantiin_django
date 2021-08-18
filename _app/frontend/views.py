@@ -140,11 +140,11 @@ def create_product(request):
 	#uctSerializer.__dir__())
 	form_list = [
 		{	"name":"name",
-			"name_capitalized":"Name",
+			"name_capitalized":"Name *",
 			"type":"text"
 		},
 		{	"name":"price",
-			"name_capitalized":"Price",
+			"name_capitalized":"Price *",
 			"type":"number"
 		},
 		{	"name":"in_stock",
@@ -186,11 +186,11 @@ def update_product(request, pk):
 	#uctSerializer.__dir__())
 	form_list = [
 		{	"name":"name",
-			"name_capitalized":"Name",
+			"name_capitalized":"Name *",
 			"type":"text"
 		},
 		{	"name":"price",
-			"name_capitalized":"Price",
+			"name_capitalized":"Price *",
 			"type":"number"
 		},
 		{	"name":"in_stock",

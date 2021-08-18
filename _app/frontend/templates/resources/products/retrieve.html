@@ -118,8 +118,6 @@ function delete_item(event){
 
 //console.log("I will be deleted");
 
-
-
 var settings = {
   "url": "/api{{ request.path }}",
   "method": "DELETE",
@@ -133,13 +131,6 @@ then(function (response) {
   window.location.replace("/my_products/");
 });
 }
-
-
-
-
-
-const delete_button = document.getElementById('delete_button');
-delete_button.addEventListener('click', handle_form);
 
 
 	
