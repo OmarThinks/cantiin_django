@@ -42,19 +42,6 @@
 
 {% block content %}
 
-<div>
-
-
-
-
-
-
-
-
-{{ request_method }}
-{{ request_destination }}
-</div>
-
 
 
 
@@ -224,34 +211,8 @@ function handle_form(event)
 
 
 
-{% if request_method == "PUT" %}
 
 
-<script type="text/javascript">
-
-var get_settings = {
-  "url": "{{ request_destination }}",
-  "method": "GET",
-};
-
-function get_item()
-{
-  $.ajax(get_settings).
-  done(function (response) {
-    console.log(response);
-  });
-}
-
-
-
-
-window.onload = get_item;
-</script>
-
-
-
-
-{% endif %}
 
 
 
@@ -311,6 +272,90 @@ clear_errors();
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% if request_method == "PUT" %}
+
+<script type="text/javascript">
+/*Only for Update requests*/
+var get_settings = {
+  "url": "{{ request_destination }}",
+  "method": "GET",
+};
+
+function fill_form()
+{
+  $.ajax(get_settings).
+  done(function (response) {
+    console.log(response);
+    for(i in fields_names)
+    {
+      //console.log(fields_names[i]);
+      //console.log(response[fields_names[i]]);
+      let fieldname = fields_names[i];
+      let value = response[fields_names[i]];
+
+
+      console.log(fieldname, value);
+
+      let field_type = document.getElementById(
+        "input_field_"+fieldname).type;
+
+
+      if (field_type == "checkbox"){
+        document.getElementById(
+          "input_field_"+fieldname).checked = value;
+      }
+      else{document.getElementById(
+          "input_field_"+fieldname).value = value;}
+
+
+
+
+
+
+    }
+  });
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+window.onload = fill_form;
+</script>
+
+{% endif %}
 
 
 
