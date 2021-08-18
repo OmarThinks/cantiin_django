@@ -67,6 +67,11 @@ var fields_names = {{ fields_names|safe }};
 var errors_ids = {{ errors_ids|safe }};
 
 
+function get_csrf_token()
+{
+  return document.getElementsByTagName('input').csrfmiddlewaretoken.defaultValue;
+}
+
 
 
 function get_form_data()
@@ -87,6 +92,7 @@ function get_form_data()
     else{data[fieldname] = document.getElementById(
         "input_field_"+fieldname).value;}
   }
+  data["csrfmiddlewaretoken"] =get_csrf_token(); 
   return data;
 }
 
@@ -96,10 +102,7 @@ function get_form_data()
 
 function get_form_settings()
 {
-  var data = $('#form').serializeArray().reduce(function(obj, item) {
-    obj[item.name] = item.value;
-    return obj;
-}, {});
+  var data = get_form_data();
 
   //headers={"Content-Type": "application/json"};
   headers={};
