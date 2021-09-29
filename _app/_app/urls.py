@@ -34,5 +34,6 @@ urlpatterns = [
 	path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 	path('',include("cantiin.urls")),
 	path('',include("frontend.urls")),
+	path('',include("accounts.urls")),
 ]
 urlpatterns += staticfiles_urlpatterns()
