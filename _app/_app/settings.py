@@ -45,27 +45,31 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    "rest_framework.authtoken",
+    #'djoser',
     'django_filters',
-    'djoser',
     'accounts',
     'cantiin',
     'frontend',
     "testing",
+    #"corsheaders"
 ]
 
 
 
+#"_app.middlewares.CORSMiddleware"
 
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    "_app.middlewares.CORSMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    "_app.middlewares.CORSMiddleware"
 ]
 
 ROOT_URLCONF = '_app.urls'
@@ -188,3 +192,38 @@ import os
 STATICFILES_DIRS = (
 os.path.join(BASE_DIR, "assets"),
 )
+
+
+"""
+
+CORS_ALLOWED_ORIGINS = [
+    "https://example.com",
+    "https://sub.example.com",
+    "http://localhost:8080",
+    "http://127.0.0.1:3000",
+]
+
+
+CORS_ALLOW_METHODS = [
+    "DELETE",
+    "GET",
+    "OPTIONS",
+    "PATCH",
+    "POST",
+    "PUT",
+]
+
+CORS_URLS_REGEX = r"^/api/.*$"
+
+CORS_ALLOW_HEADERS = [
+    "accept",
+    "accept-encoding",
+    "authorization",
+    "content-type",
+    "dnt",
+    "origin",
+    "user-agent",
+    "x-csrftoken",
+    "x-requested-with",
+]
+"""

@@ -20,6 +20,13 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 
 
+def get_csrf(request):
+    pass
+
+
+
+
+
 urlpatterns = [
 	path('admin/', admin.site.urls),
 	path('api/auth/', include('djoser.urls')),
