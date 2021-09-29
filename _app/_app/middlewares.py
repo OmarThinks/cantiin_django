@@ -4,7 +4,7 @@ class CORSMiddleware:
         self.get_response = get_response
 
     def __call__(self, request):
-        #setattr(request, '_dont_enforce_csrf_checks', True) # Disable CSRF
+        setattr(request, '_dont_enforce_csrf_checks', True) # Disable CSRF
         response = self.get_response(request)
         response['access-control-allow-origin'] = "*"
         response['access-control-allow-headers'] = "*"

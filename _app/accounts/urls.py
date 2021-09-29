@@ -17,6 +17,10 @@ class LoginSerializer(serializers.HyperlinkedModelSerializer):
 @authentication_classes([])
 @permission_classes([])
 def login(request):
+    serializer = LoginSerializer(data = request.data)
+    serializer.is_valid(raise_exception=True)
+    data = serializer.validated_data
+    print(data, flush=True)
     return Response({"message": "Hello, world!"})
 
 
