@@ -68,11 +68,21 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     #'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    #'django.contrib.auth.middleware.RemoteUserMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.RemoteUserBackend',
+]
+
+
+
 ROOT_URLCONF = '_app.urls'
+
+
 
 TEMPLATES = [
     {
@@ -163,8 +173,10 @@ from _app.permissions import CanttinPermission
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.RemoteUserAuthentication',        
         'rest_framework.authentication.BasicAuthentication',
         'rest_framework.authentication.SessionAuthentication',        
+        'rest_framework.authentication.TokenAuthentication',        
     ),
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 10,
@@ -227,3 +239,10 @@ CORS_ALLOW_HEADERS = [
     "x-requested-with",
 ]
 """
+
+
+
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SAMESITE = 'None'
+SESSION_COOKIE_SAMESITE = 'None'
