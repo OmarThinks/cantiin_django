@@ -25,12 +25,26 @@ SECRET_KEY = 'django-insecure-vpx#*q#5n4ih&w*-y#wsy&ed+hz%1t0w51cs!*!-dr@i7!kjyc
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-#ALLOWED_HOSTS = ["cantiin.com","www.cantiin.com"]
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["cantiin.com","www.cantiin.com", "127.0.0.1"]
+#ALLOWED_HOSTS = []
 
 
 
 
+
+
+CORS_ALLOWED_ORIGINS = [
+    "https://cantiin.com",
+    "https://www.example.com",
+    "http://cantiin.com",
+    "http://www.example.com",
+    "http://localhost:8080",
+    "http://localhost:3080",
+    "http://127.0.0.1:3000",
+    "http://127.0.0.1:8000",
+    "https://cantiin.d3thsty4rzma1i.amplifyapp.com",
+    "http://cantiin.d3thsty4rzma1i.amplifyapp.com"
+]
 
 
 
@@ -66,10 +80,11 @@ MIDDLEWARE = [
     "_app.middlewares.CORSMiddleware",
     "corsheaders.middleware.CorsMiddleware",
     'django.middleware.common.CommonMiddleware',
-    #'django.middleware.csrf.CsrfViewMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    #"corsheaders.middleware.CorsMiddleware",
 ]
 
 
@@ -208,19 +223,7 @@ CSRF_COOKIE_SAMESITE = 'None'
 SESSION_COOKIE_SAMESITE = 'None'
 
 
-
-CORS_ALLOWED_ORIGINS = [
-    "https://cantiin.com",
-    "https://www.example.com",
-    "http://cantiin.com",
-    "http://www.example.com",
-    "http://localhost:8080",
-    "http://localhost:3080",
-    "http://127.0.0.1:3000",
-    "http://127.0.0.1:8000",
-]
-
-CORS_ALLOW_HEADERS = ["*",
+CORS_ALLOW_HEADERS = [
     "accept",
     "accept-encoding",
     "authorization",
