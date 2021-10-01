@@ -52,7 +52,7 @@ INSTALLED_APPS = [
     'cantiin',
     'frontend',
     "testing",
-    #"corsheaders"
+    "corsheaders"
 ]
 
 
@@ -63,7 +63,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    #"_app.middlewares.CORSMiddleware",
+    "_app.middlewares.CORSMiddleware",
     "corsheaders.middleware.CorsMiddleware",
     'django.middleware.common.CommonMiddleware',
     #'django.middleware.csrf.CsrfViewMiddleware',
@@ -72,11 +72,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-"""
-AUTHENTICATION_BACKENDS = [
-    'django.contrib.auth.backends.RemoteUserBackend',
-]
-"""
+
 
 
 ROOT_URLCONF = '_app.urls'

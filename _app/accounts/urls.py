@@ -1,11 +1,19 @@
 from .models import (User)
 from rest_framework import serializers
 from django.urls import path
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from rest_framework.decorators import api_view, authentication_classes, permission_classes
 from rest_framework.response import Response
-
+from cantiin.serializers import UserSerializer
 from django.contrib.auth.validators import UnicodeUsernameValidator
+
+from django.contrib.auth.models import AnonymousUser
+
+from cantiin.serializers import UserSerializer
+
+from rest_framework.exceptions import AuthenticationFailed
+
+
 
 class LoginSerializer(serializers.Serializer):
     username = serializers.CharField(help_text='Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.', max_length=150, validators=[UnicodeUsernameValidator])
@@ -24,8 +32,7 @@ def LoginView(request):
     if user is not None:
         login(request, user)
         return Response({"message": "You are logged in"})
-    wrong_password_response = Response(status=400,  data={"password":["wrong username or password"]})
-    return wrong_password_response
+    return Response(status=400,  data={"password":["wrong username or password"]})
 
 
 
@@ -42,22 +49,39 @@ def TestLoginView(request):
 
 
 
-
-def emptyview(request):
-    return "Hey"
+#@permission_classes([])
 
 
+#@authentication_classes([])
 
 
+@api_view(http_method_names=['GET'])
+@authentication_classes([])
+@permission_classes([])
+def UserWho(request):
+    """user = User.objects.filter(id=payload['id']).first()
+    serializer = UserSerializer(user)
+    return Response(serializer.data)"""
+    print(request.auth)
+    if (request.auth==None):
+        raise AuthenticationFailed('Unauthenticated!')
+    user = request.user
+    serializer = UserSerializer(user)
+    return Response(serializer.data)
 
 
-
-from rest_framework.authtoken import views
+@api_view(http_method_names=['GET',"POST"])
+def logout_view(request):
+    if type(request.user)==AnonymousUser:
+        return Response({"message":"you are alreeady logged out"})
+    logout(request)
+    return Response({"message":"you logged Out successfully"})
+   
 
 urlpatterns = [
 	path('api/auth/custom/login/', LoginView),
 	path('api/auth/custom/login/test/', TestLoginView),
-    path('api-token-auth/', views.obtain_auth_token),
-    path('emptyview/', emptyview),
+	path('api/auth/custom/user/', UserWho),
+	path('api/auth/custom/logout/', logout_view),
  
 ]
