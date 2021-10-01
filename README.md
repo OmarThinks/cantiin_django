@@ -292,6 +292,46 @@ Search is done using Django Filter:
 
 
 
+## D-8) Custom Authentication Endpoints:
+
+
+
+### D-8-1) http://127.0.0.1:8000/api/auth/custom/login/
+
+This is the login endpoint.  
+The method is POST.  
+It expects 2 inputs in the request body: **`username`** and **`password`**
+
+
+
+
+### D-8-2) http://127.0.0.1:8000/api/auth/custom/logout/
+
+This is the logout endpoint.  
+
+
+
+
+### D-8-3) http://127.0.0.1:8000/api/auth/custom/user/
+
+This endpoint tells whether the user is authenticated or not.  
+- **Authenticated**: 
+	- response:
+		- Status Code: 200
+		- Body: the user information
+- **UnAuthenticated**:
+	- response:
+		- Status Code: 401
+
+
+
+
+
+
+
+
+
+
 
 
 

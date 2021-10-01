@@ -37,20 +37,6 @@ def LoginView(request):
 
 
 
-
-
-
-@api_view(http_method_names=["GET"])
-def TestLoginView(request):
-    #print(request.user)
-    if(request.user.is_authenticated):
-        return Response({"message": "You are logged in"})
-    return Response({"message": "You are logged out"})
-
-
-
-
-
 @api_view(http_method_names=['GET',"POST"])
 def logout_view(request):
     if type(request.user)==AnonymousUser:
@@ -74,7 +60,6 @@ def UserWho(request):
 
 urlpatterns = [
 	path('api/auth/custom/login/', LoginView),
-	path('api/auth/custom/login/test/', TestLoginView),
 	path('api/auth/custom/logout/', logout_view),
  	path('api/auth/custom/user/', UserWho),
 
