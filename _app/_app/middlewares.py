@@ -23,17 +23,30 @@ trusted_origins = [
 
 #http://localhost:3000
 
+CORS_ALLOW_HEADERS = [
+    "accept",
+    "accept-encoding",
+    "authorization",
+    "content-type",
+    "dnt",
+    "origin",
+    "user-agent",
+    "x-csrftoken",
+    "x-requested-with",
+]
+
+
 
 def get_origin(request):
     origin = request.headers.get("Referer", request.headers.get("Origin", "*"))
     if (origin == "*"):
         return "*"
     pure_origin = urlparse(origin).scheme + "://"+urlparse(origin).netloc
-    print(pure_origin)
+    #print(pure_origin)
     if (pure_origin in trusted_origins):
-        print("found the origin")
+        #print("found the origin")
         return pure_origin
-    print("can not find the origin")
+    #print("can not find the origin")
     return "*"
         
 
@@ -50,4 +63,6 @@ class CORSMiddleware:
         #pp(request.headers)
         response = self.get_response(request)
         response["Access-Control-Allow-Origin"] =  get_origin(request)
+        response["Access-Control-Allow-Headers"] =  ",".join(CORS_ALLOW_HEADERS)
+        response["Access-Control-Allow-Credentials"] =  "true"
         return response
