@@ -15,6 +15,6 @@ class CORSMiddleware:
         
         response['access-control-allow-origin'] = referer
         response['access-control-allow-headers'] = "*,content-type,sessionid"
-        response['Access-Control-Allow-Credentials'] = "true"  
+        response['Access-Control-Allow-Credentials'] = "true" 
           
         return response

@@ -63,7 +63,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    "_app.middlewares.CORSMiddleware",
+    #"_app.middlewares.CORSMiddleware",
     "corsheaders.middleware.CorsMiddleware",
     'django.middleware.common.CommonMiddleware',
     #'django.middleware.csrf.CsrfViewMiddleware',
@@ -210,3 +210,17 @@ CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SAMESITE = 'None'
 SESSION_COOKIE_SAMESITE = 'None'
+
+
+
+
+CORS_ALLOWED_ORIGINS = [
+    "https://cantiin.com",
+    "https://www.example.com",
+    "http://cantiin.com",
+    "http://www.example.com",
+    "http://localhost:8080",
+    "http://localhost:3080",
+    "http://127.0.0.1:3000",
+    "http://127.0.0.1:8000",
+]

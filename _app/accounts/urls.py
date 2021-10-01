@@ -66,7 +66,7 @@ def LoginView(request):
 
 @api_view(http_method_names=["GET"])
 def TestLoginView(request):
-    print(request.user)
+    #print(request.user)
     if(request.user.is_authenticated):
         return Response({"message": "You are logged in"})
     return Response({"message": "You are logged out"})
