@@ -49,25 +49,6 @@ def TestLoginView(request):
 
 
 
-#@permission_classes([])
-
-
-#@authentication_classes([])
-
-
-@api_view(http_method_names=['GET'])
-@authentication_classes([])
-@permission_classes([])
-def UserWho(request):
-    """user = User.objects.filter(id=payload['id']).first()
-    serializer = UserSerializer(user)
-    return Response(serializer.data)"""
-    print(request.auth)
-    if (request.auth==None):
-        raise AuthenticationFailed('Unauthenticated!')
-    user = request.user
-    serializer = UserSerializer(user)
-    return Response(serializer.data)
 
 
 @api_view(http_method_names=['GET',"POST"])
@@ -76,12 +57,25 @@ def logout_view(request):
         return Response({"message":"you are alreeady logged out"})
     logout(request)
     return Response({"message":"you logged Out successfully"})
-   
+
+
+
+
+@api_view(http_method_names=['GET'])
+def UserWho(request):
+    if type(request.user)==AnonymousUser:
+        return Response(status = 401, data ={"message":"you are logged out"})
+    #user = User.objects.filter(id=payload['id']).first()
+    #serializer = 
+    return Response(UserSerializer(request.user,context={'request': request}).data)
+
+
+
 
 urlpatterns = [
 	path('api/auth/custom/login/', LoginView),
 	path('api/auth/custom/login/test/', TestLoginView),
-	path('api/auth/custom/user/', UserWho),
 	path('api/auth/custom/logout/', logout_view),
- 
+ 	path('api/auth/custom/user/', UserWho),
+
 ]
