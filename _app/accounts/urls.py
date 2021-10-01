@@ -19,17 +19,12 @@ def LoginView(request):
     serializer = LoginSerializer(data = request.data)
     serializer.is_valid(raise_exception=True)
     data = serializer.validated_data
-    username = data["username"]
-    password = data["password"]
+    username, password = data["username"], data['password']
     user = authenticate(request, username=username, password=password)
     if user is not None:
         login(request, user)
-        # Redirect to a success page.
         return Response({"message": "You are logged in"})
-    
-    wrong_password_response = Response( )
-    wrong_password_response.status_code =400
-    wrong_password_response.data = {"password":["wrong username or password"]}
+    wrong_password_response = Response(status=400,  data={"password":["wrong username or password"]})
     return wrong_password_response
 
 
