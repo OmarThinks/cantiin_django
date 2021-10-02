@@ -15,9 +15,62 @@ from rest_framework.exceptions import AuthenticationFailed
 
 
 
+
+
+
+
+
+from rest_framework import serializers
+from django.contrib.auth import get_user_model # If used custom user model
+
+UserModel = get_user_model()
+
+
+class CreateUserSerializer(serializers.ModelSerializer):
+
+    def create(self, validated_data):
+        user = UserModel.objects.create_user(
+            username=validated_data['username'],
+            password=validated_data['password'],
+        )
+        return user
+
+    class Meta:
+        model = UserModel
+        # Tuple of serialized model fields (see link [2])
+        fields = ( "id", "username", "password", )
+
+
+
+
+
+@api_view(['POST'])
+@authentication_classes([])
+@permission_classes([])
+def SignupView(request):
+    serializer = CreateUserSerializer(data=request.data)
+    if serializer.is_valid():
+        #user = serializer.save()
+        serializer.save()
+        user = authenticate(request, 
+            username=serializer.validated_data['username'], 
+            password=serializer.validated_data['password'])
+        login(request, user)
+        return Response(UserSerializer(request.user,context={'request': request}).data, status = 200)
+    else:
+        return Response(serializer.errors, status=400)
+
+
+
+
+
 class LoginSerializer(serializers.Serializer):
     username = serializers.CharField(help_text='Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.', max_length=150, validators=[UnicodeUsernameValidator])
     password = serializers.CharField(max_length=128)
+
+
+
+
 
 
 @api_view(http_method_names=['POST'])
@@ -58,42 +111,6 @@ def UserWho(request):
 
 
 
-
-
-
-
-from rest_framework import serializers
-from django.contrib.auth import get_user_model # If used custom user model
-
-UserModel = get_user_model()
-
-
-class CreateUserSerializer(serializers.ModelSerializer):
-
-    def create(self, validated_data):
-        user = UserModel.objects.create_user(
-            username=validated_data['username'],
-            password=validated_data['password'],
-        )
-        return user
-
-    class Meta:
-        model = UserModel
-        # Tuple of serialized model fields (see link [2])
-        fields = ( "id", "username", "password", )
-
-
-
-
-@api_view(['POST'])
-def SignupView(request):
-    serializer = CreateUserSerializer(data=request.data)
-    if serializer.is_valid():
-        user = serializer.save()
-        login(request, user)
-        return Response(serializer.data, status=201)
-    else:
-        return Response(serializer.errors, status=400)
 
 
 
