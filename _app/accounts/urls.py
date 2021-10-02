@@ -31,7 +31,8 @@ def LoginView(request):
     user = authenticate(request, username=username, password=password)
     if user is not None:
         login(request, user)
-        return Response({"message": "You are logged in"})
+        return Response(UserSerializer(request.user,context={'request': request}).data)
+        #return Response({"message": "You are logged in"})
     return Response(status=400,  data={"password":["wrong username or password"]})
 
 
@@ -58,7 +59,55 @@ def UserWho(request):
 
 
 
+
+
+
+from rest_framework import serializers
+from django.contrib.auth import get_user_model # If used custom user model
+
+UserModel = get_user_model()
+
+
+class CreateUserSerializer(serializers.ModelSerializer):
+
+    def create(self, validated_data):
+        user = UserModel.objects.create_user(
+            username=validated_data['username'],
+            password=validated_data['password'],
+        )
+        return user
+
+    class Meta:
+        model = UserModel
+        # Tuple of serialized model fields (see link [2])
+        fields = ( "id", "username", "password", )
+
+
+
+
+@api_view(['POST'])
+def SignupView(request):
+    serializer = CreateUserSerializer(data=request.data)
+    if serializer.is_valid():
+        user = serializer.save()
+        login(request, user)
+        return Response(serializer.data, status=201)
+    else:
+        return Response(serializer.errors, status=400)
+
+
+
+
+
+
+
+
+
+
+
+
 urlpatterns = [
+	path('api/auth/custom/signup/', SignupView),
 	path('api/auth/custom/login/', LoginView),
 	path('api/auth/custom/logout/', logout_view),
  	path('api/auth/custom/user/', UserWho),
