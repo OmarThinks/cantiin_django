@@ -296,7 +296,15 @@ Search is done using Django Filter:
 
 
 
-### D-8-1) http://127.0.0.1:8000/api/auth/custom/login/
+### D-8-1) http://127.0.0.1:8000/api/auth/custom/signup/
+
+This is the signup endpoint.  
+The method is POST.  
+It expects 2 inputs in the request body: **`username`** and **`password`**.  
+When you sign up, you will login also
+
+
+### D-8-2) http://127.0.0.1:8000/api/auth/custom/login/
 
 This is the login endpoint.  
 The method is POST.  
@@ -305,14 +313,14 @@ It expects 2 inputs in the request body: **`username`** and **`password`**
 
 
 
-### D-8-2) http://127.0.0.1:8000/api/auth/custom/logout/
+### D-8-3) http://127.0.0.1:8000/api/auth/custom/logout/
 
 This is the logout endpoint.  
 
 
 
 
-### D-8-3) http://127.0.0.1:8000/api/auth/custom/user/
+### D-8-4) http://127.0.0.1:8000/api/auth/custom/user/
 
 This endpoint tells whether the user is authenticated or not.  
 - **Authenticated**: 
