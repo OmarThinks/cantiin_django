@@ -45,7 +45,9 @@ CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:3000",
     "http://127.0.0.1:8000",
     "https://cantiin.d3thsty4rzma1i.amplifyapp.com",
-    "http://cantiin.d3thsty4rzma1i.amplifyapp.com"
+    "http://cantiin.d3thsty4rzma1i.amplifyapp.com",
+    "https://dev.d2ehwgu036lbhk.amplifyapp.com/",
+    "http://dev.d2ehwgu036lbhk.amplifyapp.com/"
 ]
 
 

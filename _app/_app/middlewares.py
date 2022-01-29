@@ -4,21 +4,23 @@ from urllib.parse import urlparse
 
 
 
-
-
-
 trusted_origins = [
     "https://cantiin.com",
     "https://www.example.com",
+    "https://www.cantiin-react.com",
     "http://cantiin.com",
     "http://www.example.com",
+    "http://www.cantiin-react.com",
     "http://localhost:8080",
-    "http://localhost:3000",
-    "http://127.0.0.1:8000",
+    "http://localhost:3080",
     "http://127.0.0.1:3000",
+    "http://127.0.0.1:8000",
     "https://cantiin.d3thsty4rzma1i.amplifyapp.com",
-    "http://cantiin.d3thsty4rzma1i.amplifyapp.com"
+    "http://cantiin.d3thsty4rzma1i.amplifyapp.com",
+    "https://dev.d2ehwgu036lbhk.amplifyapp.com/",
+    "http://dev.d2ehwgu036lbhk.amplifyapp.com/"
 ]
+
 
 
 #http://localhost:3000
