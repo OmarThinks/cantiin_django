@@ -36,7 +36,7 @@ ALLOWED_HOSTS = ["cantiin.com","www.cantiin.com", "127.0.0.1"]
 CORS_ALLOWED_ORIGINS = [
     "https://cantiin.com",
     "https://www.example.com",
-    "https://www.cantiin-react.com",
+    "https://cantiin-react.com",
     "http://cantiin.com",
     "http://www.example.com",
     "http://www.cantiin-react.com",
@@ -46,8 +46,8 @@ CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:8000",
     "https://cantiin.d3thsty4rzma1i.amplifyapp.com",
     "http://cantiin.d3thsty4rzma1i.amplifyapp.com",
-    "https://dev.d2ehwgu036lbhk.amplifyapp.com/",
-    "http://dev.d2ehwgu036lbhk.amplifyapp.com/"
+    "https://dev.d2ehwgu036lbhk.amplifyapp.com",
+    "http://dev.d2ehwgu036lbhk.amplifyapp.com"
 ]
 
 
