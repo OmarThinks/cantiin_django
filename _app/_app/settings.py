@@ -41,7 +41,7 @@ CORS_ALLOWED_ORIGINS = [
     "https://www.example.com",
     "https://www.cantiin-react.com",
     "http://localhost:8080",
-    "http://localhost:3080",
+    "http://localhost:3000",
     "http://127.0.0.1:3000",
     "http://127.0.0.1:8000",
     "https://cantiin.d3thsty4rzma1i.amplifyapp.com",
