@@ -21,7 +21,8 @@ from django.urls import path, include
 from rest_framework import routers
 from .views import (homepage, UserViewSet, ProductViewSet, 
 	OrderViewSet, CommentViewSet,
-	DjoserUserViewSet,ProductViewSetMod, create_product, update_product)
+	#DjoserUserViewSet,ProductViewSetMod, 
+	create_product, update_product)
 from .views_auth import (LoginView, logout, signup)
 from .views_special import (my_products)
 

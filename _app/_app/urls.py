@@ -28,11 +28,13 @@ def get_csrf(request):
 
 urlpatterns = [
 	path('admin/', admin.site.urls),
-	path('api/auth/', include('djoser.urls')),
-	path('api/auth/', include('djoser.urls.authtoken')),
+	#path('api/auth/', include('djoser.urls')),
+	#path('api/auth/', include('djoser.urls.authtoken')),
 	path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 	path('',include("cantiin.urls")),
 	path('',include("frontend.urls")),
 	path('',include("accounts.urls")),
 ]
 urlpatterns += staticfiles_urlpatterns()
+
+

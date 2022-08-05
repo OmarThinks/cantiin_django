@@ -1,4 +1,4 @@
-from djoser.views import UserViewSet as DjoserViewSet
+#from djoser.views import UserViewSet as DjoserViewSet
 from rest_framework.renderers import TemplateHTMLRenderer
 from rest_framework.views import APIView
 from django.http import (HttpResponse, HttpResponseRedirect)
@@ -65,7 +65,7 @@ def signup(request):
 	#pp(fields_names)
 	#pp(errors_ids)
 
-	return render(request, "resources/auth/signup.html",
+	"""return render(request, "resources/auth/signup.html",
 		{
 			"title": "Sign Up",
 			"serializer":"",
@@ -77,6 +77,20 @@ def signup(request):
 			"errors_ids":errors_ids,
 			"button_text":"Sign Up",
 			"resource_url":"/api/auth/users/"
+		})	
+	"""
+	return render(request, "resources/auth/signup.html",
+		{
+			"title": "Sign Up",
+			"serializer":"",
+			"request_destination":"/api/auth/custom/signup/",
+			"request_method":"POST", 
+			"rendered_form":rendered_form,
+			"after_scuess_url":"/my_products/",
+			"fields_names":fields_names,
+			"errors_ids":errors_ids,
+			"button_text":"Sign Up",
+			"resource_url":"/api/auth/custom/signup/"
 		})	
 
 

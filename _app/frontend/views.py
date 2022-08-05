@@ -371,7 +371,7 @@ class SignupView(APIView):
 
 
 
-from djoser.views import UserViewSet as _DjoserUserViewSet
+#from djoser.views import UserViewSet as _DjoserUserViewSet
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
@@ -382,7 +382,7 @@ class UserRenderer(BrowsableAPIRenderer):
 
 
 
-
+"""
 
 def genrateDjoserRenderer(title):
 	items_plural ="users"
@@ -415,10 +415,6 @@ class DjoserUserViewSet(_DjoserUserViewSet):
 			self, request, *args, **kwargs)
 		return response
 	template_name = 'resources/auth/createuser.html'
-	#template_name = 'base_layout.html'
-	"""renderer_classes = [JSONRenderer, 
-		generate_custom_renderer(
-		items_plural="users", active_main_navbar="", title="User",
-		additional_css_files=[], item_url_name="", just_renderer_context=True)]"""
-	#renderer_classes = [UserRenderer]
 
+
+"""
