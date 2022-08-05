@@ -1,6 +1,7 @@
 Django==4.1
 django-cors-headers==3.13.0
 django-filter==22.1
+djangorestframework==3.13.1
 Markdown==3.4.1
 MarkupSafe==2.1.1
 pytest==7.1.2
