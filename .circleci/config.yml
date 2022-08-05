@@ -13,7 +13,7 @@ jobs:
       - run:
           name: Run unit tests
           command: |
-            pytest _app -rP --junitxml=test-reports/junit.xml --html=test-reports/pytest_report.html --self-contained-html
+            pytest . -rP --junitxml=test-reports/junit.xml --html=test-reports/pytest_report.html --self-contained-html
       - store_test_results:
           path: test-reports
       - store_artifacts:
