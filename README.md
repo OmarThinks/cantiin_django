@@ -7,18 +7,76 @@ An ecommerce RESTful API using django and Django REST Framework.
 
 # Website:
 
-https://www.cantiin.com
-
-# Video:
-
-<div align="center">
-  <a href="https://www.youtube.com/watch?v=vKo34O6E3O8"><img src="https://img.youtube.com/vi/vKo34O6E3O8/0.jpg" alt="Cantiin v1.0"></a>
-</div>
 
 
 
 
-http://cantiin-dev.us-east-2.elasticbeanstalk.com/ 
+<table>
+<tr>
+<th>Link Type</th>
+<th>Link</th>
+</tr>
+
+<tr>
+<th>Website (On Shared Hosting)</th>
+<td>
+<a href="https://www.cantiin.com">https://www.cantiin.com</a>
+</td>
+</tr>
+
+
+
+
+<tr>
+<th>Deployment on AWS Elastic Beanstalk</th>
+<td>
+<a href="http://cantiin-dev.us-east-2.elasticbeanstalk.com/">http://cantiin-dev.us-east-2.elasticbeanstalk.com/</a>
+</td>
+</tr>
+
+
+
+<tr>
+<th>Youtube</th>
+<td>
+<a href="https://www.youtube.com/watch?v=4RjUJZSEsS0">https://www.youtube.com/watch?v=4RjUJZSEsS0</a>
+</td>
+</tr>
+
+<tr>
+<th>RESTful API backend Link</th>
+<td>
+<a href="https://cantiin.com/api">https://cantiin.com/api</a>
+</td>
+</tr>
+
+
+
+
+<tr>
+<th>Related Projects</th>
+<td>
+<a href="https://github.com/OmarThinks/Cantiin-React-NextJS">Cantiin React</a><br>
+<a href="https://github.com/OmarThinks/Cantiin-React-Native">Cantiin React Native</a>
+</td>
+</tr>
+
+
+
+
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -28,15 +86,10 @@ http://cantiin-dev.us-east-2.elasticbeanstalk.com/
 
 
 # A) Technologies Used:
-1. Python
-2. Django
-3. Django REST Framework
-4. Djoser (Header Auth)
-5. django_filter
-6. Jinja
-7. unittest
-8. pytest
-9. CircleCI
+1. Django
+2. Django REST Framework
+3. django_filter
+4. CircleCI
 
 
 # B) How to Run:
