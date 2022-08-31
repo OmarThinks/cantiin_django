@@ -443,8 +443,14 @@ And connected to PostgreSQL database using AWS RDS.
 
 
 
+# F) Todos:
 
 
+
+- Use Django Form feature instead of using JS forms in frontend
+- Update the admin pages to add features of the django admin
+- Refractoring Djngo REST Framework views and viewsets
+- Use built-in django auth views for login, logout, signup on frontend
 
 
 
