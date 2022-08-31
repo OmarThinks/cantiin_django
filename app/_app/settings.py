@@ -47,7 +47,8 @@ CORS_ALLOWED_ORIGINS = [
     "https://cantiin.d3thsty4rzma1i.amplifyapp.com",
     "http://cantiin.d3thsty4rzma1i.amplifyapp.com",
     "https://dev.d2ehwgu036lbhk.amplifyapp.com",
-    "http://dev.d2ehwgu036lbhk.amplifyapp.com"
+    "http://dev.d2ehwgu036lbhk.amplifyapp.com",
+    "http://cantiin-dev.us-east-2.elasticbeanstalk.com",
 ]
 
 
@@ -180,6 +181,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = 'static'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -236,10 +239,11 @@ os.path.join(BASE_DIR, "assets"),
 
 
 
-CSRF_COOKIE_SECURE = True
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SAMESITE = 'None'
-SESSION_COOKIE_SAMESITE = 'None'
+if "CSRF_SECURE_COOKIE" not in os.environ:
+    CSRF_COOKIE_SECURE = True
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SAMESITE = 'None'
+    SESSION_COOKIE_SAMESITE = 'None'
 
 
 CORS_ALLOW_HEADERS = [

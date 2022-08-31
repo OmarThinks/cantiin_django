@@ -21,7 +21,8 @@ trusted_origins = [
     "https://cantiin.d3thsty4rzma1i.amplifyapp.com",
     "http://cantiin.d3thsty4rzma1i.amplifyapp.com",
     "https://dev.d2ehwgu036lbhk.amplifyapp.com",
-    "http://dev.d2ehwgu036lbhk.amplifyapp.com"
+    "http://dev.d2ehwgu036lbhk.amplifyapp.com",
+    "http://cantiin-dev.us-east-2.elasticbeanstalk.com"
 ]
 
 

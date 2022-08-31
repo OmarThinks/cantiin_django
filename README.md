@@ -17,6 +17,16 @@ https://www.cantiin.com
 
 
 
+
+http://cantiin-dev.us-east-2.elasticbeanstalk.com/ 
+
+
+
+
+
+
+
+
 # A) Technologies Used:
 1. Python
 2. Django
