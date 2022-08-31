@@ -425,6 +425,25 @@ but there is no delete or edit buttons.
 
 
 
+# E) AWS Elastic Beanstalk Deployment:
+
+
+http://cantiin-dev.us-east-2.elasticbeanstalk.com/  
+
+
+
+Deployed on Elastic Beanstalk.  
+And connected to PostgreSQL database using AWS RDS.
+
+
+
+
+
+
+
+
+
+
 
 
 
