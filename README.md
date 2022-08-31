@@ -116,142 +116,9 @@ python manage.py runserver
 
 
 
-# C) Frontend:
+# C) Backend:
 
-
-The frontend uses Bootstrap and CSS.  
-It it rendered using Jinja templating Engine.
-
-
-<img src="images/frontend.gif">
-
-
-
-
-## C-A) Authentication:
-
-### C-A-1) Signup:
-
-If the user is not logged in.  
-then, on the top of the page, there will be a sign up button.
-<img src="images/signup_button.gif">
-On clicking this button:
-
-
-<img src="images/signup_form.gif">
-
-The user will be redirected to the sign up form.
-
-
-
-### C-A-2) Logging In:
-
-
-Just like Sign ing up, there is a log in Button that appears 
-when the user is not logged in.
-<img src="images/login_button.gif">
-<img src="images/logic.gif">
-
-
-### C-A-3) After Logging In:
-
-After loggin in, the header will change.
-<img src="images/changed_header.gif">  
-It will have 2 Options:
-1. **My Products**: To display a list of user's products
-2. **Log Out**: To log out of the system
-
-
-
-
-
-
-## C-B) My Products:
-
-### C-B-1) My products List:
-
-If you are loggin in, you will notice that the header 
-has a My Products option.  
-
-<img src="images/changed_header.gif">    
-
-
-When You click on the button, you will be reditected to the 
-My Products page.  
-This page displays a list of products that you have created, 
-There is pagination to see the next products.
-<img src="images/my_products_page.gif">       
-
-
-### C-B-2) Create Product:
-
-On the top of My products page, there is a Craete Product button.  
-
-
-
-<img src="images/create_product_button.gif">       
-
-
-
-When you Click on that Button, You will be taken to the Create Product Form.
-
-<img src="images/create_product_form.gif">       
-
-
-There is validation, Be Careful :) :
-
-<img src="images/create_product_form_validation.gif">       
-<img src="images/disappointed.gif">       
-
-
-
-### C-B-3) Product Details:
-
-On My Products page, You will find a list of Products.  
-<img src="images/product_card.gif">       
-
-
-
-When you CLick on the View Product Details in the card, 
-you will be able to see all the details of the product
-<img src="images/product_details_page.gif">       
-
-
-
-
-
-
-### C-B-4) Product Delete and Update:
-
-
-On the product details page, You can Delete the product or edit it 
-(If you are the one who posted it).  
-
-
-<img src="images/delete_and_update.gif">       
-
-
-
-
-
-But If the product was not Your's, then you can not edit it.
-<img src="images/no_delete_or_edit.gif">       
-
-As in this image, the user is logged in, 
-but there is no delete or edit buttons.
-
-
-
-
-
-
-
-
-
-
-# D) Backend:
-
-## D-1) Authentication:
+## C-1) Authentication:
 
 The system uses Django authentication system.  
 To use the authentication system you can use this link:
@@ -270,7 +137,7 @@ Authentication uses JWT.
 
 
 
-## D-2) What the app does:
+## C-2) What the app does:
 
 Beyound authentication, the app has three more models.  
 - Product (Where the users can handle products)
@@ -293,7 +160,7 @@ These are the endpoints of API recources:
 
 
 
-## D-3) Pagination:
+## C-3) Pagination:
 All the models have pagination.  
 Since it exists in the `settings.py` file.  
 The pagination uses pages.  
@@ -304,14 +171,14 @@ Each page has 10 records.
 
 
 
-## D-4) Validation and Sanitization:
+## C-4) Validation and Sanitization:
 Validation and is used here, it is built in django  and Django REST framework.  
 Because we are using Django REST Framework serialization.  
 When the user sends a wrong request, the correct response will be returned.
 
 
 
-## D-5) Rate Limit:
+## C-5) Rate Limit:
 It means the limit of requests that can be sent bu the users.  
 It is very helpful to prevent DoS attacks.  
 For users that are 
@@ -321,7 +188,7 @@ For users that are
 
 These can be changed by changing `settings.py`.
 
-## D-6) Permissions:
+## C-6) Permissions:
 - Not Logged in Users:
 	- Create an account (Sign up)
 	- Sign in
@@ -334,7 +201,7 @@ These can be changed by changing `settings.py`.
 	- Logged in users permissions 
 	- Update, delete any product, Comment or order posted by any other user.
 
-## D-7) Search:
+## C-7) Search:
 Search is done using Django Filter:
 
 
@@ -355,11 +222,11 @@ Search is done using Django Filter:
 
 
 
-## D-8) Custom Authentication Endpoints:
+## C-8) Custom Authentication Endpoints:
 
 
 
-### D-8-1) http://127.0.0.1:8000/api/auth/custom/signup/
+### C-8-1) http://127.0.0.1:8000/api/auth/custom/signup/
 
 This is the signup endpoint.  
 The method is POST.  
@@ -367,7 +234,7 @@ It expects 2 inputs in the request body: **`username`** and **`password`**.
 When you sign up, you will login also
 
 
-### D-8-2) http://127.0.0.1:8000/api/auth/custom/login/
+### C-8-2) http://127.0.0.1:8000/api/auth/custom/login/
 
 This is the login endpoint.  
 The method is POST.  
@@ -376,14 +243,14 @@ It expects 2 inputs in the request body: **`username`** and **`password`**
 
 
 
-### D-8-3) http://127.0.0.1:8000/api/auth/custom/logout/
+### C-8-3) http://127.0.0.1:8000/api/auth/custom/logout/
 
 This is the logout endpoint.  
 
 
 
 
-### D-8-4) http://127.0.0.1:8000/api/auth/custom/user/
+### C-8-4) http://127.0.0.1:8000/api/auth/custom/user/
 
 This endpoint tells whether the user is authenticated or not.  
 - **Authenticated**: 
@@ -393,6 +260,164 @@ This endpoint tells whether the user is authenticated or not.
 - **UnAuthenticated**:
 	- response:
 		- Status Code: 401
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# D) Frontend:
+
+
+The frontend uses Bootstrap and CSS.  
+It it rendered using Jinja templating Engine.
+
+
+<img src="images/frontend.gif">
+
+
+
+
+## D-A) Authentication:
+
+### D-A-1) Signup:
+
+If the user is not logged in.  
+then, on the top of the page, there will be a sign up button.
+<img src="images/signup_button.gif">
+On clicking this button:
+
+
+<img src="images/signup_form.gif">
+
+The user will be redirected to the sign up form.
+
+
+
+### D-A-2) Logging In:
+
+
+Just like Sign ing up, there is a log in Button that appears 
+when the user is not logged in.
+<img src="images/login_button.gif">
+<img src="images/logic.gif">
+
+
+### D-A-3) After Logging In:
+
+After loggin in, the header will change.
+<img src="images/changed_header.gif">  
+It will have 2 Options:
+1. **My Products**: To display a list of user's products
+2. **Log Out**: To log out of the system
+
+
+
+
+
+
+## D-B) My Products:
+
+### D-B-1) My products List:
+
+If you are loggin in, you will notice that the header 
+has a My Products option.  
+
+<img src="images/changed_header.gif">    
+
+
+When You click on the button, you will be reditected to the 
+My Products page.  
+This page displays a list of products that you have created, 
+There is pagination to see the next products.
+<img src="images/my_products_page.gif">       
+
+
+### D-B-2) Create Product:
+
+On the top of My products page, there is a Craete Product button.  
+
+
+
+<img src="images/create_product_button.gif">       
+
+
+
+When you Click on that Button, You will be taken to the Create Product Form.
+
+<img src="images/create_product_form.gif">       
+
+
+There is validation, Be Careful :) :
+
+<img src="images/create_product_form_validation.gif">       
+<img src="images/disappointed.gif">       
+
+
+
+### D-B-3) Product Details:
+
+On My Products page, You will find a list of Products.  
+<img src="images/product_card.gif">       
+
+
+
+When you CLick on the View Product Details in the card, 
+you will be able to see all the details of the product
+<img src="images/product_details_page.gif">       
+
+
+
+
+
+
+### D-B-4) Product Delete and Update:
+
+
+On the product details page, You can Delete the product or edit it 
+(If you are the one who posted it).  
+
+
+<img src="images/delete_and_update.gif">       
+
+
+
+
+
+But If the product was not Your's, then you can not edit it.
+<img src="images/no_delete_or_edit.gif">       
+
+As in this image, the user is logged in, 
+but there is no delete or edit buttons.
+
 
 
 
